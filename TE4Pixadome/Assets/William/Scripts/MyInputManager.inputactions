@@ -1,0 +1,51 @@
+{
+    "name": "MyInputManager",
+    "maps": [
+        {
+            "name": "Player",
+            "id": "cb96f5bc-faa4-4791-91c1-e9440d5a20d3",
+            "actions": [
+                {
+                    "name": "Move",
+                    "type": "Button",
+                    "id": "72a2a6f7-2dc1-4531-9b8c-74e6e3d86b1f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "5ec47f08-5f45-419c-b24a-5dabe8c82f6e",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard and Mouse",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": [
+        {
+            "name": "Keyboard and Mouse",
+            "bindingGroup": "Keyboard and Mouse",
+            "devices": [
+                {
+                    "devicePath": "<Keyboard>",
+                    "isOptional": false,
+                    "isOR": false
+                },
+                {
+                    "devicePath": "<Mouse>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        }
+    ]
+}
