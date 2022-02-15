@@ -112,3 +112,6 @@ MonoBehaviour:
   - Name: NetworkRigidbody
     Namespace: Mirage.Experimental
     logLevel: 2
+  - Name: NetworkIdentityIdGenerator
+    Namespace: 
+    logLevel: 2

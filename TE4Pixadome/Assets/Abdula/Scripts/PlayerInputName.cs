@@ -8,8 +8,8 @@ public class PlayerInputName : MonoBehaviour
     [SerializeField]
     private TMP_InputField nameInputField;
 
-    [SerializeField]
-    private Button continueButton;
+    //[SerializeField]
+    //private Button continueButton;
 
     public static string DisplayName { get; private set; }
 
@@ -18,7 +18,7 @@ public class PlayerInputName : MonoBehaviour
     PlayerInputName()
     {
         nameInputField = null;
-        continueButton = null;
+        //continueButton = null;
     }
 
     private void Start()
@@ -42,7 +42,8 @@ public class PlayerInputName : MonoBehaviour
 
     public void SetPlayerName(string name)
     {
-        continueButton.interactable = !string.IsNullOrEmpty(name);
+        //continueButton.interactable = !string.IsNullOrEmpty(name);
+        //A way to check if the inputfield is full
     }
 
     public void SavePlayerName()
