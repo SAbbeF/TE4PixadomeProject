@@ -7,7 +7,7 @@ public class HealthScript : MonoBehaviour
     //gör kod som tar skada på hp
     //gör kod som healar hp
     //ta in hp som en variabel från annat script
-    public int TakeHealthDamage(int health, int damageTaken, GameObject gameObject)
+    public float TakeHealthDamage(float health, float damageTaken, GameObject gameObject)
     {
         health = health - damageTaken;
 
@@ -16,7 +16,7 @@ public class HealthScript : MonoBehaviour
         return health;
     }
 
-    public int Healing(int maxHealth, int currentHealth, int healingAmount)
+    public float Healing(float maxHealth, float currentHealth, float healingAmount)
     {
         currentHealth = currentHealth + healingAmount;
 
@@ -24,11 +24,11 @@ public class HealthScript : MonoBehaviour
         {
             currentHealth = maxHealth;
         }
-
+        
         return currentHealth;
     }
 
-    public void DeathCheck(GameObject gameObject, int health)
+    public void DeathCheck(GameObject gameObject, float health)
     {
 
         if (health <= 0)

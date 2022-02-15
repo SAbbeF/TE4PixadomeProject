@@ -6,10 +6,10 @@ public class HealthRegen : MonoBehaviour
 {
     public bool regenOn;
 
-    public int HealthRegeneration(int health)
+    public float HealthRegeneration(float health, float healthRegen)
     {
 
-        health = health + 1;
+        health += healthRegen * Time.deltaTime;
         return health;
 
     }
