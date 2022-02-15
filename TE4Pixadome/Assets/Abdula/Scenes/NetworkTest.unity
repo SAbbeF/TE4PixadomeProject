@@ -324,7 +324,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2065697755
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -567,11 +567,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcb12654f65b0fd46a7a750b9b31ec23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Server: {fileID: 0}
-  Client: {fileID: 0}
-  NetworkSceneManager: {fileID: 0}
-  ServerObjectManager: {fileID: 0}
-  ClientObjectManager: {fileID: 0}
+  Server: {fileID: 2065697763}
+  Client: {fileID: 2065697762}
+  NetworkSceneManager: {fileID: 2065697760}
+  ServerObjectManager: {fileID: 2065697759}
+  ClientObjectManager: {fileID: 2065697758}
   minimumPlayerCount: 2
   menuScene: Assets/Abdula/Scenes/NetworkTest.unity
   networkManager: {fileID: 2065697761}
