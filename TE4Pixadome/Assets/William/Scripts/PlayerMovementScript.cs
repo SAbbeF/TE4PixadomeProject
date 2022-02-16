@@ -20,7 +20,7 @@ public class PlayerMovementScript : MonoBehaviour
     void Start()
     {
 
-        rotateSpeed = 0.8f;
+        rotateSpeed = 1f;
         maxDistance = Mathf.Infinity;
         navMeshAgent = gameObject.GetComponent<NavMeshAgent>();
     }
