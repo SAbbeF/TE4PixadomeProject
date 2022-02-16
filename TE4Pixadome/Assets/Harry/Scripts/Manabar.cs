@@ -8,7 +8,7 @@ public class Manabar : MonoBehaviour
     public Slider slider;
     public bool isManaUseable;
     //sätter maxvärdet slidern kan  har och hur lång den nuvarande är
-    public void SetManaHealth(float mana)
+    public void SetMaxMana(float mana)
     {
         slider.maxValue = mana;
         slider.value = mana;

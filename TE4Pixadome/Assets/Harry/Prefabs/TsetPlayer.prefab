@@ -47,10 +47,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 74.09865
   damage: 1
+  mana: 100
   healtbar: {fileID: 0}
   healthScript: {fileID: 3210210655387892606}
   healthRegen: {fileID: 3210210655387892605}
+  manabar: {fileID: 0}
   check: 0
+  manacheck: 0
   deth: {fileID: 3210210655387892593}
 --- !u!114 &3210210655387892606
 MonoBehaviour:
