@@ -36,7 +36,8 @@ public class NetworkRoomPlayerLobby : NetworkBehaviour
 
     private NetworkManagerLobby lobby;
 
-    //public NetworkManagerLobby NetworkManagerLobby
+
+    //public NetworkManagerLobby Lobby
     //{
     //    get
     //    {
@@ -65,7 +66,35 @@ public class NetworkRoomPlayerLobby : NetworkBehaviour
 
     private void Awake()
     {
-        //Identity.OnAuthorityChanged.AddListener(OnAu)
+        Identity.OnAuthorityChanged.AddListener(OnStartAuthority);
+        Identity.OnStartClient.AddListener(OnStartClient);
+        Client.Disconnected.AddListener(OnClientDisconnected);
+    }
+
+    private void OnStartAuthority(bool hasAuthority)
+    {
+        //In case PlayerInputName script is being used
+        CmdSetDisplayName(PlayerInputName.DisplayName);
+
+        //In case PlayerInputNameTextMashPro is being used;
+        CmdSetDisplayName(PlayerInputNameTextMashPro.DisplayName);
+
+        lobbyUI.SetActive(true);
+    }
+
+    private void OnStartClient()
+    {
+        lobby.RoomPlayers.Add(this);
+
+        UpdateDisplay();
+    }
+
+    private void OnClientDisconnected(ClientStoppedReason reason)
+    {
+        //Need to duoble check this method if it's the right one
+        lobby.RoomPlayers.Remove(this);
+
+        UpdateDisplay();
     }
 
 
@@ -83,7 +112,16 @@ public class NetworkRoomPlayerLobby : NetworkBehaviour
     {
         if (!HasAuthority)
         {
-            foreach (var player in lobby.RoomPlayers)
+            //foreach (var player in lobby.RoomPlayers)
+            //{
+            //    if (player.HasAuthority)
+            //    {
+            //        player.UpdateDisplay();
+            //        break;
+            //    }
+            //}
+
+            foreach (NetworkRoomPlayerLobby player in lobby.RoomPlayers)
             {
                 if (player.HasAuthority)
                 {
@@ -119,13 +157,13 @@ public class NetworkRoomPlayerLobby : NetworkBehaviour
     }
 
     [ServerRpc]
-    private void CmdSetDisplayName(string displayName)
+    public void CmdSetDisplayName(string displayName)
     {
         this.displayName = displayName;
     }
 
     [ServerRpc]
-    private void CmdReadyUo()
+    public void CmdReadyUo()
     {
         isReady = !isReady;
 
@@ -133,7 +171,7 @@ public class NetworkRoomPlayerLobby : NetworkBehaviour
     }
 
     [ServerRpc]
-    private void CmdStartGame()
+    public void CmdStartGame()
     {
         //if (lobby.RoomPlayers[0].connectionToClient != connectionToClient)
         //{
