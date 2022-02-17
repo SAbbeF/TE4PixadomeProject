@@ -115,3 +115,6 @@ MonoBehaviour:
   - Name: NetworkIdentityIdGenerator
     Namespace: 
     logLevel: 2
+  - Name: Peer
+    Namespace: Mirage.SocketLayer
+    logLevel: 2

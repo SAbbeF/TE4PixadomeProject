@@ -487,7 +487,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1049664217}
-        m_TargetAssemblyTypeName: Mirage.NetworkManagerHud, Mirage.Components
+        m_TargetAssemblyTypeName: NetworkManagerCustomizedHud, Assembly-CSharp
         m_MethodName: StartClientButtonHandler
         m_Mode: 1
         m_Arguments:
@@ -497,7 +497,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 1
+        m_CallState: 2
 --- !u!114 &298667393
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1521,6 +1521,7 @@ GameObject:
   - component: {fileID: 1049664219}
   - component: {fileID: 1049664218}
   - component: {fileID: 1049664217}
+  - component: {fileID: 1049664221}
   m_Layer: 5
   m_Name: LobbyMenu
   m_TagString: Untagged
@@ -1556,18 +1557,20 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1049664215}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6442dc8070ceb41f094e44de0bf87274, type: 3}
+  m_Script: {fileID: 11500000, guid: ab46aa2caf9d8404e82ea480772b2655, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NetworkManager: {fileID: 2065697765}
-  NetworkAddress: localhost
-  DontDestroy: 1
-  NetworkAddressInput: {fileID: 0}
-  OfflineGO: {fileID: 759063936}
-  OnlineGO: {fileID: 1448343715}
-  StatusLabel: {fileID: 0}
+  syncMode: 0
+  syncInterval: 0.1
+  networkManagerLobby: {fileID: 0}
+  networkAddress: localhost
+  dontDestroy: 1
+  networkAddressInput: {fileID: 1574389285}
+  offlineGO: {fileID: 759063936}
+  onlineGO: {fileID: 1448343715}
+  statusLabel: {fileID: 1422660806}
 --- !u!114 &1049664218
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1629,6 +1632,25 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &1049664221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1049664215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6442dc8070ceb41f094e44de0bf87274, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NetworkManager: {fileID: 2065697765}
+  NetworkAddress: localhost
+  DontDestroy: 1
+  NetworkAddressInput: {fileID: 0}
+  OfflineGO: {fileID: 759063936}
+  OnlineGO: {fileID: 1448343715}
+  StatusLabel: {fileID: 0}
 --- !u!1 &1157909208
 GameObject:
   m_ObjectHideFlags: 0
@@ -1713,7 +1735,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1049664217}
-        m_TargetAssemblyTypeName: Mirage.NetworkManagerHud, Mirage.Components
+        m_TargetAssemblyTypeName: NetworkManagerCustomizedHud, Assembly-CSharp
         m_MethodName: StartHostButtonHandler
         m_Mode: 1
         m_Arguments:
@@ -1723,7 +1745,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 1
+        m_CallState: 2
 --- !u!114 &1157909211
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3372,5 +3394,5 @@ MonoBehaviour:
   ServerObjectManager: {fileID: 2065697759}
   ClientObjectManager: {fileID: 2065697758}
   minimumPlayerCount: 2
-  startMenu: Assets/Network/startMenu.unity
+  menuScene: Assets/Abdula/Scenes/NetworkTest.unity
   roomPlayerPrefab: {fileID: 5721180965898038602, guid: b876215253f031642a6eab745c9a2395, type: 3}

@@ -12,7 +12,7 @@ public class NetworkManagerLobby : NetworkManager
 
     [Scene]
     [SerializeField]
-    private string startMenu;
+    private string menuScene;
 
     [Header("Room")]
     [SerializeField]
@@ -29,7 +29,7 @@ public class NetworkManagerLobby : NetworkManager
     {
         minimumPlayerCount = 2;
 
-        startMenu = string.Empty;
+        menuScene = string.Empty;
         roomPlayerPrefab = null;
 
         RoomPlayers = new List<NetworkRoomPlayerLobby>();
@@ -47,6 +47,9 @@ public class NetworkManagerLobby : NetworkManager
         Server.Disconnected.AddListener(OnServerAddPlayer);
         Client.Authenticated.AddListener(OnClientConnect);
         Client.Disconnected.AddListener(OnClientDisconnected);
+        //Can be used to not pass any parameter
+        //Client.Disconnected.AddListener(_ => OnClientDisconnected()); 
+        
     }
 
     private void OnClientConnect(INetworkPlayer conn)
@@ -55,7 +58,7 @@ public class NetworkManagerLobby : NetworkManager
         OnClientConnected?.Invoke();
     }
 
-    private void OnClientDisconnected(ClientStoppedReason Reason)
+    private void OnClientDisconnected(ClientStoppedReason stoppedReason)
     {
         // Client disconnected
 
@@ -68,6 +71,11 @@ public class NetworkManagerLobby : NetworkManager
         if (Server.NumberOfPlayers > Server.MaxConnections)
         {
             //Add logic later
+        }
+
+        if (SceneManager.GetActiveScene().name != menuScene)
+        {
+
         }
     }
 
@@ -97,7 +105,7 @@ public class NetworkManagerLobby : NetworkManager
 
     public void OnServerAddPlayer(INetworkPlayer player)
     {
-        if (SceneManager.GetActiveScene().name != startMenu)
+        if (SceneManager.GetActiveScene().name != menuScene)
         {
             bool isLeader = RoomPlayers.Count == 0;
 

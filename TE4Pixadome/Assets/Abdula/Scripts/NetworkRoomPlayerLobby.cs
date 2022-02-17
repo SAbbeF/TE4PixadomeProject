@@ -5,6 +5,9 @@ using TMPro;
 
 public class NetworkRoomPlayerLobby : NetworkBehaviour
 {
+    [SerializeField]
+    private NetworkManagerLobby lobby;
+
     [Header("UI")]
     [SerializeField]
     private GameObject lobbyUI;
@@ -33,9 +36,6 @@ public class NetworkRoomPlayerLobby : NetworkBehaviour
             startGameButton.gameObject.SetActive(value);
         }
     }
-
-    private NetworkManagerLobby lobby;
-
 
     //public NetworkManagerLobby Lobby
     //{
