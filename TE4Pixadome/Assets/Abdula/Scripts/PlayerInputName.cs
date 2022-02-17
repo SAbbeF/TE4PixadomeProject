@@ -1,13 +1,15 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class PlayerInputName : MonoBehaviour
 {
+    [Header("UI")]
     [SerializeField]
-    private Text playerNameInput;
+    private TMP_InputField nameInputField;
 
-    [SerializeField]
-    private Text playerSavedName;
+    //[SerializeField]
+    //private Button continueButton;
 
     public static string DisplayName { get; private set; }
 
@@ -15,7 +17,8 @@ public class PlayerInputName : MonoBehaviour
 
     PlayerInputName()
     {
-        playerNameInput = null;
+        nameInputField = null;
+        //continueButton = null;
     }
 
     private void Start()
@@ -32,13 +35,20 @@ public class PlayerInputName : MonoBehaviour
 
         string defualtName = PlayerPrefs.GetString(PlayerPrefabsNameKey);
 
-        playerSavedName.text = defualtName;
+        nameInputField.text = defualtName;
+
+        SetPlayerName(defualtName);
     }
 
+    public void SetPlayerName(string name)
+    {
+        //continueButton.interactable = !string.IsNullOrEmpty(name);
+        //A way to check if the inputfield is full
+    }
 
     public void SavePlayerName()
     {
-        DisplayName = playerNameInput.text;
+        DisplayName = nameInputField.text;
 
         PlayerPrefs.SetString(PlayerPrefabsNameKey, DisplayName);
     }
