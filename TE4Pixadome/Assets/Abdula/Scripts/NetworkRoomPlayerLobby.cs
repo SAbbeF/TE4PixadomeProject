@@ -74,7 +74,7 @@ public class NetworkRoomPlayerLobby : NetworkBehaviour
     private void OnStartAuthority(bool hasAuthority)
     {
         //In case PlayerInputName script is being used
-        CmdSetDisplayName(PlayerInputName.DisplayName);
+        //CmdSetDisplayName(PlayerInputName.DisplayName);
 
         //In case PlayerInputNameTextMashPro is being used;
         CmdSetDisplayName(PlayerInputNameTextMashPro.DisplayName);
