@@ -5,8 +5,7 @@ using TMPro;
 
 public class NetworkRoomPlayerLobby : NetworkBehaviour
 {
-    [SerializeField]
-    private NetworkManagerLobby lobby;
+
 
     [Header("UI")]
     [SerializeField]
@@ -20,6 +19,8 @@ public class NetworkRoomPlayerLobby : NetworkBehaviour
 
     [SerializeField]
     private Button startGameButton;
+
+    private NetworkManagerLobby lobby;
 
     [SyncVar(hook = nameof(HandleDisplayNameChanged))]
     public string displayName;
@@ -52,6 +53,8 @@ public class NetworkRoomPlayerLobby : NetworkBehaviour
 
     NetworkRoomPlayerLobby()
     {
+        lobby = null;
+
         lobbyUI = null;
 
         playerNameText = new TMP_Text[4];
@@ -66,6 +69,8 @@ public class NetworkRoomPlayerLobby : NetworkBehaviour
 
     private void Awake()
     {
+        lobby = GameObject.Find("NetworkManager").GetComponent<NetworkManagerLobby>();
+
         Identity.OnAuthorityChanged.AddListener(OnStartAuthority);
         Identity.OnStartClient.AddListener(OnStartClient);
         Client.Disconnected.AddListener(OnClientDisconnected);
@@ -112,16 +117,7 @@ public class NetworkRoomPlayerLobby : NetworkBehaviour
     {
         if (!HasAuthority)
         {
-            //foreach (var player in lobby.RoomPlayers)
-            //{
-            //    if (player.HasAuthority)
-            //    {
-            //        player.UpdateDisplay();
-            //        break;
-            //    }
-            //}
-
-            foreach (NetworkRoomPlayerLobby player in lobby.RoomPlayers)
+            foreach (var player in lobby.RoomPlayers)
             {
                 if (player.HasAuthority)
                 {
@@ -129,6 +125,15 @@ public class NetworkRoomPlayerLobby : NetworkBehaviour
                     break;
                 }
             }
+
+            //foreach (NetworkRoomPlayerLobby player in lobby.RoomPlayers)
+            //{
+            //    if (player.HasAuthority)
+            //    {
+            //        player.UpdateDisplay();
+            //        break;
+            //    }
+            //}
 
             return;
         }

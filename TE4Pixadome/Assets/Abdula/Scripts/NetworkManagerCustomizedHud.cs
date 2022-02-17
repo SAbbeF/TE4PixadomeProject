@@ -27,6 +27,12 @@ public class NetworkManagerCustomizedHud : NetworkBehaviour
     private GameObject onlineGO;
 
     [SerializeField]
+    private GameObject mainMenu;
+
+    //[SerializeField]
+    //private GameObject lobbyMenu;
+
+    [SerializeField]
     private TMP_Text statusLabel;
 
     private NetworkManagerCustomizedHud()
@@ -59,12 +65,16 @@ public class NetworkManagerCustomizedHud : NetworkBehaviour
 
     internal void OnlineSetActive()
     {
+        mainMenu.SetActive(false);
+        //lobbyMenu.SetActive(false);
         offlineGO.SetActive(false);
         onlineGO.SetActive(true);
     }
 
     internal void OfflineSetActive()
     {
+        mainMenu.SetActive(true);
+        //lobbyMenu.SetActive(true);
         offlineGO.SetActive(true);
         onlineGO.SetActive(false);
     }

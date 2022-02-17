@@ -94,8 +94,8 @@ public class NetworkManagerLobby : NetworkManager
     {
         if (conn.Identity != null)
         {
-            //var player = conn.Identity.gameObject.GetComponent<NetworkRoomPlayerLobby>();
-            NetworkRoomPlayerLobby player = conn.Identity.gameObject.GetComponent<NetworkRoomPlayerLobby>();
+            var player = conn.Identity.gameObject.GetComponent<NetworkRoomPlayerLobby>();
+            //NetworkRoomPlayerLobby player = conn.Identity.gameObject.GetComponent<NetworkRoomPlayerLobby>();
 
             RoomPlayers.Remove(player);
 
@@ -121,15 +121,15 @@ public class NetworkManagerLobby : NetworkManager
 
     public void NotifyPlayersOfReadyState()
     {
-        //foreach (var player in RoomPlayers)
-        //{
-        //    player.HandleReadyToStart(IsReadyToStart());
-        //}
-
-        foreach (NetworkRoomPlayerLobby player in RoomPlayers)
+        foreach (var player in RoomPlayers)
         {
             player.HandleReadyToStart(IsReadyToStart());
         }
+
+        //foreach (NetworkRoomPlayerLobby player in RoomPlayers)
+        //{
+        //    player.HandleReadyToStart(IsReadyToStart());
+        //}
     }
 
     public bool IsReadyToStart()
@@ -139,21 +139,21 @@ public class NetworkManagerLobby : NetworkManager
             return false;
         }
 
-        //foreach (var player in RoomPlayers)
-        //{
-        //    if (!player.isReady)
-        //    {
-        //        return false;
-        //    }
-        //}
-
-        foreach (NetworkRoomPlayerLobby player in RoomPlayers)
+        foreach (var player in RoomPlayers)
         {
             if (!player.isReady)
             {
                 return false;
             }
         }
+
+        //foreach (NetworkRoomPlayerLobby player in RoomPlayers)
+        //{
+        //    if (!player.isReady)
+        //    {
+        //        return false;
+        //    }
+        //}
 
         return true;
     }
