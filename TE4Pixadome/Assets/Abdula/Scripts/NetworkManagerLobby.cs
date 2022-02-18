@@ -12,7 +12,7 @@ public class NetworkManagerLobby : NetworkManager
 
     [Scene]
     [SerializeField]
-    private string menuScene;
+    private string startMenu;
 
     [Header("Room")]
     [SerializeField]
@@ -29,7 +29,7 @@ public class NetworkManagerLobby : NetworkManager
     {
         minimumPlayerCount = 2;
 
-        menuScene = string.Empty;
+        startMenu = string.Empty;
         roomPlayerPrefab = null;
 
         RoomPlayers = new List<NetworkRoomPlayerLobby>();
@@ -39,6 +39,7 @@ public class NetworkManagerLobby : NetworkManager
     {
         //Identity.OnStartClient.AddListener(OnStartClient);
         //Add a custom method to register all prefabs, can be tracked down from ClientObjectManager, RegisterSpawnPrefabs()
+        
 
         Server.Started.AddListener(OnStartServer);
         Server.Stopped.AddListener(OnStopServer);
@@ -73,7 +74,7 @@ public class NetworkManagerLobby : NetworkManager
             //Add logic later
         }
 
-        if (SceneManager.GetActiveScene().name != menuScene)
+        if (SceneManager.GetActiveScene().name != startMenu)
         {
 
         }
@@ -105,7 +106,7 @@ public class NetworkManagerLobby : NetworkManager
 
     public void OnServerAddPlayer(INetworkPlayer player)
     {
-        if (SceneManager.GetActiveScene().name != menuScene)
+        if (SceneManager.GetActiveScene().name == startMenu)
         {
             bool isLeader = RoomPlayers.Count == 0;
 
