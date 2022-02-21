@@ -41,20 +41,22 @@ public class CustomizedCharacterSpawner : CharacterSpawner
         //Needs code update
         //if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == startMenu)
         //{
-        //    bool isLeader = RoomPlayers.Count == 0;
 
-        //    NetworkRoomPlayerLobby roomPlayerInstance = Instantiate(roomPlayerPrefab);
-
-        //    roomPlayerInstance.Isleader = isLeader;
-
-        //    ServerObjectManager.AddCharacter(player, roomPlayerInstance.gameObject);
-
-        //    NotifyPlayersOfReadyState();
         //}
 
-        //base.OnServerAddPlayer(player);
-        NetworkIdentity character = Instantiate(PlayerPrefab);
-        ServerObjectManager.AddCharacter(player, character.gameObject);
+        //bool isLeader = RoomPlayers.Count == 0;
+
+        //NetworkRoomPlayerLobby roomPlayerInstance = Instantiate(roomPlayerPrefab);
+
+        //roomPlayerInstance.Isleader = isLeader;
+
+        //ServerObjectManager.AddCharacter(player, roomPlayerInstance.gameObject);
+
+        //NotifyPlayersOfReadyState();
+
+        base.OnServerAddPlayer(player);
+        //NetworkIdentity character = Instantiate(PlayerPrefab);
+        //ServerObjectManager.AddCharacter(player, character.gameObject);
     }
 
     public void OnServerDisconnect(INetworkPlayer player)

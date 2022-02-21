@@ -659,6 +659,7 @@ MonoBehaviour:
   - {fileID: 200921489540721084}
   - {fileID: 4139488184086889342}
   startGameButton: {fileID: 3472737104517451350}
+  playerSpawner: {fileID: 0}
   displayName: Loading...
   isReady: 0
 --- !u!1 &3444062041597803931

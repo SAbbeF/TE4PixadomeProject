@@ -28,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1861481301410544092}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.9241476, y: 10.94, z: -14.49}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -116,7 +116,7 @@ MonoBehaviour:
   _sceneId: 0
   ServerObjectManager: {fileID: 0}
   ClientObjectManager: {fileID: 0}
-  _prefabHash: 0
+  _prefabHash: 113009499
   _onStartServer:
     _event:
       m_PersistentCalls:

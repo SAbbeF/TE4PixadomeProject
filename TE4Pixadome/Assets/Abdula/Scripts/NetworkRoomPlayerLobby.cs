@@ -18,8 +18,10 @@ public class NetworkRoomPlayerLobby : NetworkBehaviour
     [SerializeField]
     private Button startGameButton;
 
+    [SerializeField]
     private CustomizedCharacterSpawner playerSpawner;
-    private GameObject spawner;
+
+    private GameObject networkManager;
 
     [SyncVar(hook = nameof(HandleDisplayNameChanged))]
     public string displayName;
@@ -69,12 +71,15 @@ public class NetworkRoomPlayerLobby : NetworkBehaviour
         Identity.OnAuthorityChanged.AddListener(OnStartAuthority);
         Identity.OnStartClient.AddListener(OnStartClient);
         //Client.Disconnected.AddListener(OnClientDisconnected);
+        //playerSpawner = FindObjectOfType<CustomizedCharacterSpawner>();
+
     }
 
     private void Start()
     {
         //playerSpawner = GameObject.Find("NetworkManager").GetComponent<CustomizedCharacterSpawner>();
-        playerSpawner = FindObjectOfType<CustomizedCharacterSpawner>();
+        networkManager = GameObject.FindGameObjectWithTag("NetworkManager");
+        playerSpawner = networkManager.GetComponent<CustomizedCharacterSpawner>();
     }
 
     private void OnStartAuthority(bool hasAuthority)

@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 885452364972639580}
   - component: {fileID: 885452364972639576}
   - component: {fileID: 885452364972639579}
-  - component: {fileID: -2759183402777954463}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -133,51 +132,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2da9231c7bcb8246ac380e2b3325f23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &-2759183402777954463
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 885452364972639581}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SpawnSettings:
-    SendPosition: 1
-    SendRotation: 1
-    SendScale: 1
-  _sceneId: 0
-  ServerObjectManager: {fileID: 0}
-  ClientObjectManager: {fileID: 0}
-  _prefabHash: -1844842096
-  _onStartServer:
-    _event:
-      m_PersistentCalls:
-        m_Calls: []
-  _onStartClient:
-    _event:
-      m_PersistentCalls:
-        m_Calls: []
-  _onStartLocalPlayer:
-    _event:
-      m_PersistentCalls:
-        m_Calls: []
-  _onAuthorityChanged:
-    _event:
-      m_PersistentCalls:
-        m_Calls: []
-  _onStopClient:
-    _event:
-      m_PersistentCalls:
-        m_Calls: []
-  _onStopServer:
-    _event:
-      m_PersistentCalls:
-        m_Calls: []
-  hasSpawned: 0
 --- !u!1 &4637104597898908827
 GameObject:
   m_ObjectHideFlags: 0
