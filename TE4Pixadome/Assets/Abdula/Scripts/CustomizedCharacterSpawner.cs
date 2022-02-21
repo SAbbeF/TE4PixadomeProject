@@ -38,8 +38,6 @@ public class CustomizedCharacterSpawner : CharacterSpawner
 
     public override void OnServerAddPlayer(INetworkPlayer player)
     {
-        //base.OnServerAddPlayer(player);
-
         //Needs code update
         //if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == startMenu)
         //{
@@ -54,6 +52,7 @@ public class CustomizedCharacterSpawner : CharacterSpawner
         //    NotifyPlayersOfReadyState();
         //}
 
+        //base.OnServerAddPlayer(player);
         NetworkIdentity character = Instantiate(PlayerPrefab);
         ServerObjectManager.AddCharacter(player, character.gameObject);
     }

@@ -11,12 +11,6 @@ public class NetworkManagerCustomizedHud : NetworkBehaviour
 
     [Header("Prefab Canvas Elements")]
 
-    //Original lines from NetowrkManagerHud
-    //public InputField NetworkAddressInput;
-    //public GameObject OfflineGO;
-    //public GameObject OnlineGO;
-    //public Text StatusLabel;
-
     [SerializeField]
     private TMP_InputField networkAddressInput;
 

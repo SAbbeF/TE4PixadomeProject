@@ -52,8 +52,6 @@ public class NetworkRoomPlayerLobby : NetworkBehaviour
 
     NetworkRoomPlayerLobby()
     {
-
-
         lobbyUI = null;
 
         playerNameText = new TMP_Text[4];

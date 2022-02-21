@@ -24,9 +24,6 @@ public class NetworkManagerLobby : NetworkManager
 
     private void Awake()
     {
-        //Identity.OnStartClient.AddListener(OnStartClient);
-        //Add a custom method to register all prefabs, can be tracked down from ClientObjectManager, RegisterSpawnPrefabs()
-
         Server.Started.AddListener(OnStartServer);
         Client.Started.AddListener(OnClientStarted);
 
@@ -37,26 +34,29 @@ public class NetworkManagerLobby : NetworkManager
 
         //Can be used to not pass any parameter
         //Client.Disconnected.AddListener(_ => OnClientDisconnected()); 
+
+        //Add a custom method to register all prefabs, can be tracked down from ClientObjectManager, RegisterSpawnPrefabs()
+        //Identity.OnStartClient.AddListener(OnStartClient);
     }
 
     private void Start()
     {
-        
+
     }
 
     private void OnStartServer()
     {
-        ClientObjectManager.spawnPrefabs = Resources.LoadAll<NetworkIdentity>("SpawnablePrefabs").ToList();
+        //ClientObjectManager.spawnPrefabs = Resources.LoadAll<NetworkIdentity>("SpawnablePrefabs").ToList();
     }
 
     private void OnClientStarted()
     {
-        var spawnablePrefabs = Resources.LoadAll<NetworkIdentity>("SpawnablePrefabs");
+        //var spawnablePrefabs = Resources.LoadAll<NetworkIdentity>("SpawnablePrefabs");
 
-        foreach (var prefab in spawnablePrefabs)
-        {
-            ClientObjectManager.RegisterPrefab(prefab);
-        }
+        //foreach (var prefab in spawnablePrefabs)
+        //{
+        //    ClientObjectManager.RegisterPrefab(prefab);
+        //}
     }
 
     private void OnClientConnect(INetworkPlayer conn)
@@ -75,7 +75,7 @@ public class NetworkManagerLobby : NetworkManager
 
     private void OnServerConnect(INetworkPlayer conn)
     {
-        // Client connected (and authenticated) on server
+        //Client connected(and authenticated) on server
 
         if (Server.NumberOfPlayers > Server.MaxConnections)
         {

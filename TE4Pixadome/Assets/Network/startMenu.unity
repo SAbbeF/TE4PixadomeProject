@@ -206,18 +206,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1578227308}
-        m_TargetAssemblyTypeName: Mirage.NetworkManagerHud, Mirage.Components
-        m_MethodName: StartHostButtonHandler
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 0
       - m_Target: {fileID: 1578227309}
         m_TargetAssemblyTypeName: NetworkManagerCustomizedHud, Assembly-CSharp
         m_MethodName: StartHostButtonHandler
@@ -344,13 +332,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 37897707}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalRotation: {x: 0.22253858, y: -0, z: -0, w: 0.9749239}
+  m_LocalPosition: {x: 0, y: 13.69, z: -22.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 25.716, y: 0, z: 0}
 --- !u!1 &221398098
 GameObject:
   m_ObjectHideFlags: 0
@@ -1352,11 +1340,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 785341502}
-  - component: {fileID: 785341501}
   - component: {fileID: 785341500}
+  - component: {fileID: 785341501}
   - component: {fileID: 785341498}
-  - component: {fileID: 785341497}
   - component: {fileID: 785341496}
+  - component: {fileID: 785341497}
   - component: {fileID: 785341494}
   - component: {fileID: 785341493}
   - component: {fileID: 785341499}
@@ -1417,8 +1405,7 @@ MonoBehaviour:
   PlayerPrefab: {fileID: -2759183402777954463, guid: 17393d2e36b7ae349878b883f1121406, type: 3}
   AutoSpawn: 1
   startPositionIndex: 0
-  startPositions:
-  - {fileID: 0}
+  startPositions: []
   playerSpawnMethod: 0
   minimumPlayerCount: 2
   startMenu: Assets/Network/startMenu.unity
@@ -1438,6 +1425,7 @@ MonoBehaviour:
   Client: {fileID: 785341500}
   NetworkSceneManager: {fileID: 785341498}
   spawnPrefabs:
+  - {fileID: 4695689743761700053, guid: 823d51e9d5e1da742ba3ee32abe2f0d2, type: 3}
   - {fileID: 2428683040621888757, guid: d3ce9556a9323dc4896a72541aea970f, type: 3}
   - {fileID: 1329798675937578706, guid: b876215253f031642a6eab745c9a2395, type: 3}
   - {fileID: -2759183402777954463, guid: 17393d2e36b7ae349878b883f1121406, type: 3}
@@ -1921,7 +1909,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1169853639
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2386,18 +2374,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1578227308}
-        m_TargetAssemblyTypeName: Mirage.NetworkManagerHud, Mirage.Components
-        m_MethodName: StartClientButtonHandler
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 0
       - m_Target: {fileID: 1578227309}
         m_TargetAssemblyTypeName: NetworkManagerCustomizedHud, Assembly-CSharp
         m_MethodName: StartClientButtonHandler
