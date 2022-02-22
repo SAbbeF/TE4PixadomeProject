@@ -12,9 +12,13 @@ public class attackRange : MonoBehaviour
 
         if (other.tag == "Player")
         {
+            if (target == null)
+            {
 
-            isWithinAttackRange = true;
-            target = other.gameObject;
+                isWithinAttackRange = true;
+                target = other.gameObject;
+
+            }
 
         }
 
@@ -25,9 +29,13 @@ public class attackRange : MonoBehaviour
 
         if (other.tag == "Player")
         {
+            if (target.gameObject == other.gameObject)
+            {
 
-            isWithinAttackRange = false;
-            target = null;
+                isWithinAttackRange = false;
+                target = null;
+            
+            }
 
         }
 

@@ -66,8 +66,12 @@ public class AiFollow : MonoBehaviour
 
         if (other.tag == "Player")
         {
+            if (playerTarget == null)
+            {
+                
+                playerTarget = other.gameObject;
 
-            playerTarget = other.gameObject;
+            }
 
         }
 
@@ -78,10 +82,24 @@ public class AiFollow : MonoBehaviour
 
         if (other.tag == "Player")
         {
+            if (playerTarget.gameObject == other.gameObject)
+            {
 
-            playerTarget = null;
+                playerTarget = null;
+            
+            }
 
         }
 
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.tag == "Player" && playerTarget == null)
+        {
+            //sätta in allt som rör i den i en array
+            //cehcka igenom arrayen vilken som är närmast
+            //sätt den till targetplayer
+        }
     }
 }
