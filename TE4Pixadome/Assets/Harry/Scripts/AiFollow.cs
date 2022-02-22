@@ -9,25 +9,48 @@ public class AiFollow : MonoBehaviour
     public GameObject target;
     public NavMeshAgent agent;
     GameObject playerTarget;
-    //Transform oldPosition;
+    public attackRange attackRange;
 
+    public float lookAtEnmenySpeed;
+    float distanceToGoal;
     public int goalRange;
+    bool isBeingAttacked;
+
+    Quaternion rotation;
 
     private void Update()
     {
 
-        if (playerTarget != null)
+        if (playerTarget != null && !attackRange.isWithinAttackRange && distanceToGoal > 3)
         {
 
             agent.destination = playerTarget.transform.position;
 
+             Vector3.Distance(agent.transform.position, playerTarget.transform.position);
+
+        }
+        else if (attackRange.isWithinAttackRange && distanceToGoal > 3)
+        {
+            if (agent.destination != agent.transform.position)
+            {
+                
+                agent.destination = agent.transform.position;
+
+            }
+
+            rotation = Quaternion.LookRotation(attackRange.target.transform.position - agent.transform.position);
+            agent.transform.rotation = Quaternion.Slerp(agent.transform.rotation, rotation, Time.deltaTime  * lookAtEnmenySpeed);
+
+            //insert attack
+            //endast en attack eller många?
+            //timer coldown på attacker här eller i attack script
         }
         else
         {
 
-            float distance = Vector3.Distance(this.transform.position, target.transform.position);
+            distanceToGoal = Vector3.Distance(this.transform.position, target.transform.position);
 
-            if (distance < goalRange)
+            if (distanceToGoal < goalRange)
             {
                 agent.destination = target.transform.position;
             }
