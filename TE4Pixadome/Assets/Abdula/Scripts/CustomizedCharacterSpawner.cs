@@ -39,24 +39,24 @@ public class CustomizedCharacterSpawner : CharacterSpawner
     public override void OnServerAddPlayer(INetworkPlayer player)
     {
         //Needs code update
-        //if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == startMenu)
+        //if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().path == startMenu)
         //{
+        //    bool isLeader = RoomPlayers.Count == 0;
 
+        //    NetworkRoomPlayerLobby roomPlayerInstance = Instantiate(roomPlayerPrefab);
+
+        //    roomPlayerInstance.Initialize(this);
+
+        //    roomPlayerInstance.Isleader = isLeader;
+
+        //    ServerObjectManager.AddCharacter(player, roomPlayerInstance.gameObject);
+
+        //    NotifyPlayersOfReadyState();
         //}
 
-        //bool isLeader = RoomPlayers.Count == 0;
-
-        //NetworkRoomPlayerLobby roomPlayerInstance = Instantiate(roomPlayerPrefab);
-
-        //roomPlayerInstance.Isleader = isLeader;
-
-        //ServerObjectManager.AddCharacter(player, roomPlayerInstance.gameObject);
-
-        //NotifyPlayersOfReadyState();
-
-        base.OnServerAddPlayer(player);
-        //NetworkIdentity character = Instantiate(PlayerPrefab);
-        //ServerObjectManager.AddCharacter(player, character.gameObject);
+        //base.OnServerAddPlayer(player);
+        NetworkIdentity character = Instantiate(PlayerPrefab, new Vector3(Random.Range(0, 10), 1, Random.Range(0, 10)), Quaternion.Euler(Vector3.zero));
+        ServerObjectManager.AddCharacter(player, character.gameObject);
     }
 
     public void OnServerDisconnect(INetworkPlayer player)

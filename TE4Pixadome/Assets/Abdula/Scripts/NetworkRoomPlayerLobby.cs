@@ -18,8 +18,8 @@ public class NetworkRoomPlayerLobby : NetworkBehaviour
     [SerializeField]
     private Button startGameButton;
 
-    [SerializeField]
-    private CustomizedCharacterSpawner playerSpawner;
+    //[SerializeField]
+    public CustomizedCharacterSpawner playerSpawner;
 
     private GameObject networkManager;
 
@@ -78,8 +78,13 @@ public class NetworkRoomPlayerLobby : NetworkBehaviour
     private void Start()
     {
         //playerSpawner = GameObject.Find("NetworkManager").GetComponent<CustomizedCharacterSpawner>();
-        networkManager = GameObject.FindGameObjectWithTag("NetworkManager");
-        playerSpawner = networkManager.GetComponent<CustomizedCharacterSpawner>();
+        //networkManager = GameObject.FindGameObjectWithTag("NetworkManager");
+        //playerSpawner = networkManager.GetComponent<CustomizedCharacterSpawner>();
+    }
+
+    public void Initialize(CustomizedCharacterSpawner customizedCharacterSpawner)
+    {
+        playerSpawner = customizedCharacterSpawner;
     }
 
     private void OnStartAuthority(bool hasAuthority)
@@ -88,6 +93,11 @@ public class NetworkRoomPlayerLobby : NetworkBehaviour
         //CmdSetDisplayName(PlayerInputName.DisplayName);
 
         //In case PlayerInputNameTextMashPro is being used;
+        if (playerSpawner != null)
+        {
+            Debug.Log("correct");
+        }
+
         CmdSetDisplayName(PlayerInputNameTextMashPro.DisplayName);
 
         lobbyUI.SetActive(true);
@@ -125,6 +135,7 @@ public class NetworkRoomPlayerLobby : NetworkBehaviour
         {
             foreach (var player in playerSpawner.RoomPlayers)
             {
+                lobbyUI.SetActive(false);
                 if (player.HasAuthority)
                 {
                     player.UpdateDisplay();

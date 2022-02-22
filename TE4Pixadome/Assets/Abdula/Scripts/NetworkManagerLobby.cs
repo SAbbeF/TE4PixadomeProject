@@ -89,11 +89,11 @@ public class NetworkManagerLobby : NetworkManager
         //    Debug.Log("Correct name");
         //}
 
-        Debug.Log(SceneManager.GetActiveScene().name);
-        //if (SceneManager.GetActiveScene().name != startMenu)
-        //{
-        //    Server.RemoveConnection(conn);
-        //    return;
-        //}
+        //Debug.Log(SceneManager.GetActiveScene().name);
+        if (SceneManager.GetActiveScene().path != startMenu)
+        {
+            Server.RemoveConnection(conn);
+            return;
+        }
     }
 }

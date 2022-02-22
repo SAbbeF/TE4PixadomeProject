@@ -2880,6 +2880,7 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   networkManagerLobby: {fileID: 785341499}
+  sceneManager: {fileID: 785341498}
   networkAddress: localhost
   dontDestroy: 1
   networkAddressInput: {fileID: 943550896}
