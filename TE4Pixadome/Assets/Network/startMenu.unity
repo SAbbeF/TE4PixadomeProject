@@ -206,18 +206,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1578227308}
-        m_TargetAssemblyTypeName: Mirage.NetworkManagerHud, Mirage.Components
-        m_MethodName: StartHostButtonHandler
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 0
       - m_Target: {fileID: 1578227309}
         m_TargetAssemblyTypeName: NetworkManagerCustomizedHud, Assembly-CSharp
         m_MethodName: StartHostButtonHandler
@@ -1507,15 +1495,15 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 785341502}
-  - component: {fileID: 785341501}
   - component: {fileID: 785341500}
+  - component: {fileID: 785341501}
   - component: {fileID: 785341498}
-  - component: {fileID: 785341497}
   - component: {fileID: 785341496}
-  - component: {fileID: 785341495}
+  - component: {fileID: 785341497}
   - component: {fileID: 785341494}
   - component: {fileID: 785341493}
   - component: {fileID: 785341499}
+  - component: {fileID: 785341495}
   m_Layer: 0
   m_Name: NetworkManager
   m_TagString: NetworkManager
@@ -1561,7 +1549,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 785341492}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a7aaac73a16c040fd871cb977b5c557b, type: 3}
+  m_Script: {fileID: 11500000, guid: f341fe4782bd1454a931bba51c3863be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Client: {fileID: 785341500}
@@ -1569,11 +1557,14 @@ MonoBehaviour:
   SceneManager: {fileID: 785341498}
   ClientObjectManager: {fileID: 785341496}
   ServerObjectManager: {fileID: 785341497}
-  PlayerPrefab: {fileID: 2428683040621888757, guid: d3ce9556a9323dc4896a72541aea970f, type: 3}
+  PlayerPrefab: {fileID: 4695689743761700053, guid: 823d51e9d5e1da742ba3ee32abe2f0d2, type: 3}
   AutoSpawn: 1
   startPositionIndex: 0
   startPositions: []
   playerSpawnMethod: 0
+  minimumPlayerCount: 2
+  startMenu: Assets/Network/startMenu.unity
+  roomPlayerPrefab: {fileID: 0}
 --- !u!114 &785341496
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1652,9 +1643,7 @@ MonoBehaviour:
   NetworkSceneManager: {fileID: 785341498}
   ServerObjectManager: {fileID: 785341497}
   ClientObjectManager: {fileID: 785341496}
-  minimumPlayerCount: 2
-  menuScene: Assets/Network/startMenu.unity
-  roomPlayerPrefab: {fileID: 5721180965898038602, guid: b876215253f031642a6eab745c9a2395, type: 3}
+  startMenu: Assets/Network/startMenu.unity
 --- !u!114 &785341500
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3110,18 +3099,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1578227308}
-        m_TargetAssemblyTypeName: Mirage.NetworkManagerHud, Mirage.Components
-        m_MethodName: StartClientButtonHandler
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 0
       - m_Target: {fileID: 1578227309}
         m_TargetAssemblyTypeName: NetworkManagerCustomizedHud, Assembly-CSharp
         m_MethodName: StartClientButtonHandler
@@ -3633,7 +3610,6 @@ GameObject:
   - component: {fileID: 1578227307}
   - component: {fileID: 1578227306}
   - component: {fileID: 1578227305}
-  - component: {fileID: 1578227308}
   - component: {fileID: 1578227309}
   m_Layer: 5
   m_Name: LobbyMenu
@@ -3726,25 +3702,6 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
---- !u!114 &1578227308
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1578227303}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6442dc8070ceb41f094e44de0bf87274, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  NetworkManager: {fileID: 0}
-  NetworkAddress: localhost
-  DontDestroy: 1
-  NetworkAddressInput: {fileID: 0}
-  OfflineGO: {fileID: 286782026}
-  OnlineGO: {fileID: 1633747839}
-  StatusLabel: {fileID: 0}
 --- !u!114 &1578227309
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3760,6 +3717,7 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   networkManagerLobby: {fileID: 785341499}
+  sceneManager: {fileID: 785341498}
   networkAddress: localhost
   dontDestroy: 1
   networkAddressInput: {fileID: 943550896}
