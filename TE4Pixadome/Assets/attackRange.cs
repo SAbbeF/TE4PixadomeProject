@@ -40,4 +40,17 @@ public class attackRange : MonoBehaviour
         }
 
     }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.tag == "Player" && target == null)
+        {
+
+            isWithinAttackRange = true;
+            target = other.gameObject;
+            //sätta in allt som rör i den i en array
+            //cehcka igenom arrayen vilken som är närmast
+            //sätt den till targetplayer
+        }
+    }
 }
