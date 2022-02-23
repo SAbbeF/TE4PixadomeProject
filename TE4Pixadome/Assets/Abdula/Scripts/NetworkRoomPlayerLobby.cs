@@ -5,8 +5,6 @@ using TMPro;
 
 public class NetworkRoomPlayerLobby : NetworkBehaviour
 {
-
-
     [Header("UI")]
     [SerializeField]
     private GameObject lobbyUI;
@@ -20,7 +18,10 @@ public class NetworkRoomPlayerLobby : NetworkBehaviour
     [SerializeField]
     private Button startGameButton;
 
-    private NetworkManagerLobby lobby;
+    //[SerializeField]
+    public CustomizedCharacterSpawner playerSpawner;
+
+    private GameObject networkManager;
 
     [SyncVar(hook = nameof(HandleDisplayNameChanged))]
     public string displayName;
@@ -53,8 +54,6 @@ public class NetworkRoomPlayerLobby : NetworkBehaviour
 
     NetworkRoomPlayerLobby()
     {
-        lobby = null;
-
         lobbyUI = null;
 
         playerNameText = new TMP_Text[4];
@@ -69,11 +68,23 @@ public class NetworkRoomPlayerLobby : NetworkBehaviour
 
     private void Awake()
     {
-        lobby = GameObject.Find("NetworkManager").GetComponent<NetworkManagerLobby>();
-
         Identity.OnAuthorityChanged.AddListener(OnStartAuthority);
         Identity.OnStartClient.AddListener(OnStartClient);
-        Client.Disconnected.AddListener(OnClientDisconnected);
+        //Client.Disconnected.AddListener(OnClientDisconnected);
+        //playerSpawner = FindObjectOfType<CustomizedCharacterSpawner>();
+
+    }
+
+    private void Start()
+    {
+        //playerSpawner = GameObject.Find("NetworkManager").GetComponent<CustomizedCharacterSpawner>();
+        //networkManager = GameObject.FindGameObjectWithTag("NetworkManager");
+        //playerSpawner = networkManager.GetComponent<CustomizedCharacterSpawner>();
+    }
+
+    public void Initialize(CustomizedCharacterSpawner customizedCharacterSpawner)
+    {
+        playerSpawner = customizedCharacterSpawner;
     }
 
     private void OnStartAuthority(bool hasAuthority)
@@ -82,6 +93,11 @@ public class NetworkRoomPlayerLobby : NetworkBehaviour
         //CmdSetDisplayName(PlayerInputName.DisplayName);
 
         //In case PlayerInputNameTextMashPro is being used;
+        if (playerSpawner != null)
+        {
+            Debug.Log("correct");
+        }
+
         CmdSetDisplayName(PlayerInputNameTextMashPro.DisplayName);
 
         lobbyUI.SetActive(true);
@@ -89,7 +105,7 @@ public class NetworkRoomPlayerLobby : NetworkBehaviour
 
     private void OnStartClient()
     {
-        lobby.RoomPlayers.Add(this);
+        playerSpawner.RoomPlayers.Add(this);
 
         UpdateDisplay();
     }
@@ -97,7 +113,7 @@ public class NetworkRoomPlayerLobby : NetworkBehaviour
     private void OnClientDisconnected(ClientStoppedReason reason)
     {
         //Need to duoble check this method if it's the right one
-        lobby.RoomPlayers.Remove(this);
+        playerSpawner.RoomPlayers.Remove(this);
 
         UpdateDisplay();
     }
@@ -117,8 +133,9 @@ public class NetworkRoomPlayerLobby : NetworkBehaviour
     {
         if (!HasAuthority)
         {
-            foreach (var player in lobby.RoomPlayers)
+            foreach (var player in playerSpawner.RoomPlayers)
             {
+                lobbyUI.SetActive(false);
                 if (player.HasAuthority)
                 {
                     player.UpdateDisplay();
@@ -146,8 +163,8 @@ public class NetworkRoomPlayerLobby : NetworkBehaviour
 
         for (int i = 0;i < playerReadyText.Length; i++)
         {
-            playerNameText[i].text = lobby.RoomPlayers[i].displayName;
-            playerReadyText[i].text = lobby.RoomPlayers[i].isReady ? "<color=green> Ready </color>" : "<color=red> Not Ready </color>";
+            playerNameText[i].text = playerSpawner.RoomPlayers[i].displayName;
+            playerReadyText[i].text = playerSpawner.RoomPlayers[i].isReady ? "<color=green> Ready </color>" : "<color=red> Not Ready </color>";
         }
     }
 
@@ -168,11 +185,11 @@ public class NetworkRoomPlayerLobby : NetworkBehaviour
     }
 
     [ServerRpc]
-    public void CmdReadyUo()
+    public void CmdReadyUp()
     {
         isReady = !isReady;
 
-        lobby.NotifyPlayersOfReadyState();
+        playerSpawner.NotifyPlayersOfReadyState();
     }
 
     [ServerRpc]

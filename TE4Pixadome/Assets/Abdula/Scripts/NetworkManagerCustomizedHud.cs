@@ -6,16 +6,11 @@ using Mirage;
 public class NetworkManagerCustomizedHud : NetworkBehaviour
 {
     public NetworkManagerLobby networkManagerLobby;
+    public NetworkSceneManager sceneManager;
     public string networkAddress;
     public bool dontDestroy;
 
     [Header("Prefab Canvas Elements")]
-
-    //Original lines from NetowrkManagerHud
-    //public InputField NetworkAddressInput;
-    //public GameObject OfflineGO;
-    //public GameObject OnlineGO;
-    //public Text StatusLabel;
 
     [SerializeField]
     private TMP_InputField networkAddressInput;
@@ -34,6 +29,8 @@ public class NetworkManagerCustomizedHud : NetworkBehaviour
 
     [SerializeField]
     private TMP_Text statusLabel;
+
+
 
     private NetworkManagerCustomizedHud()
     {
@@ -84,6 +81,7 @@ public class NetworkManagerCustomizedHud : NetworkBehaviour
         SetLabel("Host Mode");
         networkManagerLobby.Server.StartServer(networkManagerLobby.Client);
         OnlineSetActive();
+        //sceneManager.ServerLoadSceneNormal("Assets/Abdula/Scenes/Lobby.unity");
     }
 
     public void StartServerOnlyButtonHandler()
@@ -91,6 +89,7 @@ public class NetworkManagerCustomizedHud : NetworkBehaviour
         SetLabel("Server Mode");
         networkManagerLobby.Server.StartServer();
         OnlineSetActive();
+        //sceneManager.ServerLoadSceneNormal("Assets/Abdula/Scenes/Lobby.unity");
     }
 
     public void StartClientButtonHandler()
@@ -98,6 +97,7 @@ public class NetworkManagerCustomizedHud : NetworkBehaviour
         SetLabel("Client Mode");
         networkManagerLobby.Client.Connect(networkAddress);
         OnlineSetActive();
+        //sceneManager.ServerLoadSceneNormal("Assets/Abdula/Scenes/Lobby.unity");
     }
 
     public void StopButtonHandler()

@@ -4,5 +4,11 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Network/startMenu.unity
+    guid: 479e27130940eca49a40ff1dd49588b6
+  - enabled: 1
+    path: Assets/Abdula/Scenes/Lobby.unity
+    guid: 159ecee03d46302428de68d89fea9784
   m_configObjects: {}

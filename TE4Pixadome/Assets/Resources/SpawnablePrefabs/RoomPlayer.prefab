@@ -229,7 +229,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5298978572369934645
 RectTransform:
   m_ObjectHideFlags: 0
@@ -607,7 +607,7 @@ MonoBehaviour:
   _sceneId: 0
   ServerObjectManager: {fileID: 0}
   ClientObjectManager: {fileID: 0}
-  _prefabHash: -1674774621
+  _prefabHash: 1651175776
   _onStartServer:
     _event:
       m_PersistentCalls:
@@ -659,6 +659,7 @@ MonoBehaviour:
   - {fileID: 200921489540721084}
   - {fileID: 4139488184086889342}
   startGameButton: {fileID: 3472737104517451350}
+  playerSpawner: {fileID: 0}
   displayName: Loading...
   isReady: 0
 --- !u!1 &3444062041597803931
@@ -1065,7 +1066,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2065246475685080317
 RectTransform:
   m_ObjectHideFlags: 0
