@@ -141,6 +141,10 @@ public class AiFollow : MonoBehaviour
                     }
                 }
             }
+            else
+            {
+
+            }
 
         }
 
