@@ -10,13 +10,20 @@ public class AiFollow : MonoBehaviour
     public NavMeshAgent agent;
     GameObject playerTarget;
     public attackRange attackRange;
+    GameObject[] enemiesInsideAttackRange;
 
     public float lookAtEnmenySpeed;
     float distanceToGoal;
     public int goalRange;
     bool isBeingAttacked;
+    int arrayPostition;
 
     Quaternion rotation;
+    private void Start()
+    {
+        enemiesInsideAttackRange = new GameObject[10];
+        arrayPostition = 0;
+    }
 
     private void Update()
     {
@@ -63,13 +70,39 @@ public class AiFollow : MonoBehaviour
     //ska vi ha egna minion? annars funkar nog koden. ifall vi ska ha minions så bör vi prioritera minion attacks eller player attacks
     private void OnTriggerEnter(Collider other)
     {
-
+        bool alreadyAdded = false;
         if (other.tag == "Player")
         {
             if (playerTarget == null)
             {
                 
                 playerTarget = other.gameObject;
+
+            }
+            else
+            {
+                for (int i = 0; i < enemiesInsideAttackRange.Length; i++)
+                {
+
+                    if (other.gameObject == enemiesInsideAttackRange[i])
+                    {
+                        alreadyAdded = true;
+                    }
+                    
+                }
+
+                if (!alreadyAdded)
+                {
+
+                    enemiesInsideAttackRange[arrayPostition] = other.gameObject;
+                    alreadyAdded = false;
+
+                    if (arrayPostition == 9)
+                    {
+                        arrayPostition = 0;
+                    }
+
+                }
 
             }
 
@@ -79,14 +112,38 @@ public class AiFollow : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-
+        bool hasValue = false;
         if (other.tag == "Player")
         {
             if (playerTarget.gameObject == other.gameObject)
             {
 
                 playerTarget = null;
-            
+
+                for (int i = 0; i < enemiesInsideAttackRange.Length; i++)
+                {
+
+                    if (enemiesInsideAttackRange[i] != null)
+                    {
+
+                        hasValue = true;
+                        i = enemiesInsideAttackRange.Length;
+                    }
+
+                }
+
+                if (hasValue)
+                {
+                    //här checkar du mellan de två arrayplatserna och checkar vilken som är större och ifall skiten är lika med null så skippa det nummret.
+                    for (int i = 0; i < enemiesInsideAttackRange.Length; i++)
+                    {
+
+                    }
+                }
+            }
+            else
+            {
+
             }
 
         }
@@ -97,6 +154,8 @@ public class AiFollow : MonoBehaviour
     {
         if (other.tag == "Player" && playerTarget == null)
         {
+
+            playerTarget = other.gameObject;
             //sätta in allt som rör i den i en array
             //cehcka igenom arrayen vilken som är närmast
             //sätt den till targetplayer
