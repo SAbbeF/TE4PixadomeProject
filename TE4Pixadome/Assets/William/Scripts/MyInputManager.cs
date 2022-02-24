@@ -35,6 +35,15 @@ public partial class @MyInputManager : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""AutoAttack"",
+                    ""type"": ""Button"",
+                    ""id"": ""5a1f12c9-4701-4187-b98d-651796e58cc5"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -46,6 +55,45 @@ public partial class @MyInputManager : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": ""Keyboard and Mouse"",
                     ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3fead14d-0e70-4dab-9db9-67d13b6653fe"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard and Mouse"",
+                    ""action"": ""AutoAttack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""Camera"",
+            ""id"": ""c128379a-6a7f-4c95-8d63-dde0e653d5fc"",
+            ""actions"": [
+                {
+                    ""name"": ""LockCamera"",
+                    ""type"": ""Button"",
+                    ""id"": ""659a984c-e1b4-41f0-99be-1060d1b52b6f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""28e0fc1c-8e5b-41e0-afb9-1a13cc01ec48"",
+                    ""path"": ""<Keyboard>/y"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard and Mouse"",
+                    ""action"": ""LockCamera"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -74,6 +122,10 @@ public partial class @MyInputManager : IInputActionCollection2, IDisposable
         // Player
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
+        m_Player_AutoAttack = m_Player.FindAction("AutoAttack", throwIfNotFound: true);
+        // Camera
+        m_Camera = asset.FindActionMap("Camera", throwIfNotFound: true);
+        m_Camera_LockCamera = m_Camera.FindAction("LockCamera", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -134,11 +186,13 @@ public partial class @MyInputManager : IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Player;
     private IPlayerActions m_PlayerActionsCallbackInterface;
     private readonly InputAction m_Player_Move;
+    private readonly InputAction m_Player_AutoAttack;
     public struct PlayerActions
     {
         private @MyInputManager m_Wrapper;
         public PlayerActions(@MyInputManager wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_Player_Move;
+        public InputAction @AutoAttack => m_Wrapper.m_Player_AutoAttack;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -151,6 +205,9 @@ public partial class @MyInputManager : IInputActionCollection2, IDisposable
                 @Move.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMove;
                 @Move.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMove;
                 @Move.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMove;
+                @AutoAttack.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAutoAttack;
+                @AutoAttack.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAutoAttack;
+                @AutoAttack.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAutoAttack;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -158,10 +215,46 @@ public partial class @MyInputManager : IInputActionCollection2, IDisposable
                 @Move.started += instance.OnMove;
                 @Move.performed += instance.OnMove;
                 @Move.canceled += instance.OnMove;
+                @AutoAttack.started += instance.OnAutoAttack;
+                @AutoAttack.performed += instance.OnAutoAttack;
+                @AutoAttack.canceled += instance.OnAutoAttack;
             }
         }
     }
     public PlayerActions @Player => new PlayerActions(this);
+
+    // Camera
+    private readonly InputActionMap m_Camera;
+    private ICameraActions m_CameraActionsCallbackInterface;
+    private readonly InputAction m_Camera_LockCamera;
+    public struct CameraActions
+    {
+        private @MyInputManager m_Wrapper;
+        public CameraActions(@MyInputManager wrapper) { m_Wrapper = wrapper; }
+        public InputAction @LockCamera => m_Wrapper.m_Camera_LockCamera;
+        public InputActionMap Get() { return m_Wrapper.m_Camera; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(CameraActions set) { return set.Get(); }
+        public void SetCallbacks(ICameraActions instance)
+        {
+            if (m_Wrapper.m_CameraActionsCallbackInterface != null)
+            {
+                @LockCamera.started -= m_Wrapper.m_CameraActionsCallbackInterface.OnLockCamera;
+                @LockCamera.performed -= m_Wrapper.m_CameraActionsCallbackInterface.OnLockCamera;
+                @LockCamera.canceled -= m_Wrapper.m_CameraActionsCallbackInterface.OnLockCamera;
+            }
+            m_Wrapper.m_CameraActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @LockCamera.started += instance.OnLockCamera;
+                @LockCamera.performed += instance.OnLockCamera;
+                @LockCamera.canceled += instance.OnLockCamera;
+            }
+        }
+    }
+    public CameraActions @Camera => new CameraActions(this);
     private int m_KeyboardandMouseSchemeIndex = -1;
     public InputControlScheme KeyboardandMouseScheme
     {
@@ -174,5 +267,10 @@ public partial class @MyInputManager : IInputActionCollection2, IDisposable
     public interface IPlayerActions
     {
         void OnMove(InputAction.CallbackContext context);
+        void OnAutoAttack(InputAction.CallbackContext context);
+    }
+    public interface ICameraActions
+    {
+        void OnLockCamera(InputAction.CallbackContext context);
     }
 }

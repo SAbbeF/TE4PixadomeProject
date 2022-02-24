@@ -33,17 +33,17 @@ public class PlayerMovementScript : MonoBehaviour
 
     }
 
-    //private void Update()
-    //{
+    private void Update()
+    {
 
-    //    if (Input.GetMouseButtonDown(1))
-    //    {
+        if (Input.GetMouseButtonDown(1))
+        {
 
-    //        MoveCharacter();
+            MoveCharacter();
 
-    //    }
+        }
 
-    //}
+    }
 
     void MoveCharacter()
     {
@@ -88,7 +88,6 @@ public class PlayerMovementScript : MonoBehaviour
     {
 
         myInputManager.Player.Disable();
-        //:)
 
     }
 }
