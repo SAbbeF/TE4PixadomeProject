@@ -13,7 +13,9 @@ public class PlayerInputNameTextMashPro : MonoBehaviour
 
     public static string DisplayName { get; private set; }
 
-    private const string PlayerPrefabsNameKey = "PlayerName";
+    public static string PlayerDisplayedName { get; set; }
+
+    //private const string PlayerPrefabsNameKey = "PlayerName";
 
     PlayerInputNameTextMashPro()
     {
@@ -28,14 +30,13 @@ public class PlayerInputNameTextMashPro : MonoBehaviour
 
     private void SetUpInputField()
     {
-        if (!PlayerPrefs.HasKey(PlayerPrefabsNameKey))
-        {
-            return;
-        }
-
-        string defualtName = PlayerPrefs.GetString(PlayerPrefabsNameKey);
+        string defualtName = PlayerDisplayedName;
 
         nameInputField.text = defualtName;
+
+        //string defualtName = PlayerPrefs.GetString(PlayerPrefabsNameKey);
+
+        //nameInputField.text = defualtName;
 
         //SetPlayerName(defualtName);
     }
@@ -50,6 +51,8 @@ public class PlayerInputNameTextMashPro : MonoBehaviour
     {
         DisplayName = nameInputField.text;
 
-        PlayerPrefs.SetString(PlayerPrefabsNameKey, DisplayName);
+        PlayerDisplayedName = nameInputField.text;
+
+        //PlayerPrefs.SetString(PlayerPrefabsNameKey, DisplayName);
     }
 }

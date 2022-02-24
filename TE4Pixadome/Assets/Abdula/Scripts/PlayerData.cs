@@ -1,33 +1,24 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class PlayerData
 {
-    private string playerName;
-    private float playerHealth;
-    public string testString;
+    public string playerName;
 
-    public string PlayerName
+    public string ToJson()
     {
-        get { return playerName; }
-        set { playerName = value; }
-    }
-    public float PlayerHealth
-    {
-        get { return playerHealth; }
-        set { playerHealth = value; }
+        return JsonUtility.ToJson(this);
     }
 
-    public PlayerData(string playerName, float playerHealth, string test)
+    public void LoadFromJson(string json)
     {
-        PlayerName = playerName;
-        PlayerHealth = playerHealth;
-        this.testString = test;
+        JsonUtility.FromJsonOverwrite(json, this);
     }
+}
 
-    public override string ToString()
-    {
-        return playerName + "has" + playerHealth + " . Also " + testString;
-    }
+public interface ISaveable
+{
+    void PopulateSaveData(PlayerData playerData);
+    void LoadFromSaveData(PlayerData playerData);
 }

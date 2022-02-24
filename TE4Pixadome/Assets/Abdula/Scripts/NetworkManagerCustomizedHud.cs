@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using TMPro;
 using Mirage;
 
-public class NetworkManagerCustomizedHud : NetworkBehaviour
+public class NetworkManagerCustomizedHud : NetworkBehaviour, ISaveable
 {
     public NetworkManagerLobby networkManagerLobby;
     public NetworkSceneManager sceneManager;
@@ -29,8 +29,6 @@ public class NetworkManagerCustomizedHud : NetworkBehaviour
 
     [SerializeField]
     private TMP_Text statusLabel;
-
-
 
     private NetworkManagerCustomizedHud()
     {
@@ -118,5 +116,15 @@ public class NetworkManagerCustomizedHud : NetworkBehaviour
 
         //TMP version
         networkAddress = networkAddressInput.text;
+    }
+
+    public void PopulateSaveData(PlayerData playerData)
+    {
+        
+    }
+
+    public void LoadFromSaveData(PlayerData playerData)
+    {
+        
     }
 }
