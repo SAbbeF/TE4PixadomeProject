@@ -13,19 +13,14 @@ public class Player : NetworkBehaviour
 
     private void Start()
     {
-        playerCamera = GetComponentInChildren<Camera>();
-    }
-
-    private void Update()
-    {
         playerActiveName.text = PlayerInputNameTextMashPro.PlayerDisplayedName;
 
-        if (!IsLocalPlayer)
-        {
-            playerCamera.gameObject.SetActive(false);
-        }
+        //playerCamera = GetComponentInChildren<Camera>();
 
-        transform.LookAt(playerCamera.transform);
+        //if (!IsLocalPlayer)
+        //{
+        //    playerCamera.gameObject.SetActive(false);
+        //}
 
         if (!IsLocalClient)
         {
@@ -33,5 +28,10 @@ public class Player : NetworkBehaviour
         }
 
         playerActiveName.color = Color.green;
+    }
+
+    private void Update()
+    {
+        //transform.LookAt(playerCamera.transform);
     }
 }

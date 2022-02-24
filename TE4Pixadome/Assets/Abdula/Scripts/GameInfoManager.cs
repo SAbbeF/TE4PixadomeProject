@@ -11,7 +11,7 @@ public class GameInfoManager : MonoBehaviour, ISaveable
 
     GameInfoManager()
     {
-        saveTime = 5f;
+        saveTime = 15f;
     }
 
     private void Start()

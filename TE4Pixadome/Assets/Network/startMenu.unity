@@ -1557,14 +1557,14 @@ MonoBehaviour:
   SceneManager: {fileID: 785341498}
   ClientObjectManager: {fileID: 785341496}
   ServerObjectManager: {fileID: 785341497}
-  PlayerPrefab: {fileID: 4746278489043518307, guid: 17393d2e36b7ae349878b883f1121406, type: 3}
+  PlayerPrefab: {fileID: 4695689743761700053, guid: 823d51e9d5e1da742ba3ee32abe2f0d2, type: 3}
   AutoSpawn: 1
   startPositionIndex: 0
   startPositions: []
   playerSpawnMethod: 0
   minimumPlayerCount: 2
   startMenu: Assets/Network/startMenu.unity
-  roomPlayerPrefab: {fileID: 0}
+  roomPlayerPrefab: {fileID: 5721180965898038602, guid: b876215253f031642a6eab745c9a2395, type: 3}
 --- !u!114 &785341496
 MonoBehaviour:
   m_ObjectHideFlags: 0
