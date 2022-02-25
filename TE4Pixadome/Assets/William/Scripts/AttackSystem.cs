@@ -13,15 +13,12 @@ public class AttackSystem : MonoBehaviour
     public Transform castPoint;
     
     MyInputManager myInputManager;
-    GetTarget getTarget;
     NavMeshAgent agent;
     Stats stats;
 
     private void Awake()
     {
         myInputManager = new MyInputManager();
-        getTarget = GameObject.FindGameObjectWithTag("PlayerCamera").GetComponent<GetTarget>();
-        getTarget.targetedObject = null;
         agent = gameObject.GetComponent<NavMeshAgent>();
         stats = gameObject.GetComponent<Stats>();
 
