@@ -173,4 +173,4 @@ MonoBehaviour:
   damageScale: 0.5
   speed: 2
   manaCost: 0
-  lifeTime: 1
+  lifeTime: 0

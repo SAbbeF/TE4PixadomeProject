@@ -129,13 +129,13 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Rotation",
-                    "type": "Value",
-                    "id": "6f2b3e7e-7689-47ff-9067-2e2a44d5c9a1",
-                    "expectedControlType": "Vector2",
+                    "name": "SecondAbility",
+                    "type": "Button",
+                    "id": "d9134870-5886-4408-8eb5-6e732cdde9ae",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": true
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -218,12 +218,12 @@
                 },
                 {
                     "name": "",
-                    "id": "1fb23b06-5cf9-46be-82df-9af9a73b74e6",
-                    "path": "<Mouse>/position",
+                    "id": "be8054b8-1df9-401b-9c52-124f8c0a8c05",
+                    "path": "<Keyboard>/r",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Rotation",
+                    "action": "SecondAbility",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

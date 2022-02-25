@@ -151,13 +151,13 @@ public partial class @MyInputManager : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Rotation"",
-                    ""type"": ""Value"",
-                    ""id"": ""6f2b3e7e-7689-47ff-9067-2e2a44d5c9a1"",
-                    ""expectedControlType"": ""Vector2"",
+                    ""name"": ""SecondAbility"",
+                    ""type"": ""Button"",
+                    ""id"": ""d9134870-5886-4408-8eb5-6e732cdde9ae"",
+                    ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
-                    ""initialStateCheck"": true
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -240,12 +240,12 @@ public partial class @MyInputManager : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""1fb23b06-5cf9-46be-82df-9af9a73b74e6"",
-                    ""path"": ""<Mouse>/position"",
+                    ""id"": ""be8054b8-1df9-401b-9c52-124f8c0a8c05"",
+                    ""path"": ""<Keyboard>/r"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Rotation"",
+                    ""action"": ""SecondAbility"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -284,7 +284,7 @@ public partial class @MyInputManager : IInputActionCollection2, IDisposable
         m_PlayerController_Move = m_PlayerController.FindAction("Move", throwIfNotFound: true);
         m_PlayerController_Attack = m_PlayerController.FindAction("Attack", throwIfNotFound: true);
         m_PlayerController_FirstAbility = m_PlayerController.FindAction("FirstAbility", throwIfNotFound: true);
-        m_PlayerController_Rotation = m_PlayerController.FindAction("Rotation", throwIfNotFound: true);
+        m_PlayerController_SecondAbility = m_PlayerController.FindAction("SecondAbility", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -429,7 +429,7 @@ public partial class @MyInputManager : IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerController_Move;
     private readonly InputAction m_PlayerController_Attack;
     private readonly InputAction m_PlayerController_FirstAbility;
-    private readonly InputAction m_PlayerController_Rotation;
+    private readonly InputAction m_PlayerController_SecondAbility;
     public struct PlayerControllerActions
     {
         private @MyInputManager m_Wrapper;
@@ -437,7 +437,7 @@ public partial class @MyInputManager : IInputActionCollection2, IDisposable
         public InputAction @Move => m_Wrapper.m_PlayerController_Move;
         public InputAction @Attack => m_Wrapper.m_PlayerController_Attack;
         public InputAction @FirstAbility => m_Wrapper.m_PlayerController_FirstAbility;
-        public InputAction @Rotation => m_Wrapper.m_PlayerController_Rotation;
+        public InputAction @SecondAbility => m_Wrapper.m_PlayerController_SecondAbility;
         public InputActionMap Get() { return m_Wrapper.m_PlayerController; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -456,9 +456,9 @@ public partial class @MyInputManager : IInputActionCollection2, IDisposable
                 @FirstAbility.started -= m_Wrapper.m_PlayerControllerActionsCallbackInterface.OnFirstAbility;
                 @FirstAbility.performed -= m_Wrapper.m_PlayerControllerActionsCallbackInterface.OnFirstAbility;
                 @FirstAbility.canceled -= m_Wrapper.m_PlayerControllerActionsCallbackInterface.OnFirstAbility;
-                @Rotation.started -= m_Wrapper.m_PlayerControllerActionsCallbackInterface.OnRotation;
-                @Rotation.performed -= m_Wrapper.m_PlayerControllerActionsCallbackInterface.OnRotation;
-                @Rotation.canceled -= m_Wrapper.m_PlayerControllerActionsCallbackInterface.OnRotation;
+                @SecondAbility.started -= m_Wrapper.m_PlayerControllerActionsCallbackInterface.OnSecondAbility;
+                @SecondAbility.performed -= m_Wrapper.m_PlayerControllerActionsCallbackInterface.OnSecondAbility;
+                @SecondAbility.canceled -= m_Wrapper.m_PlayerControllerActionsCallbackInterface.OnSecondAbility;
             }
             m_Wrapper.m_PlayerControllerActionsCallbackInterface = instance;
             if (instance != null)
@@ -472,9 +472,9 @@ public partial class @MyInputManager : IInputActionCollection2, IDisposable
                 @FirstAbility.started += instance.OnFirstAbility;
                 @FirstAbility.performed += instance.OnFirstAbility;
                 @FirstAbility.canceled += instance.OnFirstAbility;
-                @Rotation.started += instance.OnRotation;
-                @Rotation.performed += instance.OnRotation;
-                @Rotation.canceled += instance.OnRotation;
+                @SecondAbility.started += instance.OnSecondAbility;
+                @SecondAbility.performed += instance.OnSecondAbility;
+                @SecondAbility.canceled += instance.OnSecondAbility;
             }
         }
     }
@@ -503,6 +503,6 @@ public partial class @MyInputManager : IInputActionCollection2, IDisposable
         void OnMove(InputAction.CallbackContext context);
         void OnAttack(InputAction.CallbackContext context);
         void OnFirstAbility(InputAction.CallbackContext context);
-        void OnRotation(InputAction.CallbackContext context);
+        void OnSecondAbility(InputAction.CallbackContext context);
     }
 }

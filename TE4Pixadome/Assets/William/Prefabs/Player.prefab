@@ -150,6 +150,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   autoAttack: {fileID: 6388354859764606706, guid: 33e0d911e64861a4e8c0ce3b8266f7e5, type: 3}
   firstAbility: {fileID: 7434003792262671754, guid: c12a2fdafb5a7234e8b77d19a9732492, type: 3}
+  secondAbility: {fileID: 3157499320378546504, guid: 50ee8b7651476b349b5b8f4ee6d3dcd2, type: 3}
   castPoint: {fileID: 1838713084761039178}
 --- !u!114 &4288038924381932723
 MonoBehaviour:
@@ -163,6 +164,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06c8cc99f9791734c8a559cd2443ffc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 0
   maxHealth: 100
   currentHealth: 0
   armor: 20
