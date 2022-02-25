@@ -7,7 +7,7 @@ public class FireExplosionScript : BaseAbility
 
     float durationUntilExplosion = 10;
     float timer = 0;
-    Vector3 explosionSize = new Vector3(50, 50, 50);
+    Vector3 explosionSize = new Vector3(20, 20, 20);
 
     private void Update()
     {
@@ -16,15 +16,24 @@ public class FireExplosionScript : BaseAbility
         if (timer < durationUntilExplosion)
         {
             transform.Translate(Vector3.forward * speed * Time.fixedDeltaTime);
+            damageScale = 5;
         }
 
         if (timer >= durationUntilExplosion)
         {
             transform.localScale = explosionSize;
+            damageScale = 30;
         }
+
 
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+
+        DealDamageOnCollision(other);
+
+    }
 
 
 }

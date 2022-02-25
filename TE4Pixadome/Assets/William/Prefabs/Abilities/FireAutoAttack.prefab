@@ -170,7 +170,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69d5d4ea3d73ed4479a1040884f82b69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageScale: 0.5
+  damageScale: 5
   speed: 2
   manaCost: 0
   lifeTime: 0

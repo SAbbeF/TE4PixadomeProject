@@ -18,7 +18,8 @@ public class BaseAbility : MonoBehaviour
     protected SphereCollider mySphereCollider;
     protected Rigidbody myRigidbody;
     protected Camera playerCamera;
-
+    protected Stats stats;
+    protected HealthScript health;
 
 
     protected void Awake()
@@ -37,6 +38,21 @@ public class BaseAbility : MonoBehaviour
         if (lifeTime > 0)
         {
             Destroy(this.gameObject, lifeTime);
+        }
+
+    }
+
+    protected void DealDamageOnCollision(Collider collider)
+    {
+
+        if (collider.GetComponent<HealthScript>() != null)
+        {
+
+            stats = collider.GetComponent<Stats>();
+            health = collider.GetComponent<HealthScript>();
+
+            stats.currentHealth = health.TakeHealthDamage(stats.currentHealth, /*stats.damage * */damageScale, collider.gameObject);
+
         }
 
     }
