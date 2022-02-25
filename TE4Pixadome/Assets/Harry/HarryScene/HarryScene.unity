@@ -1399,6 +1399,10 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 1807118835}
+    - target: {fileID: 3499678865163962315, guid: a8499dafa5c1e0344acf3e661cc09c14, type: 3}
+      propertyPath: timeBetweenAttacks
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3499678866060128905, guid: a8499dafa5c1e0344acf3e661cc09c14, type: 3}
       propertyPath: m_RootOrder
       value: 5
