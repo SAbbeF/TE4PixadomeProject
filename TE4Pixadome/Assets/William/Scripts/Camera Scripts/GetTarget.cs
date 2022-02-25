@@ -8,13 +8,14 @@ public class GetTarget : MonoBehaviour
     MyInputManager myInputManager;
     RaycastHit hit;
     public GameObject targetedObject;
+    Camera thisCamera;
 
 
     private void Awake()
     {
         myInputManager = new MyInputManager();
-        myInputManager.Player.Move.performed += _ => GetTargetedObject();
-
+        myInputManager.PlayerMouse.Move.performed += _ => GetTargetedObject();
+        thisCamera = GetComponent<Camera>();
     }
 
     private void Update()
@@ -25,7 +26,7 @@ public class GetTarget : MonoBehaviour
     public void GetTargetedObject()
     {
 
-        if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, Mathf.Infinity)
+        if (Physics.Raycast(thisCamera.ScreenPointToRay(Input.mousePosition), out hit, Mathf.Infinity)
             && hit.collider.GetComponent<CanBeTargeted>() != null)
         {
 
@@ -41,14 +42,14 @@ public class GetTarget : MonoBehaviour
     private void OnEnable()
     {
 
-        myInputManager.Player.Enable();
+        //myInputManager.PlayerMouse.Enable();
 
     }
 
     private void OnDisable()
     {
 
-        myInputManager.Player.Disable();
+        //myInputManager.PlayerMouse.Disable();
 
     }
 }
