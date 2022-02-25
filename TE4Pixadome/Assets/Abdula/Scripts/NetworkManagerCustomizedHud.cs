@@ -81,7 +81,7 @@ public class NetworkManagerCustomizedHud : NetworkBehaviour
         SetLabel("Host Mode");
         networkManagerLobby.Server.StartServer(networkManagerLobby.Client);
         OnlineSetActive();
-        //sceneManager.ServerLoadSceneNormal("Assets/Abdula/Scenes/Lobby.unity");
+        sceneManager.ServerLoadSceneNormal("Assets/Abdula/Scenes/Lobby.unity");
     }
 
     public void StartServerOnlyButtonHandler()
