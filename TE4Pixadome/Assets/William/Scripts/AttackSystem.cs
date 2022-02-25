@@ -8,6 +8,8 @@ public class AttackSystem : MonoBehaviour
 
     [SerializeField] GameObject autoAttack;
     [SerializeField] GameObject firstAbility;
+    [SerializeField] GameObject secondAbility;
+
     public Transform castPoint;
     
     MyInputManager myInputManager;
@@ -30,10 +32,7 @@ public class AttackSystem : MonoBehaviour
 
         if (myInputManager.PlayerController.Attack.triggered)
         {
-            //agent.stoppingDistance = stats.attackRange;
-
             AutoAttack();
-
         }
 
         if (myInputManager.PlayerController.FirstAbility.triggered)
@@ -41,14 +40,9 @@ public class AttackSystem : MonoBehaviour
             FireFirstAbility();
         }
 
-        //if (getTarget.targetedObject.transform.position - gameObject.transform.position <= stats.attackRange)
-        //{
-
-        //}
-
-        if (getTarget.targetedObject == null)
+        if (myInputManager.PlayerController.SecondAbility.triggered)
         {
-            agent.stoppingDistance = 0;
+            FireSecondAbility();
         }
     }
 
@@ -62,6 +56,10 @@ public class AttackSystem : MonoBehaviour
         Instantiate(firstAbility, castPoint.transform.position, castPoint.rotation);
     }
 
+    void FireSecondAbility()
+    {
+        Instantiate(secondAbility, castPoint.transform.position, castPoint.rotation);
+    }
 
 
     private void OnEnable()

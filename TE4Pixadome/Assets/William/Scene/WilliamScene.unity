@@ -479,7 +479,7 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 1
-  m_Camera: {fileID: 1086557499}
+  m_Camera: {fileID: 0}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -700,11 +700,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 17393d2e36b7ae349878b883f1121406, type: 3}
---- !u!20 &1086557499 stripped
-Camera:
-  m_CorrespondingSourceObject: {fileID: 219025342786396476, guid: 17393d2e36b7ae349878b883f1121406, type: 3}
-  m_PrefabInstance: {fileID: 1086557498}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1589860161
 GameObject:
   m_ObjectHideFlags: 0
@@ -951,6 +946,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06c8cc99f9791734c8a559cd2443ffc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 0
   maxHealth: 100
   currentHealth: 0
   armor: 20

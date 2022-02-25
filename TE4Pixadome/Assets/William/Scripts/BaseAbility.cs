@@ -11,7 +11,8 @@ public class BaseAbility : MonoBehaviour
     public float speed;
     public float manaCost; //doesnt have to be mana could be other resources aswell :)
     public float lifeTime;
- 
+    protected float counter;
+
     protected AttackSystem attackSystem;
     protected GetTarget getTarget;
     protected SphereCollider mySphereCollider;
@@ -24,7 +25,6 @@ public class BaseAbility : MonoBehaviour
     {
 
         //getTarget = GameObject.FindGameObjectWithTag("PlayerCamera").GetComponent<GetTarget>();
-        playerCamera = GameObject.Find("PlayerCamera").GetComponent<Camera>();
         attackSystem = GameObject.FindGameObjectWithTag("Player").GetComponent<AttackSystem>();
 
         mySphereCollider = GetComponent<SphereCollider>();
@@ -32,6 +32,7 @@ public class BaseAbility : MonoBehaviour
 
         myRigidbody = GetComponent<Rigidbody>();
         myRigidbody.isKinematic = true;
+
 
         if (lifeTime > 0)
         {
@@ -42,7 +43,16 @@ public class BaseAbility : MonoBehaviour
 
     private void Update()
     {
+        //if (lifeTime > 0)
+        //{
 
+        //    counter += Time.fixedDeltaTime;
+
+        //    if (counter >= lifeTime)
+        //    {
+        //        Destroy(gameObject);
+        //    }
+        //}
 
     }
 
