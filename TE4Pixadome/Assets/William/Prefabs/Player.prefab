@@ -135,6 +135,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2da9231c7bcb8246ac380e2b3325f23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerCamera: {fileID: 0}
 --- !u!114 &6883953584907578650
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -147,8 +148,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62571da9260eddd45a6d6ef844f2a4cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  autoAttack: {fileID: 1132623477185991219, guid: 6b39fd0d79fc8f042ac3950966b2137f, type: 3}
-  castPoint: {fileID: 0}
+  autoAttack: {fileID: 6388354859764606706, guid: 33e0d911e64861a4e8c0ce3b8266f7e5, type: 3}
+  firstAbility: {fileID: 7434003792262671754, guid: c12a2fdafb5a7234e8b77d19a9732492, type: 3}
+  castPoint: {fileID: 1838713084761039178}
 --- !u!114 &4288038924381932723
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -168,6 +170,7 @@ MonoBehaviour:
   maxMana: 100
   currentMana: 0
   attackRange: 10
+  speed: 2
 --- !u!1 &4637104597898908827
 GameObject:
   m_ObjectHideFlags: 0
@@ -287,7 +290,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6206330419633895644}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.565, y: 0, z: 1.528}
+  m_LocalPosition: {x: 0.57, y: 0, z: 1.47}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 885452364972639577}

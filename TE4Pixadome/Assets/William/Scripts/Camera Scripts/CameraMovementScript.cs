@@ -16,6 +16,7 @@ public class CameraMovementScript : MonoBehaviour
     bool isCameraFollowing;
     Vector3 cameraPosition;
     Vector2 cameraLimit;
+    Vector3 lockCameraRotation;
 
     GameObject player;
     MyInputManager myInputManager;
@@ -25,14 +26,15 @@ public class CameraMovementScript : MonoBehaviour
     {
 
         cameraSpeed = 25;
-        boundary = 150;
+        boundary = 50;
         screenWidth = Screen.width;
         screenHeight = Screen.height;
         cameraLimit = new Vector2(20, 30);
+        lockCameraRotation = new Vector3(0, 0, 0);
         minY = 5;
-        maxY = 25;
+        maxY = 20;
         zoomSpeed = 30;
-        isCameraLocked = false;
+        isCameraLocked = true;
         isCameraFollowing = false;
 
         player = GameObject.FindGameObjectWithTag("Player");
@@ -122,7 +124,7 @@ public class CameraMovementScript : MonoBehaviour
     {
 
         cameraPosition.x = player.transform.position.x;
-        cameraPosition.z = player.transform.position.z - 13;
+        cameraPosition.z = player.transform.position.z - 8;
     }
 
     void CameraZoom()
