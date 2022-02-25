@@ -5,7 +5,7 @@ using UnityEngine;
 public class FireballScript : BaseAbility
 {
 
-
+    
 
     private void Update()
     {
@@ -16,17 +16,8 @@ public class FireballScript : BaseAbility
     private void OnTriggerEnter(Collider other)
     {
 
-        if (other.GetComponent<HealthScript>() != null)
-        {
-
-        }
-
-        if (other.CompareTag("Enemy"))
-        {
-
-            Destroy(this.gameObject);
-
-        }
+        DealDamageOnCollision(other);
+        Destroy(this.gameObject);
 
     }
 
