@@ -8,7 +8,7 @@ public class AiFollow : MonoBehaviour
 
     public GameObject target;
     public NavMeshAgent agent;
-    GameObject playerTarget;
+    public GameObject playerTarget;
     public attackRange attackRange;
     GameObject[] enemiesInsideAttackRange;
 
@@ -27,6 +27,8 @@ public class AiFollow : MonoBehaviour
 
     private void Update()
     {
+        //attack behöver fixas in.
+        //Det bör fixas prioritering på attacker alltså blir du attackerad av en spelare spring efter den.
 
         if (playerTarget != null && !attackRange.isWithinAttackRange && distanceToGoal > 3)
         {
@@ -113,6 +115,8 @@ public class AiFollow : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         bool hasValue = false;
+        GameObject smallestDistanceBetween = null;
+
         if (other.tag == "Player")
         {
             if (playerTarget.gameObject == other.gameObject)
@@ -134,31 +138,47 @@ public class AiFollow : MonoBehaviour
 
                 if (hasValue)
                 {
-                    //här checkar du mellan de två arrayplatserna och checkar vilken som är större och ifall skiten är lika med null så skippa det nummret.
+                    
                     for (int i = 0; i < enemiesInsideAttackRange.Length; i++)
                     {
+                        if (enemiesInsideAttackRange[i] != null)
+                        {
+
+                            if (smallestDistanceBetween == null)
+                            {
+                                smallestDistanceBetween = enemiesInsideAttackRange[i];
+                            }
+                            else
+                            {
+                                if (Vector3.Distance(smallestDistanceBetween.transform.position, agent.transform.position) > Vector3.Distance(enemiesInsideAttackRange[i].transform.position, agent.transform.position))
+                                {
+                                    smallestDistanceBetween = enemiesInsideAttackRange[i];
+                                }
+                            }
+
+                        }
+
 
                     }
+
+                    playerTarget = smallestDistanceBetween;
+
+                    hasValue = false;
                 }
             }
             else
             {
-
+                for (int i = 0; i < enemiesInsideAttackRange.Length; i++)
+                {
+                    if (other.gameObject == enemiesInsideAttackRange[i])
+                    {
+                        enemiesInsideAttackRange[i] = null;
+                    }
+                }
             }
 
         }
 
     }
 
-    private void OnTriggerStay(Collider other)
-    {
-        if (other.tag == "Player" && playerTarget == null)
-        {
-
-            playerTarget = other.gameObject;
-            //sätta in allt som rör i den i en array
-            //cehcka igenom arrayen vilken som är närmast
-            //sätt den till targetplayer
-        }
-    }
 }

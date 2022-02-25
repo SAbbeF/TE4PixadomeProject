@@ -7,50 +7,88 @@ public class PlayerMovementScript : MonoBehaviour
 {
     //Vet ej hur jag ska reffera scriptet utan att använda mig av inspektorn
     MyInputManager myInputManager;  
-
     NavMeshAgent navMeshAgent;
+    Stats stats;
+    public Camera playerCamera;
 
     float rotateSpeed;
     float rotateVelocity;
     float rotationY;
     float maxDistance;
-
+    float smoothInputSpeed;
+    Vector3 playerPosition;
+    Vector2 input;
+    Vector2 currentInput;
+    Vector2 velocity;
     Quaternion facingDirection;
+
+    //USED FOR ROTATION
+    Ray ray;
+    Plane plane;
+    Vector3 cursorPosition;
+    Vector3 direction;
+    float rayDistance;
+    float rotationAngle;
+
 
     void Start()
     {
 
         rotateSpeed = 1f;
         maxDistance = Mathf.Infinity;
+        smoothInputSpeed = 0.2f;
+
         navMeshAgent = gameObject.GetComponent<NavMeshAgent>();
+        stats = gameObject.GetComponent<Stats>();
     }
 
     
     void Awake()
     {
         myInputManager = new MyInputManager();
-        myInputManager.Player.Move.performed += _ => MoveCharacter();
+        
+        //myInputManager.PlayerMouse.Move.performed += _ => MoveCharacterWithMouse();
 
     }
 
     private void Update()
     {
+        MoveCharacterWithKeyboard();
+        CaracterRotation();
+    }
 
-        if (Input.GetMouseButtonDown(1))
-        {
+    void MoveCharacterWithKeyboard()
+    {
 
-            MoveCharacter();
-
-        }
+        input = myInputManager.PlayerController.Move.ReadValue<Vector2>();
+        currentInput = Vector2.SmoothDamp(currentInput, input, ref velocity, smoothInputSpeed);
+        playerPosition = new Vector3(currentInput.x, 0, currentInput.y);
+        transform.position += playerPosition * stats.speed * Time.fixedDeltaTime;
 
     }
 
-    void MoveCharacter()
+    void CaracterRotation()
     {
+        //cursorPosition = myInputManager.PlayerController.Rotation.ReadValue<Vector2>();
+        ray = playerCamera.ScreenPointToRay(Input.mousePosition);
+        plane = new Plane(Vector3.up, Vector3.zero);
+        
+        if (plane.Raycast(ray, out rayDistance))
+        {
+            cursorPosition = ray.GetPoint(rayDistance);
+            direction = cursorPosition - transform.position;
+            rotationAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Euler(0, rotationAngle, 0);
 
+        }
+    }
+
+    void MoveCharacterWithMouse()
+    {
+        
         RaycastHit hitInfo;
 
-        if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hitInfo, maxDistance))
+        if (Physics.Raycast(playerCamera.ScreenPointToRay(Input.mousePosition), out hitInfo, maxDistance))
         {
             //Move player to raycast hit location
             navMeshAgent.SetDestination(hitInfo.point);
@@ -79,15 +117,15 @@ public class PlayerMovementScript : MonoBehaviour
 
     private void OnEnable()
     {
-
-        myInputManager.Player.Enable();
+        myInputManager.PlayerController.Enable();
+        //myInputManager.PlayerMouse.Enable();
 
     }
 
     private void OnDisable()
     {
-
-        myInputManager.Player.Disable();
+        myInputManager.PlayerController.Disable();
+        //myInputManager.PlayerMouse.Disable();
 
     }
 }

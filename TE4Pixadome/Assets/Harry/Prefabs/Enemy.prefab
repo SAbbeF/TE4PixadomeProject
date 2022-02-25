@@ -59,6 +59,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isWithinAttackRange: 0
   target: {fileID: 0}
+  aiFollow: {fileID: 3499678865163962315}
+  canOnlyAttackFollowedTarget: 0
 --- !u!1 &3499678865163962312
 GameObject:
   m_ObjectHideFlags: 0
@@ -105,6 +107,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   agent: {fileID: 3499678866060128907}
+  playerTarget: {fileID: 0}
   attackRange: {fileID: 3499678864294088706}
   lookAtEnmenySpeed: 5
   goalRange: 100

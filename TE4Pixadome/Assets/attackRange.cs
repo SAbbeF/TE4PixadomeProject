@@ -7,12 +7,27 @@ public class attackRange : MonoBehaviour
 
     public bool isWithinAttackRange;
     public GameObject target;
+    public AiFollow aiFollow;
+    public bool canOnlyAttackFollowedTarget;
+
     private void OnTriggerEnter(Collider other)
     {
 
         if (other.tag == "Player")
         {
-            if (target == null)
+            if (!canOnlyAttackFollowedTarget)
+            {
+
+                if (target == null)
+                {
+
+                    isWithinAttackRange = true;
+                    target = other.gameObject;
+
+                }
+
+            }
+            else if(other.gameObject == aiFollow.playerTarget.gameObject)
             {
 
                 isWithinAttackRange = true;

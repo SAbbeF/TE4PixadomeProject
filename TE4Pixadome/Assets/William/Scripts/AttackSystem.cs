@@ -6,7 +6,10 @@ using UnityEngine.AI;
 public class AttackSystem : MonoBehaviour
 {
 
-    [SerializeField] Ability autoAttack;
+    [SerializeField] GameObject autoAttack;
+    [SerializeField] GameObject firstAbility;
+    [SerializeField] GameObject secondAbility;
+
     public Transform castPoint;
     
     MyInputManager myInputManager;
@@ -17,52 +20,59 @@ public class AttackSystem : MonoBehaviour
     private void Awake()
     {
         myInputManager = new MyInputManager();
-        getTarget = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<GetTarget>();
+        getTarget = GameObject.FindGameObjectWithTag("PlayerCamera").GetComponent<GetTarget>();
         getTarget.targetedObject = null;
         agent = gameObject.GetComponent<NavMeshAgent>();
         stats = gameObject.GetComponent<Stats>();
+
     }
 
     private void Update()
     {
 
-        if (getTarget.targetedObject != null && getTarget.targetedObject.CompareTag("Enemy") && 
-            myInputManager.Player.AutoAttack.triggered)
+        if (myInputManager.PlayerController.Attack.triggered)
         {
-            agent.stoppingDistance = stats.attackRange;
-
             AutoAttack();
-
         }
 
-        //if (getTarget.targetedObject.transform.position - gameObject.transform.position <= stats.attackRange)
-        //{
-
-        //}
-
-        if (getTarget.targetedObject == null)
+        if (myInputManager.PlayerController.FirstAbility.triggered)
         {
-            agent.stoppingDistance = 0;
+            FireFirstAbility();
+        }
+
+        if (myInputManager.PlayerController.SecondAbility.triggered)
+        {
+            FireSecondAbility();
         }
     }
 
     void AutoAttack()
     {
-        Debug.Log("Attacking");
-        Instantiate(autoAttack, castPoint.transform.position, Quaternion.identity);
+        Instantiate(autoAttack, castPoint.transform.position, castPoint.rotation);
+    }
 
-        //autoAttack.gameObject.transform.position = Vector3.Lerp(castPoint.transform.position, getTarget.targetedObject.transform.position, autoAttack.abilityToCast.speed * Time.fixedDeltaTime);
+    void FireFirstAbility()
+    {
+        Instantiate(firstAbility, castPoint.transform.position, castPoint.rotation);
+    }
 
+    void FireSecondAbility()
+    {
+        Instantiate(secondAbility, castPoint.transform.position, castPoint.rotation);
     }
 
 
     private void OnEnable()
     {
-        myInputManager.Player.Enable();
+        myInputManager.PlayerController.Enable();
+        //myInputManager.PlayerMouse.Enable();
+
     }
 
     private void OnDisable()
     {
-        myInputManager.Player.Disable();
+        myInputManager.PlayerController.Disable();
+        //myInputManager.PlayerMouse.Disable();
+
     }
 }

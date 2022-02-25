@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class Stats : MonoBehaviour
 {
-
-    public int maxHealth;
-    public int currentHealth;
-    public int armor;
-    public int magicDefense;
-    public int maxMana;
-    public int currentMana;
-    public int attackRange;
+    public float damage;
+    public float maxHealth;
+    public float currentHealth;
+    public float armor;
+    public float magicDefense;
+    public float maxMana;
+    public float currentMana;
+    public float attackRange;
+    public float speed;
 
     private void Awake()
     {
