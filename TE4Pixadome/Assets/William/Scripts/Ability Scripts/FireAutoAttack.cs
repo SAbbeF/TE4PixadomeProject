@@ -17,12 +17,7 @@ public class FireAutoAttack : BaseAbility
     private void OnTriggerEnter(Collider other)
     {
 
-        if (other.CompareTag("Enemy"))
-        {
-
-            Destroy(this.gameObject);
-
-        }
-
+        DealDamageOnCollision(other);
+        Destroy(this.gameObject);
     }
 }
