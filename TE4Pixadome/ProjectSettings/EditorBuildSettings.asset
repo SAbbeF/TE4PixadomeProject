@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Abdula/Scenes/Lobby.unity
     guid: 159ecee03d46302428de68d89fea9784
+  - enabled: 1
+    path: Assets/Scenes/Level01.unity
+    guid: 187be681bcafd764e8a9c5752cfd783b
   m_configObjects: {}

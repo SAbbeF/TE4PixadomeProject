@@ -1,9 +1,10 @@
 using UnityEngine;
 using UnityEngine.UI;
+using Cysharp.Threading.Tasks;
 using TMPro;
 using Mirage;
 
-public class NetworkManagerCustomizedHud : NetworkBehaviour
+public class NetworkManagerCustomizedHud : NetworkBehaviour, ISaveable
 {
     public NetworkManagerLobby networkManagerLobby;
     public NetworkSceneManager sceneManager;
@@ -29,8 +30,6 @@ public class NetworkManagerCustomizedHud : NetworkBehaviour
 
     [SerializeField]
     private TMP_Text statusLabel;
-
-
 
     private NetworkManagerCustomizedHud()
     {
@@ -81,7 +80,8 @@ public class NetworkManagerCustomizedHud : NetworkBehaviour
         SetLabel("Host Mode");
         networkManagerLobby.Server.StartServer(networkManagerLobby.Client);
         OnlineSetActive();
-        sceneManager.ServerLoadSceneNormal("Assets/Abdula/Scenes/Lobby.unity");
+        sceneManager.ServerLoadSceneNormal("Assets/Scenes/Level01.unity");
+        
     }
 
     public void StartServerOnlyButtonHandler()
@@ -118,5 +118,15 @@ public class NetworkManagerCustomizedHud : NetworkBehaviour
 
         //TMP version
         networkAddress = networkAddressInput.text;
+    }
+
+    public void PopulateSaveData(PlayerData playerData)
+    {
+        
+    }
+
+    public void LoadFromSaveData(PlayerData playerData)
+    {
+        
     }
 }
