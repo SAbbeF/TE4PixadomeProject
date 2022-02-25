@@ -57,6 +57,14 @@ public class BaseAbility : MonoBehaviour
 
     }
 
+    protected void DestroySelf(Collider collider)
+    {
+        if (collider.gameObject != gameObject)
+        {
+            Destroy(gameObject);
+        }
+    }
+
     private void Update()
     {
         //if (lifeTime > 0)
