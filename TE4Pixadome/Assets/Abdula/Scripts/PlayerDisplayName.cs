@@ -1,18 +1,22 @@
-using System.Collections;
-using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using Mirage;
 
 public class PlayerDisplayName : NetworkBehaviour
 {
+    //[SerializeField]
+    //private TextMesh playerName;
+
     [SerializeField]
-    private TextMesh playerActiveName;
+    private TMP_Text playerActiveName;
 
     private Camera playerCamera;
 
     private void Start()
     {
         playerActiveName.text = PlayerInputNameTextMashPro.PlayerDisplayedName;
+        //playerName.text = PlayerInputNameTextMashPro.PlayerDisplayedName;
+
 
         playerCamera = GetComponentInChildren<Camera>();
 
@@ -27,10 +31,12 @@ public class PlayerDisplayName : NetworkBehaviour
         }
 
         playerActiveName.color = Color.green;
+        //playerName.color = Color.green;
     }
 
-    private void Update()
+    private void LateUpdate()
     {
+        //playerName.transform.LookAt(playerActiveName.transform.position + playerCamera.transform.forward);
         playerActiveName.transform.LookAt(playerCamera.transform);
         playerActiveName.transform.Rotate(Vector3.up * 180);
     }
