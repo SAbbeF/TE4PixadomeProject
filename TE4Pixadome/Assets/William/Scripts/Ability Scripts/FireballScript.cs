@@ -15,7 +15,7 @@ public class FireballScript : BaseAbility
 
     private void OnTriggerEnter(Collider other)
     {
-
+        //:D
         DealDamageOnCollision(other);
         DestroySelf(other);
 
