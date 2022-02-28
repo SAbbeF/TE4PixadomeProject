@@ -12,7 +12,7 @@ GameObject:
   m_Layer: 0
   m_Name: attackPoint
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 356984750}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 1.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3499678866060128905}
@@ -90,6 +90,7 @@ MonoBehaviour:
   isWithinAttackRange: 0
   target: {fileID: 0}
   aiFollow: {fileID: 3499678865163962315}
+  agent: {fileID: 0}
   canOnlyAttackFollowedTarget: 0
 --- !u!1 &3499678865163962312
 GameObject:
@@ -143,6 +144,7 @@ MonoBehaviour:
   castPoint: {fileID: 356984751}
   lookAtEnmenySpeed: 5
   goalRange: 100
+  timeBetweenAttacks: 2
 --- !u!135 &3499678865163962314
 SphereCollider:
   m_ObjectHideFlags: 0

@@ -1,18 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class AiPatrolScript : MonoBehaviour
 {
     public Transform[] wayPoints;
+    public AiFollow aiFollow;
+    public NavMeshAgent agent;
+
     public int speed;
 
     public int wayPointIndex;
     private float distance;
+    bool walkBackDistance;
 
     void Start()
     {
 
+        walkBackDistance = false;
         wayPointIndex = 0;
         transform.LookAt(wayPoints[wayPointIndex].position);
 
@@ -34,13 +40,24 @@ public class AiPatrolScript : MonoBehaviour
 
         }
 
-        Patrol();
+        if (distance > 40)
+        {
+            walkBackDistance = true;
+        }
+
+        if (aiFollow.playerTarget == null || walkBackDistance)
+        {
+
+            Patrol();
+        
+        }
     }
 
     void Patrol()
     {
 
-        transform.Translate(Vector3.forward * speed * Time.deltaTime, Space.Self);
+        //transform.Translate(Vector3.forward * speed * Time.deltaTime, Space.Self);
+        agent.destination = wayPoints[wayPointIndex].position;
 
     }
 
@@ -54,5 +71,7 @@ public class AiPatrolScript : MonoBehaviour
         }
 
         transform.LookAt(wayPoints[wayPointIndex].position);
+
+        walkBackDistance = false;
     }
 }

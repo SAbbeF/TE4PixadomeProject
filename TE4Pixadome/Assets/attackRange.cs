@@ -8,6 +8,7 @@ public class attackRange : MonoBehaviour
     public bool isWithinAttackRange;
     public GameObject target;
     public AiFollow aiFollow;
+    public UnityEngine.AI.NavMeshAgent agent;
     public bool canOnlyAttackFollowedTarget;
 
     private void OnTriggerEnter(Collider other)
@@ -63,9 +64,9 @@ public class attackRange : MonoBehaviour
 
             isWithinAttackRange = true;
             target = other.gameObject;
-            //sätta in allt som rör i den i en array
-            //cehcka igenom arrayen vilken som är närmast
-            //sätt den till targetplayer
+            //sï¿½tta in allt som rï¿½r i den i en array
+            //cehcka igenom arrayen vilken som ï¿½r nï¿½rmast
+            //sï¿½tt den till targetplayer
         }
     }
 }
