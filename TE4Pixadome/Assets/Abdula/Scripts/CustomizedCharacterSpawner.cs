@@ -55,7 +55,8 @@ public class CustomizedCharacterSpawner : CharacterSpawner
         //}
 
         //base.OnServerAddPlayer(player);
-        NetworkIdentity character = Instantiate(PlayerPrefab, new Vector3(Random.Range(0, 10), 1, Random.Range(0, 10)), Quaternion.Euler(Vector3.zero));
+        //NetworkIdentity character = Instantiate(PlayerPrefab, new Vector3(Random.Range(0, 10), 1, Random.Range(0, 10)), Quaternion.Euler(Vector3.zero));
+        NetworkIdentity character = Instantiate(PlayerPrefab, new Vector3(770, 3, 790), Quaternion.Euler(Vector3.zero));
         ServerObjectManager.AddCharacter(player, character.gameObject);
     }
 

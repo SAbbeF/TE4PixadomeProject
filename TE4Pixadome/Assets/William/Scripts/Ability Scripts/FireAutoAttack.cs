@@ -16,7 +16,8 @@ public class FireAutoAttack : BaseAbility
     {
 
         DealDamageOnCollision(other);
-        Destroy(this.gameObject);
+
+        DestroySelf(other);
     }
 
 }

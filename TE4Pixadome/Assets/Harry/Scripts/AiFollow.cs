@@ -11,12 +11,16 @@ public class AiFollow : MonoBehaviour
     public GameObject playerTarget;
     public attackRange attackRange;
     GameObject[] enemiesInsideAttackRange;
+    [SerializeField] GameObject autoAttack;
+    public Transform castPoint;
 
     public float lookAtEnmenySpeed;
     float distanceToGoal;
     public int goalRange;
     bool isBeingAttacked;
     int arrayPostition;
+    float timer;
+    public float timeBetweenAttacks;
 
     Quaternion rotation;
     private void Start()
@@ -29,6 +33,7 @@ public class AiFollow : MonoBehaviour
     {
         //attack behöver fixas in.
         //Det bör fixas prioritering på attacker alltså blir du attackerad av en spelare spring efter den.
+        
 
         if (playerTarget != null && !attackRange.isWithinAttackRange && distanceToGoal > 3)
         {
@@ -53,6 +58,14 @@ public class AiFollow : MonoBehaviour
             //insert attack
             //endast en attack eller många?
             //timer coldown på attacker här eller i attack script
+            timer += Time.deltaTime;
+            if (timer > timeBetweenAttacks)
+            {
+                
+                Instantiate(autoAttack, castPoint.transform.position, castPoint.rotation);
+                timer = 0;
+
+            }
         }
         else
         {
