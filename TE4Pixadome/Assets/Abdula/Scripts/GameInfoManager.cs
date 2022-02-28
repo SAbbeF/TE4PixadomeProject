@@ -14,6 +14,11 @@ public class GameInfoManager : MonoBehaviour, ISaveable
         saveTime = 5f;
     }
 
+    private void Awake()
+    {
+        Object.DontDestroyOnLoad(this);
+    }
+
     private void Start()
     {
         LoadJsonData(this);
