@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 
 [RequireComponent(typeof(SphereCollider))]
 [RequireComponent(typeof(Rigidbody))]
@@ -11,6 +11,8 @@ public class BaseAbility : MonoBehaviour
     public float speed;
     public float manaCost; //doesnt have to be mana could be other resources aswell :)
     public float lifeTime;
+    public float cooldown;
+    public Image abilityImage;
     protected float counter;
 
     protected AttackSystem attackSystem;

@@ -5,8 +5,6 @@ using UnityEngine;
 public class FireAutoAttack : BaseAbility
 {
 
-
-
     void Update()
     {
 
@@ -20,4 +18,5 @@ public class FireAutoAttack : BaseAbility
         DealDamageOnCollision(other);
         Destroy(this.gameObject);
     }
+
 }
