@@ -15,6 +15,13 @@ public class EscapeToMenu : MonoBehaviour
 
     }
 
+
+    private void Awake()
+    {
+
+        Object.DontDestroyOnLoad(this);
+
+    }
     private void Update()
     {
 
@@ -44,7 +51,7 @@ public class EscapeToMenu : MonoBehaviour
 
 
         MenuToStart.SetActive(false);
-
+        menuActive = false;
 
     }
     void StartMenu()
@@ -52,7 +59,7 @@ public class EscapeToMenu : MonoBehaviour
 
 
         MenuToStart.SetActive(true);
-
+        menuActive = true;
 
     }
 
