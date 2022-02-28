@@ -80,8 +80,9 @@ public class NetworkManagerCustomizedHud : NetworkBehaviour, ISaveable
         SetLabel("Host Mode");
         networkManagerLobby.Server.StartServer(networkManagerLobby.Client);
         OnlineSetActive();
+
         sceneManager.ServerLoadSceneNormal("Assets/Scenes/Level01.unity");
-        
+ 
     }
 
     public void StartServerOnlyButtonHandler()
