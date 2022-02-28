@@ -12,8 +12,9 @@ public class BaseAbility : MonoBehaviour
     public float manaCost; //doesnt have to be mana could be other resources aswell :)
     public float lifeTime;
     public float cooldown;
+    protected float cooldownCounter;
+    protected bool isCooldown = false;
     public Image abilityImage;
-    protected float counter;
 
     protected AttackSystem attackSystem;
     protected GetTarget getTarget;

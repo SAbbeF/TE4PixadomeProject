@@ -17,13 +17,6 @@ public class AttackSystem : MonoBehaviour
     NavMeshAgent agent;
     Stats stats;
 
-    float autoAttackCooldown;
-    float firstAbilityCooldown;
-    float seconfAbilityCooldown;
-    bool isAutoAttackOnCooldown;
-    bool isFirstAbilityOnCooldown;
-    bool isSecondAbilityOnCooldown;
-
     private void Awake()
     {
         myInputManager = new MyInputManager();
