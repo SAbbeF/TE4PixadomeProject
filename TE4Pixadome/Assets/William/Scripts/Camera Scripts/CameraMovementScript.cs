@@ -38,7 +38,7 @@ public class CameraMovementScript : MonoBehaviour
         isCameraLocked = true;
         isCameraFollowing = false;
 
-        player = GameObject.FindGameObjectWithTag("Player");
+        player = transform.parent.gameObject;
     }
 
     void Awake()
@@ -46,15 +46,7 @@ public class CameraMovementScript : MonoBehaviour
         myInputManager = new MyInputManager();
         //myInputManager.Camera.LockCamera.performed += _ => SetCameraFlag();
 
-        rotation = transform.rotation;
-
     }
-
-    void LateUpdate()
-    {
-        transform.rotation = rotation;
-    }
-
 
     void Update()
     {
