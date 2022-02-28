@@ -17,7 +17,7 @@ public class FireballScript : BaseAbility
     {
 
         DealDamageOnCollision(other);
-        Destroy(this.gameObject);
+        DestroySelf(other);
 
     }
 

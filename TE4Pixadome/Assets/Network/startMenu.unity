@@ -1549,7 +1549,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Address: localhost
-  Port: 7777
+  Port: 8888
   SocketLib: 0
   BufferSize: 262144
 --- !u!114 &785341495
@@ -1569,7 +1569,7 @@ MonoBehaviour:
   SceneManager: {fileID: 785341498}
   ClientObjectManager: {fileID: 785341496}
   ServerObjectManager: {fileID: 785341497}
-  PlayerPrefab: {fileID: 4695689743761700053, guid: 823d51e9d5e1da742ba3ee32abe2f0d2, type: 3}
+  PlayerPrefab: {fileID: 9149489977289091341, guid: 17393d2e36b7ae349878b883f1121406, type: 3}
   AutoSpawn: 1
   startPositionIndex: 0
   startPositions: []
