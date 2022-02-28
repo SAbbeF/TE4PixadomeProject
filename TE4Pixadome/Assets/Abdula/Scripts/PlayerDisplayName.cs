@@ -32,5 +32,6 @@ public class PlayerDisplayName : NetworkBehaviour
     private void Update()
     {
         playerActiveName.transform.LookAt(playerCamera.transform);
+        playerActiveName.transform.Rotate(Vector3.up * 180);
     }
 }
