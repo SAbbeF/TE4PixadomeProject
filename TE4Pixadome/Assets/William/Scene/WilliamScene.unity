@@ -632,10 +632,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 885452364972639576, guid: 17393d2e36b7ae349878b883f1121406, type: 3}
-      propertyPath: m_StoppingDistance
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 885452364972639577, guid: 17393d2e36b7ae349878b883f1121406, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -707,6 +703,10 @@ PrefabInstance:
     - target: {fileID: 7626021316074673402, guid: 17393d2e36b7ae349878b883f1121406, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9149489977289091341, guid: 17393d2e36b7ae349878b883f1121406, type: 3}
+      propertyPath: _sceneId
+      value: 1758585390
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 17393d2e36b7ae349878b883f1121406, type: 3}
