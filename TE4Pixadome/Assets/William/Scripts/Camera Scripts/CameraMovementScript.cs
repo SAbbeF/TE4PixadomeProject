@@ -17,6 +17,7 @@ public class CameraMovementScript : MonoBehaviour
     Vector3 cameraPosition;
     Vector2 cameraLimit;
     Vector3 lockCameraRotation;
+    Quaternion rotation;
 
     GameObject player;
     MyInputManager myInputManager;
@@ -45,6 +46,13 @@ public class CameraMovementScript : MonoBehaviour
         myInputManager = new MyInputManager();
         //myInputManager.Camera.LockCamera.performed += _ => SetCameraFlag();
 
+        rotation = transform.rotation;
+
+    }
+
+    void LateUpdate()
+    {
+        transform.rotation = rotation;
     }
 
 
