@@ -15,9 +15,11 @@ public class FireAutoAttack : BaseAbility
     private void OnTriggerEnter(Collider other)
     {
 
-        DealDamageOnCollision(other);
-
-        DestroySelf(other);
+        if (other.GetComponent<HealthScript>() != null)
+        {
+            DealDamageOnCollision(other);
+            DestroySelf(other);
+        }
     }
 
 }

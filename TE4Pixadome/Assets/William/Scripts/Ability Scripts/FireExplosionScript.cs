@@ -30,9 +30,10 @@ public class FireExplosionScript : BaseAbility
 
     private void OnTriggerEnter(Collider other)
     {
-
-        DealDamageOnCollision(other);
-
+        if (other.GetComponent<HealthScript>() != null)
+        {
+            DealDamageOnCollision(other);
+        }
     }
 
 
