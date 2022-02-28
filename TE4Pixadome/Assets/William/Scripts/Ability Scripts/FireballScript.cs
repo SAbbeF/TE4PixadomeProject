@@ -15,9 +15,11 @@ public class FireballScript : BaseAbility
 
     private void OnTriggerEnter(Collider other)
     {
-        //:D
-        DealDamageOnCollision(other);
-        DestroySelf(other);
+        if (other.GetComponent<HealthScript>() != null)
+        {
+            DealDamageOnCollision(other);
+            DestroySelf(other);
+        }
 
     }
 
