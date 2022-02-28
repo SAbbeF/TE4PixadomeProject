@@ -13,12 +13,22 @@ public class AttackSystem : MonoBehaviour
     public Transform castPoint;
     
     MyInputManager myInputManager;
+    GetTarget getTarget;
     NavMeshAgent agent;
     Stats stats;
+
+    float autoAttackCooldown;
+    float firstAbilityCooldown;
+    float seconfAbilityCooldown;
+    bool isAutoAttackOnCooldown;
+    bool isFirstAbilityOnCooldown;
+    bool isSecondAbilityOnCooldown;
 
     private void Awake()
     {
         myInputManager = new MyInputManager();
+        //getTarget = GameObject.FindGameObjectWithTag("PlayerCamera").GetComponent<GetTarget>();
+        //getTarget.targetedObject = null;
         agent = gameObject.GetComponent<NavMeshAgent>();
         stats = gameObject.GetComponent<Stats>();
 
@@ -26,6 +36,7 @@ public class AttackSystem : MonoBehaviour
 
     private void Update()
     {
+
 
         if (myInputManager.PlayerController.Attack.triggered)
         {
