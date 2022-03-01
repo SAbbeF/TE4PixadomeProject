@@ -1201,7 +1201,7 @@ GameObject:
   - component: {fileID: 1825717037}
   - component: {fileID: 1825717036}
   m_Layer: 0
-  m_Name: LeftTopWay (1)
+  m_Name: BossButtonWay
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1296,7 +1296,7 @@ GameObject:
   - component: {fileID: 1981159744}
   - component: {fileID: 1981159743}
   m_Layer: 0
-  m_Name: LeftTopWay (2)
+  m_Name: BossTopWay
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
