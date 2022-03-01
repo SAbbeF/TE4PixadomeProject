@@ -33,14 +33,17 @@ public class AiFollow : MonoBehaviour
     {
         //attack behöver fixas in.
         //Det bör fixas prioritering på attacker alltså blir du attackerad av en spelare spring efter den.
-        
+        if (playerTarget == null)
+        {
+            attackRange.isWithinAttackRange = false;
+        }
 
         if (playerTarget != null && !attackRange.isWithinAttackRange && distanceToGoal > 3)
         {
 
             agent.destination = playerTarget.transform.position;
 
-             Vector3.Distance(agent.transform.position, playerTarget.transform.position);
+             //Vector3.Distance(agent.transform.position, playerTarget.transform.position);
 
         }
         else if (attackRange.isWithinAttackRange && distanceToGoal > 3)
