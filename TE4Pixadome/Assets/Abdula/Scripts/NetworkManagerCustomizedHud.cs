@@ -82,14 +82,14 @@ public class NetworkManagerCustomizedHud : NetworkBehaviour, ISaveable
         OnlineSetActive();
 
 
-            sceneManager.ServerLoadSceneAdditively("Assets/Scenes/Level01.unity", sceneManager.Server.Players);
-            //sceneManager.ClientStartSceneMessage
-            //sceneManager.ScenesPlayerIsIn
-            //sceneManager.
+        //sceneManager.ServerLoadSceneAdditively("Assets/Scenes/Level01.unity", sceneManager.Server.Players);
+        //sceneManager.ClientStartSceneMessage
+        //sceneManager.ScenesPlayerIsIn
+        //sceneManager.
 
-        //sceneManager.ServerLoadSceneNormal("Assets/Scenes/Level01.unity");
-        
- 
+        sceneManager.ServerLoadSceneNormal("Assets/Scenes/Level01.unity");
+
+
     }
 
     public void StartServerOnlyButtonHandler()
@@ -99,7 +99,7 @@ public class NetworkManagerCustomizedHud : NetworkBehaviour, ISaveable
         OnlineSetActive();
         //sceneManager.ServerLoadSceneNormal("Assets/Abdula/Scenes/Lobby.unity");
         sceneManager.ServerLoadSceneAdditively("Assets/Scenes/Level01.unity", sceneManager.Server.Players);
-        
+
     }
 
     public void StartClientButtonHandler()
@@ -132,11 +132,11 @@ public class NetworkManagerCustomizedHud : NetworkBehaviour, ISaveable
 
     public void PopulateSaveData(PlayerData playerData)
     {
-        
+
     }
 
     public void LoadFromSaveData(PlayerData playerData)
     {
-        
+
     }
 }
