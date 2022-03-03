@@ -410,6 +410,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!20 &235692648 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 8588752712721144184, guid: 17393d2e36b7ae349878b883f1121406, type: 3}
+  m_PrefabInstance: {fileID: 1086557498}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &705742476
 GameObject:
   m_ObjectHideFlags: 0
@@ -428,7 +433,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &705742477
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -479,8 +484,8 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 1
-  m_Camera: {fileID: 0}
-  m_PlaneDistance: 100
+  m_Camera: {fileID: 235692648}
+  m_PlaneDistance: 15
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
