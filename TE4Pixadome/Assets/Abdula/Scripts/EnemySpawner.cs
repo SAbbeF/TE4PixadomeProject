@@ -19,9 +19,17 @@ public class EnemySpawner : NetworkBehaviour
     private Vector3 size;
 
     [SerializeField]
-    private int maxObjects;
+    private int maxEnemyNumber;
 
     private int currentObjectNumber;
+
+    [SerializeField]
+    private int waveCount;
+
+    private int currentWaveCount;
+
+    [SerializeField]
+    private int numberOfEnemiesPerWave;
 
     [SerializeField]
     private float timeToSpawn;
@@ -44,26 +52,44 @@ public class EnemySpawner : NetworkBehaviour
     {
         currentTimeToSpawn = timeToSpawn;
         currentObjectNumber = 0;
+        currentWaveCount = 0;
     }
 
     private void Update()
     {
-        UpdateTimer();
+        UpdateTimer(waveCount);
 
         DestorySpawnedEnemies();
     }
-
     private void SpawnEnemy()
     {
         if (networkManagerLobby.Server.Active)
         {
-            if (currentObjectNumber < maxObjects)
+            if (currentObjectNumber < maxEnemyNumber)
             {
-                Vector3 position = RandomPosition();
                 currentObjectNumber++;
+                Vector3 position = RandomPosition();
                 GameObject spawned = Instantiate(enemyPrefab, position, Quaternion.identity);
                 spawned.name = $"{enemyPrefab.name}_{currentObjectNumber}";
                 networkManagerLobby.ServerObjectManager.Spawn(spawned);
+            }
+        }
+    }
+
+    private void SpawnEnemy(int numberOfEnemies)
+    {
+        if (networkManagerLobby.Server.Active)
+        {
+            for (int i = 0; i < numberOfEnemies; i++)
+            {
+                if (currentObjectNumber < maxEnemyNumber)
+                {
+                    currentObjectNumber++;
+                    Vector3 position = RandomPosition();
+                    GameObject spawned = Instantiate(enemyPrefab, position, Quaternion.identity);
+                    spawned.name = $"{enemyPrefab.name}_{currentObjectNumber}";
+                    networkManagerLobby.ServerObjectManager.Spawn(spawned);
+                }
             }
         }
     }
@@ -78,10 +104,10 @@ public class EnemySpawner : NetworkBehaviour
 
     private Vector3 RandomPosition()
     {
-         Vector3 position = center + new Vector3(
-    Random.Range(-size.x / 2, size.x / 2),
-    Random.Range(-size.y / 2, size.y / 2),
-    Random.Range(-size.z / 2, size.z / 2));
+        Vector3 position = center + new Vector3(
+   Random.Range(-size.x / 2, size.x / 2),
+   Random.Range(-size.y / 2, size.y / 2),
+   Random.Range(-size.z / 2, size.z / 2));
 
         return position;
     }
@@ -94,7 +120,24 @@ public class EnemySpawner : NetworkBehaviour
         }
         else
         {
-            SpawnEnemy();
+            SpawnEnemy(numberOfEnemiesPerWave);
+            currentTimeToSpawn = timeToSpawn;
+        }
+    }
+
+    private void UpdateTimer(int waveCount)
+    {
+        if (currentTimeToSpawn > 0)
+        {
+            currentTimeToSpawn -= Time.deltaTime;
+        }
+        else
+        {
+            if (currentWaveCount < waveCount)
+            {
+                currentWaveCount++;
+                SpawnEnemy(numberOfEnemiesPerWave);
+            }
             currentTimeToSpawn = timeToSpawn;
         }
     }

@@ -536,8 +536,10 @@ MonoBehaviour:
   enemyPrefab: {fileID: 3840921342732592128, guid: 3ef1f7ea38b26404998cc7dce80608c1, type: 3}
   center: {x: 426, y: 1, z: 454}
   size: {x: 17, y: 1, z: 17}
-  maxObjects: 5
-  timeToSpawn: 1
+  maxEnemyNumber: 40
+  waveCount: 4
+  numberOfEnemiesPerWave: 10
+  timeToSpawn: 3
 --- !u!114 &358604129
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -553,10 +555,12 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   enemyPrefab: {fileID: 3499678866060128909, guid: a8499dafa5c1e0344acf3e661cc09c14, type: 3}
-  center: {x: 465.7, y: 1, z: 400}
-  size: {x: 40, y: 1, z: 40}
-  maxObjects: 50
-  timeToSpawn: 1
+  center: {x: 465.1, y: 1, z: 400}
+  size: {x: 24, y: 1, z: 40}
+  maxEnemyNumber: 30
+  waveCount: 6
+  numberOfEnemiesPerWave: 5
+  timeToSpawn: 3
 --- !u!4 &358604130
 Transform:
   m_ObjectHideFlags: 0

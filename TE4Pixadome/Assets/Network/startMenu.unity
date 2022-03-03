@@ -1549,7 +1549,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Address: localhost
-  Port: 7777
+  Port: 8888
   SocketLib: 0
   BufferSize: 262144
 --- !u!114 &785341495
