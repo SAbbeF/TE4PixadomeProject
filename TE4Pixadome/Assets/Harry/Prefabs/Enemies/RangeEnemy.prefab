@@ -136,7 +136,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad6ac7eab15443347a660d0bbe757721, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
+  target: {fileID: 5839058141734303725, guid: 831fcc17d88a1d24ebe12c516885e951, type: 3}
   agent: {fileID: 3840921342732592134}
   playerTarget: {fileID: 0}
   attackRange: {fileID: 3840921340967077519}
