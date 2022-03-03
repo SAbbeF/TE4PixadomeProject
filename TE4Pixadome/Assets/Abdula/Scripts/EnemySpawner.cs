@@ -72,9 +72,9 @@ public class EnemySpawner : NetworkBehaviour
                 for (int i = 0; i < enemyPrefabs.Length; i++)
                 {
                     NetworkIdentity enemyPrefab = enemyPrefabs[i];
-                    GameObject.Instantiate(enemyPrefab, position, Quaternion.identity);
-                    networkManagerLobby.ServerObjectManager.Spawn(enemyPrefab);
-                    spawnedEnemies.Add(enemyPrefab);
+                    GameObject spawned = Instantiate(enemyPrefab.gameObject, position, Quaternion.identity);
+                    networkManagerLobby.ServerObjectManager.Spawn(spawned);
+                    //spawnedEnemies.Add(enemyPrefab.);
                 }
             }
         }
@@ -111,4 +111,38 @@ public class EnemySpawner : NetworkBehaviour
         Gizmos.DrawCube(center, size);
         //Gizmos.DrawCube(transform.localPosition + center, size);
     }
+
+    //[SerializeField]
+    //private EnemyPoolManager poolManager;
+
+    //private void Update()
+    //{
+    //    if (Input.GetKey(KeyCode.O))
+    //    {
+    //        CmdSpawnEnemy();
+    //    }
+
+    //    UpdateTimer();
+
+    //    //DestorySpawnedEnemies();
+    //}
+
+    //private void UpdateTimer()
+    //{
+    //    if (currentTimeToSpawn > 0)
+    //    {
+    //        currentTimeToSpawn -= Time.deltaTime;
+    //    }
+    //    else
+    //    {
+    //        CmdSpawnEnemy();
+    //        currentTimeToSpawn = timeToSpawn;
+    //    }
+    //}
+
+    //[ServerRpc]
+    //private void CmdSpawnEnemy()
+    //{
+    //    NetworkIdentity enemy = poolManager.GetFromPool(transform.position, Quaternion.identity);
+    //}
 }
