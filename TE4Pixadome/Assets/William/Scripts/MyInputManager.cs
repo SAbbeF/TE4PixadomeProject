@@ -133,9 +133,9 @@ public partial class @MyInputManager : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""Attack"",
+                    ""name"": ""AutoAttack"",
                     ""type"": ""Button"",
-                    ""id"": ""cd84093c-c77a-43ea-9df9-42e9696852ef"",
+                    ""id"": ""e3325ccc-208d-44e0-a893-eaf5ce7a6669"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -154,6 +154,15 @@ public partial class @MyInputManager : IInputActionCollection2, IDisposable
                     ""name"": ""SecondAbility"",
                     ""type"": ""Button"",
                     ""id"": ""d9134870-5886-4408-8eb5-6e732cdde9ae"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ThirdAbility"",
+                    ""type"": ""Button"",
+                    ""id"": ""cd84093c-c77a-43ea-9df9-42e9696852ef"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -229,23 +238,34 @@ public partial class @MyInputManager : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""3a851679-04c2-4f01-aebd-088dd27ea7f9"",
-                    ""path"": ""<Mouse>/leftButton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Attack"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""be8054b8-1df9-401b-9c52-124f8c0a8c05"",
                     ""path"": ""<Keyboard>/r"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""SecondAbility"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3a851679-04c2-4f01-aebd-088dd27ea7f9"",
+                    ""path"": ""<Keyboard>/leftShift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ThirdAbility"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5ac5edb1-79a7-4df7-998f-beb4ca2faaa7"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AutoAttack"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -282,9 +302,10 @@ public partial class @MyInputManager : IInputActionCollection2, IDisposable
         // PlayerController
         m_PlayerController = asset.FindActionMap("PlayerController", throwIfNotFound: true);
         m_PlayerController_Move = m_PlayerController.FindAction("Move", throwIfNotFound: true);
-        m_PlayerController_Attack = m_PlayerController.FindAction("Attack", throwIfNotFound: true);
+        m_PlayerController_AutoAttack = m_PlayerController.FindAction("AutoAttack", throwIfNotFound: true);
         m_PlayerController_FirstAbility = m_PlayerController.FindAction("FirstAbility", throwIfNotFound: true);
         m_PlayerController_SecondAbility = m_PlayerController.FindAction("SecondAbility", throwIfNotFound: true);
+        m_PlayerController_ThirdAbility = m_PlayerController.FindAction("ThirdAbility", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -427,17 +448,19 @@ public partial class @MyInputManager : IInputActionCollection2, IDisposable
     private readonly InputActionMap m_PlayerController;
     private IPlayerControllerActions m_PlayerControllerActionsCallbackInterface;
     private readonly InputAction m_PlayerController_Move;
-    private readonly InputAction m_PlayerController_Attack;
+    private readonly InputAction m_PlayerController_AutoAttack;
     private readonly InputAction m_PlayerController_FirstAbility;
     private readonly InputAction m_PlayerController_SecondAbility;
+    private readonly InputAction m_PlayerController_ThirdAbility;
     public struct PlayerControllerActions
     {
         private @MyInputManager m_Wrapper;
         public PlayerControllerActions(@MyInputManager wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_PlayerController_Move;
-        public InputAction @Attack => m_Wrapper.m_PlayerController_Attack;
+        public InputAction @AutoAttack => m_Wrapper.m_PlayerController_AutoAttack;
         public InputAction @FirstAbility => m_Wrapper.m_PlayerController_FirstAbility;
         public InputAction @SecondAbility => m_Wrapper.m_PlayerController_SecondAbility;
+        public InputAction @ThirdAbility => m_Wrapper.m_PlayerController_ThirdAbility;
         public InputActionMap Get() { return m_Wrapper.m_PlayerController; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -450,15 +473,18 @@ public partial class @MyInputManager : IInputActionCollection2, IDisposable
                 @Move.started -= m_Wrapper.m_PlayerControllerActionsCallbackInterface.OnMove;
                 @Move.performed -= m_Wrapper.m_PlayerControllerActionsCallbackInterface.OnMove;
                 @Move.canceled -= m_Wrapper.m_PlayerControllerActionsCallbackInterface.OnMove;
-                @Attack.started -= m_Wrapper.m_PlayerControllerActionsCallbackInterface.OnAttack;
-                @Attack.performed -= m_Wrapper.m_PlayerControllerActionsCallbackInterface.OnAttack;
-                @Attack.canceled -= m_Wrapper.m_PlayerControllerActionsCallbackInterface.OnAttack;
+                @AutoAttack.started -= m_Wrapper.m_PlayerControllerActionsCallbackInterface.OnAutoAttack;
+                @AutoAttack.performed -= m_Wrapper.m_PlayerControllerActionsCallbackInterface.OnAutoAttack;
+                @AutoAttack.canceled -= m_Wrapper.m_PlayerControllerActionsCallbackInterface.OnAutoAttack;
                 @FirstAbility.started -= m_Wrapper.m_PlayerControllerActionsCallbackInterface.OnFirstAbility;
                 @FirstAbility.performed -= m_Wrapper.m_PlayerControllerActionsCallbackInterface.OnFirstAbility;
                 @FirstAbility.canceled -= m_Wrapper.m_PlayerControllerActionsCallbackInterface.OnFirstAbility;
                 @SecondAbility.started -= m_Wrapper.m_PlayerControllerActionsCallbackInterface.OnSecondAbility;
                 @SecondAbility.performed -= m_Wrapper.m_PlayerControllerActionsCallbackInterface.OnSecondAbility;
                 @SecondAbility.canceled -= m_Wrapper.m_PlayerControllerActionsCallbackInterface.OnSecondAbility;
+                @ThirdAbility.started -= m_Wrapper.m_PlayerControllerActionsCallbackInterface.OnThirdAbility;
+                @ThirdAbility.performed -= m_Wrapper.m_PlayerControllerActionsCallbackInterface.OnThirdAbility;
+                @ThirdAbility.canceled -= m_Wrapper.m_PlayerControllerActionsCallbackInterface.OnThirdAbility;
             }
             m_Wrapper.m_PlayerControllerActionsCallbackInterface = instance;
             if (instance != null)
@@ -466,15 +492,18 @@ public partial class @MyInputManager : IInputActionCollection2, IDisposable
                 @Move.started += instance.OnMove;
                 @Move.performed += instance.OnMove;
                 @Move.canceled += instance.OnMove;
-                @Attack.started += instance.OnAttack;
-                @Attack.performed += instance.OnAttack;
-                @Attack.canceled += instance.OnAttack;
+                @AutoAttack.started += instance.OnAutoAttack;
+                @AutoAttack.performed += instance.OnAutoAttack;
+                @AutoAttack.canceled += instance.OnAutoAttack;
                 @FirstAbility.started += instance.OnFirstAbility;
                 @FirstAbility.performed += instance.OnFirstAbility;
                 @FirstAbility.canceled += instance.OnFirstAbility;
                 @SecondAbility.started += instance.OnSecondAbility;
                 @SecondAbility.performed += instance.OnSecondAbility;
                 @SecondAbility.canceled += instance.OnSecondAbility;
+                @ThirdAbility.started += instance.OnThirdAbility;
+                @ThirdAbility.performed += instance.OnThirdAbility;
+                @ThirdAbility.canceled += instance.OnThirdAbility;
             }
         }
     }
@@ -501,8 +530,9 @@ public partial class @MyInputManager : IInputActionCollection2, IDisposable
     public interface IPlayerControllerActions
     {
         void OnMove(InputAction.CallbackContext context);
-        void OnAttack(InputAction.CallbackContext context);
+        void OnAutoAttack(InputAction.CallbackContext context);
         void OnFirstAbility(InputAction.CallbackContext context);
         void OnSecondAbility(InputAction.CallbackContext context);
+        void OnThirdAbility(InputAction.CallbackContext context);
     }
 }

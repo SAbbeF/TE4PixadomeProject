@@ -174,3 +174,5 @@ MonoBehaviour:
   speed: 2
   manaCost: 0
   lifeTime: 2
+  cooldown: 0
+  abilityImage: {fileID: 157707820713345411, guid: 42c1c3dc4de519c479d4b32f25cafdcc, type: 3}
