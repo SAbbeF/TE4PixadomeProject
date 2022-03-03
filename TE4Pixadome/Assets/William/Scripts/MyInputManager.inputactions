@@ -111,9 +111,9 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Attack",
+                    "name": "AutoAttack",
                     "type": "Button",
-                    "id": "cd84093c-c77a-43ea-9df9-42e9696852ef",
+                    "id": "e3325ccc-208d-44e0-a893-eaf5ce7a6669",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -132,6 +132,15 @@
                     "name": "SecondAbility",
                     "type": "Button",
                     "id": "d9134870-5886-4408-8eb5-6e732cdde9ae",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ThirdAbility",
+                    "type": "Button",
+                    "id": "cd84093c-c77a-43ea-9df9-42e9696852ef",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -207,23 +216,34 @@
                 },
                 {
                     "name": "",
-                    "id": "3a851679-04c2-4f01-aebd-088dd27ea7f9",
-                    "path": "<Mouse>/leftButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Attack",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "be8054b8-1df9-401b-9c52-124f8c0a8c05",
                     "path": "<Keyboard>/r",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "SecondAbility",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3a851679-04c2-4f01-aebd-088dd27ea7f9",
+                    "path": "<Keyboard>/leftShift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ThirdAbility",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5ac5edb1-79a7-4df7-998f-beb4ca2faaa7",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "AutoAttack",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

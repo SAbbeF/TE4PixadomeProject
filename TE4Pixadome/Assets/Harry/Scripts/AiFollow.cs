@@ -13,6 +13,7 @@ public class AiFollow : MonoBehaviour
     GameObject[] enemiesInsideAttackRange;
     [SerializeField] GameObject autoAttack;
     public Transform castPoint;
+    public EnemyMelee enemyMelee;
 
     public float lookAtEnmenySpeed;
     float distanceToGoal;
@@ -31,20 +32,24 @@ public class AiFollow : MonoBehaviour
 
     private void Update()
     {
-        //attack behöver fixas in.
-        //Det bör fixas prioritering på attacker alltså blir du attackerad av en spelare spring efter den.
         
+        if (playerTarget == null)
+        {
+            attackRange.isWithinAttackRange = false;
+        }
+
 
         if (playerTarget != null && !attackRange.isWithinAttackRange && distanceToGoal > 3)
         {
 
             agent.destination = playerTarget.transform.position;
 
-             Vector3.Distance(agent.transform.position, playerTarget.transform.position);
 
         }
         else if (attackRange.isWithinAttackRange && distanceToGoal > 3)
         {
+
+
             if (agent.destination != agent.transform.position)
             {
                 
@@ -52,20 +57,34 @@ public class AiFollow : MonoBehaviour
 
             }
 
+
             rotation = Quaternion.LookRotation(attackRange.target.transform.position - agent.transform.position);
             agent.transform.rotation = Quaternion.Slerp(agent.transform.rotation, rotation, Time.deltaTime  * lookAtEnmenySpeed);
 
-            //insert attack
-            //endast en attack eller många?
-            //timer coldown på attacker här eller i attack script
-            timer += Time.deltaTime;
-            if (timer > timeBetweenAttacks)
+
+            if (enemyMelee == null)
             {
-                
-                Instantiate(autoAttack, castPoint.transform.position, castPoint.rotation);
-                timer = 0;
+
+                timer += Time.deltaTime;
+                if (timer > timeBetweenAttacks)
+                {
+                    
+                    Instantiate(autoAttack, castPoint.transform.position, castPoint.rotation);
+                    timer = 0;
+
+                }
 
             }
+            else
+            {
+
+                if (enemyMelee.canAttack == true)
+                {
+                    enemyMelee.WeaponAttack();
+                } 
+            
+            }
+
         }
         else
         {

@@ -12,7 +12,9 @@ public class Stats : MonoBehaviour
     public float maxMana;
     public float currentMana;
     public float attackRange;
-    public float speed;
+    public float attackSpeed;
+    public float cooldownReduction; 
+    public float movementSpeed;
 
     private void Awake()
     {

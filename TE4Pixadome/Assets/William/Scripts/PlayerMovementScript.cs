@@ -63,7 +63,7 @@ public class PlayerMovementScript : MonoBehaviour
         input = myInputManager.PlayerController.Move.ReadValue<Vector2>();
         currentInput = Vector2.SmoothDamp(currentInput, input, ref velocity, smoothInputSpeed);
         playerPosition = new Vector3(currentInput.x, 0, currentInput.y);
-        transform.position += playerPosition * stats.speed * Time.fixedDeltaTime;
+        transform.position += playerPosition * stats.movementSpeed * Time.fixedDeltaTime;
 
     }
 
