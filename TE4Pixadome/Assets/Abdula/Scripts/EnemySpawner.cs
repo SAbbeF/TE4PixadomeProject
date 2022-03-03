@@ -5,11 +5,12 @@ using Mirage;
 
 public class EnemySpawner : NetworkBehaviour
 {
-    [SerializeField]
-    private NetworkIdentity[] enemyPrefabs;
+    //[SerializeField]
+    //private NetworkIdentity[] enemyPrefabs;
+    private NetworkManagerLobby networkManagerLobby;
 
     [SerializeField]
-    private NetworkManagerLobby networkManagerLobby;
+    private GameObject enemyPrefab;
 
     [SerializeField]
     private Vector3 center;
@@ -34,10 +35,9 @@ public class EnemySpawner : NetworkBehaviour
         spawnedEnemies = new List<NetworkIdentity>();
     }
 
-
     private void Awake()
     {
-
+        networkManagerLobby = FindObjectOfType<NetworkManagerLobby>();
     }
 
     private void Start()
@@ -48,34 +48,22 @@ public class EnemySpawner : NetworkBehaviour
 
     private void Update()
     {
-        if (Input.GetKey(KeyCode.O))
-        {
-            SpawnEnemy();
-        }
-
         UpdateTimer();
 
-        //DestorySpawnedEnemies();
+        DestorySpawnedEnemies();
     }
 
     private void SpawnEnemy()
     {
         if (networkManagerLobby.Server.Active)
         {
-            Vector3 position = center + new Vector3(
-                Random.Range(-size.x / 2, size.x / 2),
-                Random.Range(-size.y / 2, size.y / 2),
-                Random.Range(-size.z / 2, size.z / 2));
-
             if (currentObjectNumber < maxObjects)
             {
-                for (int i = 0; i < enemyPrefabs.Length; i++)
-                {
-                    NetworkIdentity enemyPrefab = enemyPrefabs[i];
-                    GameObject spawned = Instantiate(enemyPrefab.gameObject, position, Quaternion.identity);
-                    networkManagerLobby.ServerObjectManager.Spawn(spawned);
-                    //spawnedEnemies.Add(enemyPrefab.);
-                }
+                Vector3 position = RandomPosition();
+                currentObjectNumber++;
+                GameObject spawned = Instantiate(enemyPrefab, position, Quaternion.identity);
+                spawned.name = $"{enemyPrefab.name}_{currentObjectNumber}";
+                networkManagerLobby.ServerObjectManager.Spawn(spawned);
             }
         }
     }
@@ -85,11 +73,17 @@ public class EnemySpawner : NetworkBehaviour
         if (!networkManagerLobby.Server.Active)
         {
             networkManagerLobby.ClientObjectManager.DestroyAllClientObjects();
-            foreach (NetworkIdentity sphere in spawnedEnemies)
-            {
-                //spawnedSpheres[0] = Destroy(spawnedSpheres[0].gameObject);
-            }
         }
+    }
+
+    private Vector3 RandomPosition()
+    {
+         Vector3 position = center + new Vector3(
+    Random.Range(-size.x / 2, size.x / 2),
+    Random.Range(-size.y / 2, size.y / 2),
+    Random.Range(-size.z / 2, size.z / 2));
+
+        return position;
     }
 
     private void UpdateTimer()
@@ -111,38 +105,4 @@ public class EnemySpawner : NetworkBehaviour
         Gizmos.DrawCube(center, size);
         //Gizmos.DrawCube(transform.localPosition + center, size);
     }
-
-    //[SerializeField]
-    //private EnemyPoolManager poolManager;
-
-    //private void Update()
-    //{
-    //    if (Input.GetKey(KeyCode.O))
-    //    {
-    //        CmdSpawnEnemy();
-    //    }
-
-    //    UpdateTimer();
-
-    //    //DestorySpawnedEnemies();
-    //}
-
-    //private void UpdateTimer()
-    //{
-    //    if (currentTimeToSpawn > 0)
-    //    {
-    //        currentTimeToSpawn -= Time.deltaTime;
-    //    }
-    //    else
-    //    {
-    //        CmdSpawnEnemy();
-    //        currentTimeToSpawn = timeToSpawn;
-    //    }
-    //}
-
-    //[ServerRpc]
-    //private void CmdSpawnEnemy()
-    //{
-    //    NetworkIdentity enemy = poolManager.GetFromPool(transform.position, Quaternion.identity);
-    //}
 }

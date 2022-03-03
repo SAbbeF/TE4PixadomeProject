@@ -4450,8 +4450,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2040883033}
   - component: {fileID: 2040883034}
-  - component: {fileID: 2040883035}
-  - component: {fileID: 2040883036}
   m_Layer: 0
   m_Name: GameInformation
   m_TagString: Untagged
@@ -4485,45 +4483,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a09a9b061b710cb48807c0cf96ab1f9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &2040883035
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2040883032}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 376f9e3314613cb499333b4462557333, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  syncMode: 0
-  syncInterval: 0.1
-  enemyPrefabs:
-  - {fileID: 8446487842113246855, guid: a8499dafa5c1e0344acf3e661cc09c14, type: 3}
-  - {fileID: 5362859390996062071, guid: 3ef1f7ea38b26404998cc7dce80608c1, type: 3}
-  networkManagerLobby: {fileID: 785341499}
-  center: {x: 424, y: 1, z: 452}
-  size: {x: 10, y: 1, z: 10}
-  maxObjects: 20
-  timeToSpawn: 1
---- !u!114 &2040883036
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2040883032}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6fbd4f1cd19484409639ca6b66a4d06, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  clientObjectManager: {fileID: 785341496}
-  startSize: 5
-  maxSize: 20
-  prefab: {fileID: 8446487842113246855, guid: a8499dafa5c1e0344acf3e661cc09c14, type: 3}
-  currentCount: 0
 --- !u!1 &2092349446
 GameObject:
   m_ObjectHideFlags: 0
