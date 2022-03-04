@@ -124,47 +124,47 @@ public class AttackSystem : MonoBehaviour
 
         if (!isAutoAttackOnCooldown && myInputManager.PlayerController.AutoAttack.triggered)
         {
-            FireAutoAttack();
+            InstantiateAutoAttack();
         }
 
         if (!isFirstAbilityOnCooldown && myInputManager.PlayerController.FirstAbility.triggered)
         {
-            FireFirstAbility();
+            InstantiateFirstAbility();
         }
 
         if (!isSecondAbilityOnCooldown && myInputManager.PlayerController.SecondAbility.triggered)
         {
 
-            FireSecondAbility();
+            InstantiateSecondAbility();
         }
 
         if (!isThirdAbilityOnCooldown && myInputManager.PlayerController.ThirdAbility.triggered)
         {
-            ThirdAbility();
+            InstantiateThirdAbility();
         }
     }
 
-    void FireAutoAttack()
+    void InstantiateAutoAttack()
     {
         Instantiate(autoAttack, castPoint.transform.position, castPoint.rotation);
         autoAttackCounter = 0;
         isAutoAttackOnCooldown = true;
     }
 
-    void FireFirstAbility()
+    void InstantiateFirstAbility()
     {
         Instantiate(firstAbility, castPoint.transform.position, castPoint.rotation);
         firstAbilityCounter = 0;
         isFirstAbilityOnCooldown = true;
     }
 
-    void FireSecondAbility()
+    void InstantiateSecondAbility()
     {
         Instantiate(secondAbility, castPoint.transform.position, castPoint.rotation);
         secondAbilityCounter = 0;
         isSecondAbilityOnCooldown = true;
     }
-    void ThirdAbility()
+    void InstantiateThirdAbility()
     {
         Instantiate(thirdAbility, castPoint.transform.position, castPoint.rotation);
         thirdAbilityCounter = 0;
