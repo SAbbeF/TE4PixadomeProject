@@ -512,6 +512,7 @@ GameObject:
   - component: {fileID: 358604130}
   - component: {fileID: 358604129}
   - component: {fileID: 358604128}
+  - component: {fileID: 358604131}
   m_Layer: 0
   m_Name: EnemySpawner
   m_TagString: Untagged
@@ -575,6 +576,27 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 7.267, z: 0}
+--- !u!114 &358604131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 358604127}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 376f9e3314613cb499333b4462557333, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+  enemyPrefab: {fileID: 3499678866060128909, guid: dd7ae14afe5ebfe4086edf9827454835, type: 3}
+  center: {x: 210, y: 1, z: 378}
+  size: {x: 10, y: 1, z: 10}
+  maxEnemyNumber: 1
+  waveCount: 1
+  numberOfEnemiesPerWave: 1
+  timeToSpawn: 10
 --- !u!1 &556101533
 GameObject:
   m_ObjectHideFlags: 0
