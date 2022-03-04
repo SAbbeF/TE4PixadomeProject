@@ -30,7 +30,7 @@ public class CustomizedCharacterSpawner : CharacterSpawner
 
         if (Server != null)
         {
-            Server.Disconnected.AddListener(OnServerAddPlayer);
+           //Server.Authenticated.AddListener(SpawnPlayer); //Do not need because of override.
             Server.Disconnected.AddListener(OnServerDisconnect);
             Server.Stopped.AddListener(OnStopServer);
         }
@@ -38,26 +38,30 @@ public class CustomizedCharacterSpawner : CharacterSpawner
 
     public override void OnServerAddPlayer(INetworkPlayer player)
     {
-        //Needs code update
-        //if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().path == startMenu)
-        //{
-        //    bool isLeader = RoomPlayers.Count == 0;
-
-        //    NetworkRoomPlayerLobby roomPlayerInstance = Instantiate(roomPlayerPrefab);
-
-        //    roomPlayerInstance.Initialize(this);
-
-        //    roomPlayerInstance.Isleader = isLeader;
-
-        //    ServerObjectManager.AddCharacter(player, roomPlayerInstance.gameObject);
-
-        //    NotifyPlayersOfReadyState();
-        //}
-
         //base.OnServerAddPlayer(player);
         //NetworkIdentity character = Instantiate(PlayerPrefab, new Vector3(Random.Range(0, 10), 1, Random.Range(0, 10)), Quaternion.Euler(Vector3.zero));
         NetworkIdentity character = Instantiate(PlayerPrefab, new Vector3(450, 0, 480), Quaternion.Euler(Vector3.zero));
         ServerObjectManager.AddCharacter(player, character.gameObject);
+        
+    }
+
+    public void SpawnPlayer(INetworkPlayer player)
+    {
+        //Needs code update
+        if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().path == startMenu)
+        {
+            bool isLeader = RoomPlayers.Count == 0;
+
+            NetworkRoomPlayerLobby roomPlayerInstance = Instantiate(roomPlayerPrefab);
+
+            roomPlayerInstance.Initialize(this);
+
+            roomPlayerInstance.Isleader = isLeader;
+
+            ServerObjectManager.AddCharacter(player, roomPlayerInstance.gameObject);
+
+            NotifyPlayersOfReadyState();
+        }
     }
 
     public void OnServerDisconnect(INetworkPlayer player)

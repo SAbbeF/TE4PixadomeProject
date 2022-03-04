@@ -1549,7 +1549,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Address: localhost
-  Port: 7777
+  Port: 8888
   SocketLib: 0
   BufferSize: 262144
 --- !u!114 &785341495
@@ -1592,8 +1592,12 @@ MonoBehaviour:
   Client: {fileID: 785341500}
   NetworkSceneManager: {fileID: 785341498}
   spawnPrefabs:
+  - {fileID: 8446487842113246855, guid: a8499dafa5c1e0344acf3e661cc09c14, type: 3}
+  - {fileID: 5362859390996062071, guid: 3ef1f7ea38b26404998cc7dce80608c1, type: 3}
+  - {fileID: 4695689743761700053, guid: 823d51e9d5e1da742ba3ee32abe2f0d2, type: 3}
   - {fileID: 2428683040621888757, guid: d3ce9556a9323dc4896a72541aea970f, type: 3}
   - {fileID: 1329798675937578706, guid: b876215253f031642a6eab745c9a2395, type: 3}
+  - {fileID: 9149489977289091341, guid: 17393d2e36b7ae349878b883f1121406, type: 3}
 --- !u!114 &785341497
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3115,6 +3119,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: NetworkManagerCustomizedHud, Assembly-CSharp
         m_MethodName: StartClientButtonHandler
         m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1578227303}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
