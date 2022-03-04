@@ -537,7 +537,7 @@ MonoBehaviour:
   enemyPrefab: {fileID: 3840921342732592128, guid: 3ef1f7ea38b26404998cc7dce80608c1, type: 3}
   center: {x: 426, y: 1, z: 454}
   size: {x: 17, y: 1, z: 17}
-  maxEnemyNumber: 40
+  maxEnemyNumber: 35
   waveCount: 4
   numberOfEnemiesPerWave: 10
   timeToSpawn: 3
@@ -548,7 +548,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 358604127}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 376f9e3314613cb499333b4462557333, type: 3}
   m_Name: 
