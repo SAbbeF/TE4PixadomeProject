@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Stats : MonoBehaviour
 {
+
+    Healtbar healthbar;
+
     public float damage;
     public float maxHealth;
     public float currentHealth;
@@ -20,6 +23,15 @@ public class Stats : MonoBehaviour
     {
         currentHealth = maxHealth;
         currentMana = maxMana;
+
+        if (this.gameObject.GetComponent<Healtbar>() != null)
+        {
+
+            healthbar = this.gameObject.GetComponent<Healtbar>();
+            healthbar.SetMaxHealth(maxHealth);
+
+        }
+
     }
 
 }

@@ -23,6 +23,7 @@ public class BaseAbility : MonoBehaviour
     protected Camera playerCamera;
     protected Stats stats;
     protected HealthScript health;
+    protected Healtbar healthbar;
 
 
     protected void Awake()
@@ -55,6 +56,12 @@ public class BaseAbility : MonoBehaviour
             health = collider.GetComponent<HealthScript>();
 
             stats.currentHealth = health.TakeHealthDamage(stats.currentHealth, /*stats.damage * */damageScale, collider.gameObject);
+
+            if (collider.GetComponent<Healtbar>() != null)
+            {
+                healthbar = collider.GetComponent<Healtbar>();
+                healthbar.SetHealthValue(stats.currentHealth);
+            }
 
         }
 
