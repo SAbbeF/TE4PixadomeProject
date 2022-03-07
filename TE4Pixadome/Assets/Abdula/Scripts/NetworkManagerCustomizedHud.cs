@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using Cysharp.Threading.Tasks;
+using UnityEngine.SceneManagement;
 using TMPro;
 using Mirage;
 
@@ -30,6 +31,10 @@ public class NetworkManagerCustomizedHud : NetworkBehaviour, ISaveable
 
     [SerializeField]
     private TMP_Text statusLabel;
+
+    [Scene]
+    [SerializeField]
+    private string level01;
 
     private NetworkManagerCustomizedHud()
     {
@@ -85,9 +90,9 @@ public class NetworkManagerCustomizedHud : NetworkBehaviour, ISaveable
         //sceneManager.ScenesPlayerIsIn
         //sceneManager.
 
+        //sceneManager.ServerLoadSceneNormal("Level01");
         sceneManager.ServerLoadSceneNormal("Assets/Scenes/Level01.unity");
-        
-
+        //SceneManager.LoadSceneAsync(level01);
 
     }
 
@@ -96,7 +101,7 @@ public class NetworkManagerCustomizedHud : NetworkBehaviour, ISaveable
         SetLabel("Server Mode");
         networkManagerLobby.Server.StartServer();
         OnlineSetActive();
-        //sceneManager.ServerLoadSceneNormal("Assets/Abdula/Scenes/Lobby.unity");
+        //sceneManager.ServerLoadSceneNormal("Assets/Scenes/Level01.unity");
         //sceneManager.ServerLoadSceneAdditively("Assets/Scenes/Level01.unity", sceneManager.Server.Players);
 
     }
@@ -105,6 +110,10 @@ public class NetworkManagerCustomizedHud : NetworkBehaviour, ISaveable
     {
         SetLabel("Client Mode");
         networkManagerLobby.Client.Connect(networkAddress);
+        //if (networkManagerLobby.Server.Active)
+        //{
+        //    Debug.Log("There is a server");
+        //}
         OnlineSetActive();
         //sceneManager.ServerLoadSceneNormal("Assets/Abdula/Scenes/Lobby.unity");
     }

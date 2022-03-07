@@ -1576,7 +1576,7 @@ MonoBehaviour:
   playerSpawnMethod: 0
   minimumPlayerCount: 2
   startMenu: Assets/Network/startMenu.unity
-  roomPlayerPrefab: {fileID: 5721180965898038602, guid: b876215253f031642a6eab745c9a2395, type: 3}
+  roomPlayerPrefab: {fileID: 0}
 --- !u!114 &785341496
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3753,6 +3753,7 @@ MonoBehaviour:
   onlineGO: {fileID: 1633747839}
   mainMenu: {fileID: 1169853638}
   statusLabel: {fileID: 513571058}
+  level01: 
 --- !u!1 &1633747839
 GameObject:
   m_ObjectHideFlags: 0
