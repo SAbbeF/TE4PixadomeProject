@@ -15,106 +15,106 @@ MonoBehaviour:
   LogLevels:
   - Name: WelcomeWindow
     Namespace: Mirage
-    logLevel: 2
+    logLevel: 0
   - Name: NetworkServer
     Namespace: Mirage
-    logLevel: 2
+    logLevel: 0
   - Name: NetworkClient
     Namespace: Mirage
-    logLevel: 2
+    logLevel: 0
   - Name: NetworkSceneManager
     Namespace: Mirage
-    logLevel: 2
+    logLevel: 3
   - Name: ServerObjectManager
     Namespace: Mirage
-    logLevel: 2
+    logLevel: 3
   - Name: ClientObjectManager
     Namespace: Mirage
-    logLevel: 2
+    logLevel: 3
   - Name: CharacterSpawner
     Namespace: Mirage
-    logLevel: 2
+    logLevel: 3
   - Name: NetworkIdentity
     Namespace: Mirage
-    logLevel: 2
+    logLevel: 0
   - Name: NetworkIdentityIdGenerator
     Namespace: 
-    logLevel: 2
+    logLevel: 0
   - Name: NetworkBehaviour
     Namespace: Mirage
-    logLevel: 2
+    logLevel: 0
   - Name: RemoteCallCollection
     Namespace: Mirage.RemoteCalls
-    logLevel: 2
+    logLevel: 0
   - Name: NetworkBehaviourInspector
     Namespace: Mirage
-    logLevel: 2
+    logLevel: 0
   - Name: NetworkScenePostProcess
     Namespace: Mirage
-    logLevel: 2
+    logLevel: 0
   - Name: MessageHandler
     Namespace: Mirage
-    logLevel: 2
+    logLevel: 0
   - Name: NetworkPlayer
     Namespace: Mirage
-    logLevel: 2
+    logLevel: 0
   - Name: NetworkTime
     Namespace: Mirage
-    logLevel: 2
+    logLevel: 0
   - Name: NetworkWorld
     Namespace: Mirage
-    logLevel: 2
+    logLevel: 0
   - Name: PipePeerConnection
     Namespace: Mirage
-    logLevel: 2
+    logLevel: 0
   - Name: SyncVarReceiver
     Namespace: Mirage
-    logLevel: 2
+    logLevel: 0
   - Name: MirageTypesExtensions
     Namespace: Mirage.Serialization
-    logLevel: 2
+    logLevel: 0
   - Name: NetworkReaderPool
     Namespace: Mirage.Serialization
-    logLevel: 2
+    logLevel: 0
   - Name: NetworkWriterPool
     Namespace: Mirage.Serialization
-    logLevel: 2
+    logLevel: 0
   - Name: ClientRpcSender
     Namespace: Mirage.RemoteCalls
-    logLevel: 2
+    logLevel: 0
   - Name: SceneDrawer
     Namespace: Mirage
-    logLevel: 2
+    logLevel: 0
   - Name: BasicAuthenticator
     Namespace: Mirage.Authenticators
-    logLevel: 2
+    logLevel: 0
   - Name: TimeoutAuthenticator
     Namespace: Mirage.Authenticators
-    logLevel: 2
+    logLevel: 0
   - Name: HeadlessFrameLimiter
     Namespace: Mirage
-    logLevel: 2
+    logLevel: 0
   - Name: NetworkAnimator
     Namespace: Mirage
-    logLevel: 2
+    logLevel: 0
   - Name: NetworkProximityChecker
     Namespace: Mirage
-    logLevel: 2
+    logLevel: 0
   - Name: OnlineOfflineScene
     Namespace: Mirage
-    logLevel: 2
+    logLevel: 0
   - Name: NetworkSceneChecker
     Namespace: Mirage
-    logLevel: 2
+    logLevel: 0
   - Name: SceneVisibilityChecker
     Namespace: Mirage
-    logLevel: 2
+    logLevel: 0
   - Name: NetworkRigidbody
     Namespace: Mirage.Experimental
-    logLevel: 2
+    logLevel: 0
   - Name: Peer
     Namespace: Mirage.SocketLayer
-    logLevel: 2
+    logLevel: 0
   - Name: NetworkIdentityIdGenerator
     Namespace: 
-    logLevel: 2
+    logLevel: 0

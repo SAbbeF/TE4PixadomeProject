@@ -39,10 +39,9 @@ public class CustomizedCharacterSpawner : CharacterSpawner
     public override void OnServerAddPlayer(INetworkPlayer player)
     {
         //base.OnServerAddPlayer(player);
-        //NetworkIdentity character = Instantiate(PlayerPrefab, new Vector3(Random.Range(0, 10), 1, Random.Range(0, 10)), Quaternion.Euler(Vector3.zero));
         NetworkIdentity character = Instantiate(PlayerPrefab, new Vector3(450, 0, 480), Quaternion.Euler(Vector3.zero));
         ServerObjectManager.AddCharacter(player, character.gameObject);
-        
+        //DontDestroyOnLoad(character); 
     }
 
     public void SpawnPlayer(INetworkPlayer player)

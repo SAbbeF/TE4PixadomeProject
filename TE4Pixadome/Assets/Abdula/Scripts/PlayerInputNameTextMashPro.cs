@@ -30,6 +30,7 @@ public class PlayerInputNameTextMashPro : MonoBehaviour
 
     private void SetUpInputField()
     {
+        //Need to add a way to read the name from json file first and put it as defaultName
         string defualtName = PlayerDisplayedName;
 
         nameInputField.text = defualtName;
@@ -41,6 +42,7 @@ public class PlayerInputNameTextMashPro : MonoBehaviour
         //SetPlayerName(defualtName);
     }
 
+    
     public void SetPlayerName(string name)
     {
         //continueButton.interactable = !string.IsNullOrEmpty(name);

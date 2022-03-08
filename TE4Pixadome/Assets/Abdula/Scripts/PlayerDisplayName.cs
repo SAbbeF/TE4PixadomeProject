@@ -14,7 +14,10 @@ public class PlayerDisplayName : NetworkBehaviour
 
     private void Start()
     {
-        playerActiveName.text = PlayerInputNameTextMashPro.PlayerDisplayedName;
+        if (IsLocalPlayer)
+        {
+            playerActiveName.text = PlayerInputNameTextMashPro.PlayerDisplayedName;
+        }
         //playerName.text = PlayerInputNameTextMashPro.PlayerDisplayedName;
 
 
@@ -25,7 +28,7 @@ public class PlayerDisplayName : NetworkBehaviour
             playerCamera.gameObject.SetActive(false);
         }
 
-        if (!IsLocalClient)
+        if (!IsLocalPlayer)
         {
             return;
         }

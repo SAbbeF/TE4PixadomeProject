@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 using TMPro;
 using Mirage;
 
-public class NetworkManagerCustomizedHud : NetworkBehaviour, ISaveable
+public class NetworkManagerCustomizedHud : NetworkBehaviour
 {
     public NetworkManagerLobby networkManagerLobby;
     public NetworkSceneManager sceneManager;
@@ -26,15 +26,8 @@ public class NetworkManagerCustomizedHud : NetworkBehaviour, ISaveable
     [SerializeField]
     private GameObject mainMenu;
 
-    //[SerializeField]
-    //private GameObject lobbyMenu;
-
     [SerializeField]
     private TMP_Text statusLabel;
-
-    [Scene]
-    [SerializeField]
-    private string level01;
 
     private NetworkManagerCustomizedHud()
     {
@@ -52,6 +45,9 @@ public class NetworkManagerCustomizedHud : NetworkBehaviour, ISaveable
         // return to offset menu when server or client is stopped
         networkManagerLobby.Server?.Stopped.AddListener(OfflineSetActive);
         networkManagerLobby.Client?.Disconnected.AddListener(_ => OfflineSetActive());
+        //networkManagerLobby.Server.Connected.AddListener(OnServerSceneChange);
+        //networkManagerLobby.Client.Connected.AddListener(OnClientSceneChange);
+        
     }
 
     void SetLabel(string value)
@@ -67,7 +63,6 @@ public class NetworkManagerCustomizedHud : NetworkBehaviour, ISaveable
     internal void OnlineSetActive()
     {
         mainMenu.SetActive(false);
-        //lobbyMenu.SetActive(false);
         offlineGO.SetActive(false);
         onlineGO.SetActive(true);
     }
@@ -75,7 +70,6 @@ public class NetworkManagerCustomizedHud : NetworkBehaviour, ISaveable
     internal void OfflineSetActive()
     {
         mainMenu.SetActive(true);
-        //lobbyMenu.SetActive(true);
         offlineGO.SetActive(true);
         onlineGO.SetActive(false);
     }
@@ -85,15 +79,8 @@ public class NetworkManagerCustomizedHud : NetworkBehaviour, ISaveable
         SetLabel("Host Mode");
         networkManagerLobby.Server.StartServer(networkManagerLobby.Client);
         OnlineSetActive();
-        //sceneManager.ServerLoadSceneAdditively("Assets/Scenes/Level01.unity", sceneManager.Server.Players);
-        //sceneManager.ClientStartSceneMessage
-        //sceneManager.ScenesPlayerIsIn
-        //sceneManager.
 
-        //sceneManager.ServerLoadSceneNormal("Level01");
-        sceneManager.ServerLoadSceneNormal("Assets/Scenes/Level01.unity");
-        //SceneManager.LoadSceneAsync(level01);
-
+        //sceneManager.ServerLoadSceneNormal("Assets/Scenes/Level01.unity");
     }
 
     public void StartServerOnlyButtonHandler()
@@ -101,21 +88,13 @@ public class NetworkManagerCustomizedHud : NetworkBehaviour, ISaveable
         SetLabel("Server Mode");
         networkManagerLobby.Server.StartServer();
         OnlineSetActive();
-        //sceneManager.ServerLoadSceneNormal("Assets/Scenes/Level01.unity");
-        //sceneManager.ServerLoadSceneAdditively("Assets/Scenes/Level01.unity", sceneManager.Server.Players);
-
     }
 
     public void StartClientButtonHandler()
     {
         SetLabel("Client Mode");
         networkManagerLobby.Client.Connect(networkAddress);
-        //if (networkManagerLobby.Server.Active)
-        //{
-        //    Debug.Log("There is a server");
-        //}
         OnlineSetActive();
-        //sceneManager.ServerLoadSceneNormal("Assets/Abdula/Scenes/Lobby.unity");
     }
 
     public void StopButtonHandler()
@@ -138,13 +117,28 @@ public class NetworkManagerCustomizedHud : NetworkBehaviour, ISaveable
         networkAddress = networkAddressInput.text;
     }
 
-    public void PopulateSaveData(PlayerData playerData)
+    public void OnSceneChange()
     {
-
+        sceneManager.ServerLoadSceneNormal("Assets/Scenes/Level01.unity");
     }
 
-    public void LoadFromSaveData(PlayerData playerData)
+    public void OnServerSceneChange(INetworkPlayer player)
     {
+        player.SceneIsReady = false;
+        player.Send(new SceneMessage { SceneOperation = 0 });
 
+        //sceneManager.SetAllClientsNotReady();
+        //sceneManager.ServerLoadSceneNormal("Assets/Scenes/Level01.unity");
+    }
+
+    public void OnClientSceneChange(INetworkPlayer player)
+    {
+        sceneManager.ServerLoadSceneNormal("Assets/Scenes/Level01.unity");
+        ClientObjectManager.PrepareToSpawnSceneObjects();
+    }
+
+    public void OnSceneClienetChange()
+    {
+        networkManagerLobby.Client.Connect(networkAddress);
     }
 }

@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using Mirage;
 
-public class PlayerMovementScript : MonoBehaviour
+public class PlayerMovementScript : NetworkBehaviour
 {
     //Vet ej hur jag ska reffera scriptet utan att använda mig av inspektorn
     MyInputManager myInputManager;  
@@ -53,8 +54,12 @@ public class PlayerMovementScript : MonoBehaviour
 
     private void Update()
     {
-        MoveCharacterWithKeyboard();
-        CaracterRotation();
+        if (IsLocalPlayer)
+        {
+            MoveCharacterWithKeyboard();
+            CaracterRotation();
+        }
+
     }
 
     void MoveCharacterWithKeyboard()
