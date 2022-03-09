@@ -3893,7 +3893,6 @@ MonoBehaviour:
   onlineGO: {fileID: 1633747839}
   mainMenu: {fileID: 1169853638}
   statusLabel: {fileID: 513571058}
-  level01: 
 --- !u!1 &1633747839
 GameObject:
   m_ObjectHideFlags: 0

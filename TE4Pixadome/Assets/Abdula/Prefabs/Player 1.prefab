@@ -122,7 +122,7 @@ GameObject:
   - component: {fileID: 9149489977289091341}
   - component: {fileID: 8900329644957815180}
   m_Layer: 0
-  m_Name: Player
+  m_Name: Player 1
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -354,7 +354,7 @@ MonoBehaviour:
   _sceneId: 0
   ServerObjectManager: {fileID: 0}
   ClientObjectManager: {fileID: 0}
-  _prefabHash: -1844842096
+  _prefabHash: 2022588173
   _onStartServer:
     _event:
       m_PersistentCalls:

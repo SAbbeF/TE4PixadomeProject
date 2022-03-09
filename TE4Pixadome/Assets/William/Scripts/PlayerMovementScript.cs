@@ -75,6 +75,7 @@ public class PlayerMovementScript : NetworkBehaviour
     void CaracterRotation()
     {
         //cursorPosition = myInputManager.PlayerController.Rotation.ReadValue<Vector2>();
+
         ray = playerCamera.ScreenPointToRay(Input.mousePosition);
         plane = new Plane(Vector3.up, Vector3.zero);
         

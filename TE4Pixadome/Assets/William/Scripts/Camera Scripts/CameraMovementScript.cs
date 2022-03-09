@@ -50,35 +50,33 @@ public class CameraMovementScript : MonoBehaviour
 
     void Update()
     {
+            cameraPosition = transform.position;
 
-        cameraPosition = transform.position;
+            if (Input.GetKeyDown(KeyCode.Y))
+            {
+                isCameraLocked = !isCameraLocked;
+            }
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                isCameraFollowing = true;
+            }
+            if (Input.GetKeyUp(KeyCode.Space))
+            {
+                isCameraFollowing = false;
+            }
 
-        if (Input.GetKeyDown(KeyCode.Y))
-        {
-            isCameraLocked = !isCameraLocked;
-        }
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            isCameraFollowing = true;
-        }
-        if (Input.GetKeyUp(KeyCode.Space))
-        {
-            isCameraFollowing = false;
-        }
+            if (isCameraLocked || isCameraFollowing)
+            {
+                CameraFollowPlayer();
+            }
+            else
+            {
+                CameraPanMovement();
+            }
 
-        if (isCameraLocked || isCameraFollowing)
-        {
-            CameraFollowPlayer();
-        }
-        else
-        {
-            CameraPanMovement();
-        }
+            CameraZoom();
 
-        CameraZoom();
-
-        transform.position = cameraPosition;
-
+            transform.position = cameraPosition;
     }
 
     void CameraPanMovement()

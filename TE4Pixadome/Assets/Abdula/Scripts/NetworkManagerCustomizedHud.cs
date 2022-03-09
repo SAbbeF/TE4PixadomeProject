@@ -119,7 +119,11 @@ public class NetworkManagerCustomizedHud : NetworkBehaviour
 
     public void OnSceneChange()
     {
-        sceneManager.ServerLoadSceneNormal("Assets/Scenes/Level01.unity");
+        //if (HasAuthority)
+        //{
+
+            sceneManager.ServerLoadSceneNormal("Assets/Scenes/Level01.unity");
+        //}
     }
 
     public void OnServerSceneChange(INetworkPlayer player)
