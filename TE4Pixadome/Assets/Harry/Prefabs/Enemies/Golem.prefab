@@ -103,7 +103,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isWithinAttackRange: 0
   target: {fileID: 0}
-  aiFollow: {fileID: 552685492}
+  aiFollow: {fileID: 0}
   agent: {fileID: 0}
   canOnlyAttackFollowedTarget: 0
 --- !u!1 &2739905734158413105
@@ -784,7 +784,6 @@ GameObject:
   - component: {fileID: 2739905735495778479}
   - component: {fileID: 552685490}
   - component: {fileID: 552685491}
-  - component: {fileID: 552685492}
   m_Layer: 0
   m_Name: Golem
   m_TagString: Untagged
@@ -854,28 +853,6 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &552685492
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2739905735495778478}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ad6ac7eab15443347a660d0bbe757721, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 0}
-  agent: {fileID: 552685491}
-  playerTarget: {fileID: 0}
-  attackRange: {fileID: 1903008331}
-  autoAttack: {fileID: 0}
-  castPoint: {fileID: 0}
-  enemyMelee: {fileID: 0}
-  lookAtEnmenySpeed: 0
-  goalRange: 0
-  timeBetweenAttacks: 0
 --- !u!1 &2739905735623077722
 GameObject:
   m_ObjectHideFlags: 0

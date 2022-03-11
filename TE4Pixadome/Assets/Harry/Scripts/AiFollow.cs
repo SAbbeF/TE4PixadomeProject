@@ -61,6 +61,7 @@ public class AiFollow : MonoBehaviour
             rotation = Quaternion.LookRotation(attackRange.target.transform.position - agent.transform.position);
             agent.transform.rotation = Quaternion.Slerp(agent.transform.rotation, rotation, Time.deltaTime  * lookAtEnmenySpeed);
 
+            //
 
             if (enemyMelee == null)
             {

@@ -1,0 +1,34 @@
+{
+    "name": "MiniMapControlls",
+    "maps": [
+        {
+            "name": "MiniMap",
+            "id": "2b1b068d-49c0-48c7-a5b5-6b4693aefa36",
+            "actions": [
+                {
+                    "name": "OpenMediumMapSize",
+                    "type": "Button",
+                    "id": "76fa5a0c-77b1-4190-a803-a84fde1c0a13",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "6ea6e9fb-1d54-4154-8ede-4fc6ffec599d",
+                    "path": "<Keyboard>/tab",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "OpenMediumMapSize",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
