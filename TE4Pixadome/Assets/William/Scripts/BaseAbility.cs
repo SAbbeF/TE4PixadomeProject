@@ -11,9 +11,9 @@ public class BaseAbility : MonoBehaviour
     public float speed;
     public float manaCost; //doesnt have to be mana could be other resources aswell :)
     public float lifeTime;
-    public float cooldown;
-    protected float cooldownCounter;
-    protected bool isCooldown = false;
+    //public float cooldown;
+    //protected float cooldownCounter;
+    //protected bool isCooldown = false;
     public Image abilityImage;
 
     protected AttackSystem attackSystem;
@@ -23,6 +23,7 @@ public class BaseAbility : MonoBehaviour
     protected Camera playerCamera;
     protected Stats stats;
     protected HealthScript health;
+    protected Healtbar healthbar;
 
 
     protected void Awake()
@@ -55,6 +56,12 @@ public class BaseAbility : MonoBehaviour
             health = collider.GetComponent<HealthScript>();
 
             stats.currentHealth = health.TakeHealthDamage(stats.currentHealth, /*stats.damage * */damageScale, collider.gameObject);
+
+            if (collider.GetComponent<Healtbar>() != null)
+            {
+                healthbar = collider.GetComponent<Healtbar>();
+                healthbar.SetHealthValue(stats.currentHealth);
+            }
 
         }
 

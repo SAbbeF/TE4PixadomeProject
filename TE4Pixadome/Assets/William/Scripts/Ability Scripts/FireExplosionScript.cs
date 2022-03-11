@@ -6,22 +6,21 @@ public class FireExplosionScript : BaseAbility
 {
 
     float durationUntilExplosion = 10;
-    float timer = 0;
+    float explosionTimer = 0;
     Vector3 explosionSize = new Vector3(20, 20, 20);
-
-    
 
     private void Update()
     {
-        timer += Time.fixedDeltaTime;
 
-        if (timer < durationUntilExplosion)
+        explosionTimer += Time.fixedDeltaTime;
+
+        if (explosionTimer < durationUntilExplosion)
         {
             transform.Translate(Vector3.forward * speed * Time.fixedDeltaTime);
             damageScale = 5;
         }
 
-        if (timer >= durationUntilExplosion)
+        if (explosionTimer >= durationUntilExplosion)
         {
             transform.localScale = explosionSize;
             damageScale = 30;
