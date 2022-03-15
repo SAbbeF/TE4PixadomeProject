@@ -23,10 +23,10 @@ public class PlayerDisplayName : NetworkBehaviour
 
         playerCamera = GetComponentInChildren<Camera>();
 
-        //if (!IsLocalPlayer)
-        //{
-        //    playerCamera.gameObject.SetActive(false);
-        //}
+        if (!IsLocalPlayer)
+        {
+            playerCamera.gameObject.SetActive(false);
+        }
 
         if (!IsLocalPlayer) return;
         

@@ -12,6 +12,7 @@ public class FixRotation : NetworkBehaviour
     }
     void LateUpdate()
     {
+        if (!IsLocalPlayer) return;
         transform.rotation = rotation;
     }
 }

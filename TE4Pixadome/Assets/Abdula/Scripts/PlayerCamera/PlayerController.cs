@@ -9,7 +9,7 @@ public class PlayerController : NetworkBehaviour
     private CinemachineVirtualCamera virtualCamera;
 
     [SerializeField]
-    private Transform playerTransform;
+    private Camera playerCamera;
 
     private CinemachineTransposer transposer;
 
@@ -44,7 +44,6 @@ public class PlayerController : NetworkBehaviour
     PlayerController()
     {
         virtualCamera = null;
-        playerTransform = null;
 
         smoothInputSpeed = 0.2f;
     }
@@ -59,15 +58,25 @@ public class PlayerController : NetworkBehaviour
         if (IsLocalPlayer)
         {
             MoveCharacterWithKeyboard();
+            CharacterRotation();
         }
+
+        //if (playerCamera == null)
+        //{
+        //    playerCamera = GameObject.FindGameObjectWithTag("PlayerCamera").GetComponent<Camera>();
+        //}
     }
 
     private void OnStartAuthority(bool changed)
     {
-        transposer = virtualCamera.GetCinemachineComponent<CinemachineTransposer>();
+        //transposer = virtualCamera.GetCinemachineComponent<CinemachineTransposer>();
 
         navMeshAgent = gameObject.GetComponent<NavMeshAgent>();
-        
+
+        //playerCamera = GameObject.FindGameObjectWithTag("PlayerCamera").GetComponent<Camera>();
+
+        playerCamera = GetComponentInChildren<Camera>();
+
         stats = gameObject.GetComponent<Stats>();
 
         virtualCamera.gameObject.SetActive(true);
@@ -87,7 +96,7 @@ public class PlayerController : NetworkBehaviour
 
     private void CharacterRotation()
     {
-        //ray = playerCamera.ScreenPointToRay(Input.mousePosition);
+        ray = playerCamera.ScreenPointToRay(Input.mousePosition);
         plane = new Plane(Vector3.up, Vector3.zero);
 
         if (plane.Raycast(ray, out rayDistance))
@@ -100,9 +109,9 @@ public class PlayerController : NetworkBehaviour
         }
     }
 
-    [Client(error = false)]
-    private void OnEnable() => InputManager.Enable();
+    //[Client(error = false)]
+    private void OnEnable() => InputManager.PlayerController.Enable();
 
-    [Client(error = false)]
-    private void OnDisable() => InputManager.Disable();
+    //[Client(error = false)]
+    private void OnDisable() => InputManager.PlayerController.Disable();
 }

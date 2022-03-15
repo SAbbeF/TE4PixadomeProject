@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
+using Mirage;
 
-public class AttackSystem : MonoBehaviour
+public class AttackSystem : NetworkBehaviour
 {
     public GameObject autoAttack;
     public GameObject firstAbility;
@@ -121,6 +122,8 @@ public class AttackSystem : MonoBehaviour
         thirdAbilityScaledValue = thirdAbilityCounter / thirdAbilityCooldown;
         thirdAbilityImage.fillAmount = thirdAbilityScaledValue;
         #endregion
+
+        if (!IsLocalPlayer) return;
 
         if (!isAutoAttackOnCooldown && myInputManager.PlayerController.AutoAttack.triggered)
         {
