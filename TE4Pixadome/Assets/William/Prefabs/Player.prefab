@@ -18,7 +18,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6634741444948547575
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1017,6 +1017,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b7bf675d625bab49ac95bb200f7dd51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
 --- !u!1 &5594244109746129691
 GameObject:
   m_ObjectHideFlags: 0
@@ -1031,7 +1033,7 @@ GameObject:
   - component: {fileID: 5184003614225670203}
   m_Layer: 0
   m_Name: PlayerCameraChild
-  m_TagString: Untagged
+  m_TagString: PlayerCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1254,7 +1256,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7069782471052492538, guid: 1088d0872e9d2f943a62317453b629fa, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -43
+      value: -42.999985
       objectReference: {fileID: 0}
     - target: {fileID: 7069782471052492538, guid: 1088d0872e9d2f943a62317453b629fa, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

@@ -41,6 +41,15 @@ public class PlayerMovementScript : NetworkBehaviour
 
         navMeshAgent = gameObject.GetComponent<NavMeshAgent>();
         stats = gameObject.GetComponent<Stats>();
+
+        playerCamera = GameObject.FindGameObjectWithTag("PlayerCamera").GetComponent<Camera>();
+
+        //playerCamera = GetComponentInChildren<Camera>();
+
+        //if (!IsLocalPlayer)
+        //{
+        //    playerCamera.gameObject.SetActive(false);
+        //}
     }
 
     
@@ -54,12 +63,10 @@ public class PlayerMovementScript : NetworkBehaviour
 
     private void Update()
     {
-        if (IsLocalPlayer)
-        {
-            MoveCharacterWithKeyboard();
-            CaracterRotation();
-        }
-
+        if (!IsLocalPlayer) return;
+        
+        MoveCharacterWithKeyboard();
+        CaracterRotation();
     }
 
     void MoveCharacterWithKeyboard()
