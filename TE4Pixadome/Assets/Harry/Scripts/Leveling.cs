@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Leveling : MonoBehaviour
 {
+
+    //skada behöver en ägare som behövs checkas av när fiender dör. att ifall man dog så ser man vem som gjorde skadan
     [Space(10)]
 
     public float currentXp;
@@ -42,8 +44,8 @@ public class Leveling : MonoBehaviour
             stats.maxHealth = stats.maxHealth * maxHealthIncrease;
             stats.currentHealth = stats.currentHealth * maxHealthIncrease;
 
-            stats.maxHealth = stats.maxHealth * maxManaIncrease;
-            stats.currentHealth = stats.currentHealth * maxManaIncrease;
+            stats.maxMana = stats.maxMana * maxManaIncrease;
+            stats.currentMana = stats.currentMana * maxManaIncrease;
 
             stats.damage = stats.damage * damageIncrease;
 
