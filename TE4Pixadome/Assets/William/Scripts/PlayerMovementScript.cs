@@ -1,11 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using Cinemachine;
 using Mirage;
 
 public class PlayerMovementScript : NetworkBehaviour
 {
+    [SerializeField]
+    private CinemachineVirtualCamera virtualCamera;
+
     //Vet ej hur jag ska reffera scriptet utan att använda mig av inspektorn
     MyInputManager myInputManager;  
     NavMeshAgent navMeshAgent;
@@ -44,13 +46,14 @@ public class PlayerMovementScript : NetworkBehaviour
 
         playerCamera = GetComponentInChildren<Camera>();
 
+        virtualCamera.gameObject.SetActive(true);
     }
 
     
     void Awake()
     {
         myInputManager = new MyInputManager();
-        
+
         //myInputManager.PlayerMouse.Move.performed += _ => MoveCharacterWithMouse();
 
     }
