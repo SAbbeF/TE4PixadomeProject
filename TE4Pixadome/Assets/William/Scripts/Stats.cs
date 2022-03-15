@@ -6,6 +6,7 @@ public class Stats : MonoBehaviour
 {
 
     Healtbar healthbar;
+    ManaScript manaScript;
 
     public float damage;
     public float maxHealth;
@@ -14,6 +15,7 @@ public class Stats : MonoBehaviour
     public float magicDefense;
     public float maxMana;
     public float currentMana;
+    public float manaRegenerationTickRate;
     public float attackRange;
     public float attackSpeed;
     public float cooldownReduction; 
@@ -24,11 +26,19 @@ public class Stats : MonoBehaviour
         currentHealth = maxHealth;
         currentMana = maxMana;
 
-        if (this.gameObject.GetComponent<Healtbar>() != null)
+        if (gameObject.GetComponent<Healtbar>() != null)
         {
 
-            healthbar = this.gameObject.GetComponent<Healtbar>();
+            healthbar = gameObject.GetComponent<Healtbar>();
             healthbar.SetMaxHealth(maxHealth);
+
+        }
+
+        if (gameObject.GetComponent<ManaScript>() != null)
+        {
+
+            manaScript = gameObject.GetComponent<ManaScript>();
+            manaScript.SetMaxMana(maxMana);
 
         }
 
