@@ -1318,13 +1318,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7dd41e3a695902f45a68cd4babf295d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentXp: 0
-  xpNeededToLevel: 0
-  maxHealthIncrease: 0
+  currentXp: 2
+  xpNeededToLevel: 2
+  maxHealthIncrease: 2
   maxManaIncrease: 0
   damageIncrease: 0
   armourIncrease: 0
   magicDefenseIncrease: 0
+--- !u!114 &2028472365
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2028472360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06c8cc99f9791734c8a559cd2443ffc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 0
+  maxHealth: 10
+  currentHealth: 0
+  armor: 0
+  magicDefense: 0
+  maxMana: 0
+  currentMana: 0
+  attackRange: 0
+  attackSpeed: 0
+  cooldownReduction: 0
+  movementSpeed: 0
 --- !u!1001 &2103101679
 PrefabInstance:
   m_ObjectHideFlags: 0
