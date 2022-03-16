@@ -8,12 +8,23 @@ public class PlayerMovementScript : NetworkBehaviour
     [SerializeField]
     private CinemachineVirtualCamera virtualCamera;
 
+    [SerializeField]
+    private Camera playerCamera;
+
+    private MyInputManager myInputManager;
+
+    private MyInputManager MyInputManager
+    {
+        get
+        {
+            if (myInputManager != null) { return myInputManager; };
+            return myInputManager = new MyInputManager();
+        }
+    }
+
     //Vet ej hur jag ska reffera scriptet utan att använda mig av inspektorn
-    MyInputManager myInputManager;  
     NavMeshAgent navMeshAgent;
     Stats stats;
-    public Camera playerCamera;
-
     float rotateSpeed;
     float rotateVelocity;
     float rotationY;
@@ -33,28 +44,22 @@ public class PlayerMovementScript : NetworkBehaviour
     float rayDistance;
     float rotationAngle;
 
-
-    void Start()
+    PlayerMovementScript()
     {
-
         rotateSpeed = 1f;
         maxDistance = Mathf.Infinity;
         smoothInputSpeed = 0.2f;
-
-        navMeshAgent = gameObject.GetComponent<NavMeshAgent>();
-        stats = gameObject.GetComponent<Stats>();
-
-        playerCamera = GetComponentInChildren<Camera>();
-
-        virtualCamera.gameObject.SetActive(true);
     }
 
-    
     void Awake()
     {
-        myInputManager = new MyInputManager();
-
         //myInputManager.PlayerMouse.Move.performed += _ => MoveCharacterWithMouse();
+
+        Identity.OnAuthorityChanged.AddListener(OnStartAuthority);
+    }
+
+    void Start()
+    {
 
     }
 
@@ -66,10 +71,22 @@ public class PlayerMovementScript : NetworkBehaviour
         CaracterRotation();
     }
 
+    private void OnStartAuthority(bool changed)
+    {
+        navMeshAgent = gameObject.GetComponent<NavMeshAgent>();
+        stats = gameObject.GetComponent<Stats>();
+
+        playerCamera = GetComponentInChildren<Camera>();
+
+        virtualCamera.gameObject.SetActive(true);
+
+        enabled = true;
+    }
+
     void MoveCharacterWithKeyboard()
     {
 
-        input = myInputManager.PlayerController.Move.ReadValue<Vector2>();
+        input = MyInputManager.PlayerController.Move.ReadValue<Vector2>();
         currentInput = Vector2.SmoothDamp(currentInput, input, ref velocity, smoothInputSpeed);
         playerPosition = new Vector3(currentInput.x, 0, currentInput.y);
         transform.position += playerPosition * stats.movementSpeed * Time.fixedDeltaTime;
@@ -127,14 +144,14 @@ public class PlayerMovementScript : NetworkBehaviour
 
     private void OnEnable()
     {
-        myInputManager.PlayerController.Enable();
+        MyInputManager.PlayerController.Enable();
         //myInputManager.PlayerMouse.Enable();
 
     }
 
     private void OnDisable()
     {
-        myInputManager.PlayerController.Disable();
+        MyInputManager.PlayerController.Disable();
         //myInputManager.PlayerMouse.Disable();
 
     }
