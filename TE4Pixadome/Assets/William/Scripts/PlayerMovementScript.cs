@@ -68,7 +68,7 @@ public class PlayerMovementScript : NetworkBehaviour
         if (!IsLocalPlayer) return;
         
         MoveCharacterWithKeyboard();
-        CaracterRotation();
+        CharacterRotation();
     }
 
     private void OnStartAuthority(bool changed)
@@ -93,7 +93,7 @@ public class PlayerMovementScript : NetworkBehaviour
 
     }
 
-    void CaracterRotation()
+    void CharacterRotation()
     {
         //cursorPosition = myInputManager.PlayerController.Rotation.ReadValue<Vector2>();
 
@@ -112,7 +112,6 @@ public class PlayerMovementScript : NetworkBehaviour
 
     void MoveCharacterWithMouse()
     {
-        
         RaycastHit hitInfo;
 
         if (Physics.Raycast(playerCamera.ScreenPointToRay(Input.mousePosition), out hitInfo, maxDistance))
@@ -146,13 +145,11 @@ public class PlayerMovementScript : NetworkBehaviour
     {
         MyInputManager.PlayerController.Enable();
         //myInputManager.PlayerMouse.Enable();
-
     }
 
     private void OnDisable()
     {
         MyInputManager.PlayerController.Disable();
         //myInputManager.PlayerMouse.Disable();
-
     }
 }
