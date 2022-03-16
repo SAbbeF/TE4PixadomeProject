@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3157499320378546511}
   - component: {fileID: 483028379707589655}
   - component: {fileID: -5556491934001070935}
-  - component: {fileID: -1840203430363959215}
+  - component: {fileID: -3452176965369268779}
   m_Layer: 0
   m_Name: FireExplosion
   m_TagString: Untagged
@@ -63,7 +63,7 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &-1840203430363959215
+--- !u!114 &-3452176965369268779
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -72,15 +72,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 3157499320378546504}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 566f9026648ff6f43b9bb77e09c7e7ac, type: 3}
+  m_Script: {fileID: 11500000, guid: a5ae6a1252b81ff41a445ac1ad519dee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageScale: 30
-  speed: 2
-  manaCost: 0
-  lifeTime: 2
-  cooldown: 0
-  abilityImage: {fileID: 358229441799704167, guid: 89be394e86eba3f4cb81272c4079893c, type: 3}
+  abilityToCast: {fileID: 11400000, guid: 6ebad8be9de247340a46b5d92d30c2b0, type: 2}
 --- !u!1 &3157499321143291487
 GameObject:
   m_ObjectHideFlags: 0

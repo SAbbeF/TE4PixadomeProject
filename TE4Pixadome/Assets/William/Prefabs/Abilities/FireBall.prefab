@@ -106,7 +106,7 @@ GameObject:
   - component: {fileID: 414515234376516857}
   - component: {fileID: -775361966728295997}
   - component: {fileID: 8420161818067514003}
-  - component: {fileID: -1238430216191731662}
+  - component: {fileID: -7424334461069025702}
   m_Layer: 0
   m_Name: FireBall
   m_TagString: Untagged
@@ -158,7 +158,7 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &-1238430216191731662
+--- !u!114 &-7424334461069025702
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -167,12 +167,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7434003792262671754}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 091f18eda07f9774ba465e2dafccf65e, type: 3}
+  m_Script: {fileID: 11500000, guid: a5ae6a1252b81ff41a445ac1ad519dee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageScale: 20
-  speed: 2
-  manaCost: 0
-  lifeTime: 2
-  cooldown: 0
-  abilityImage: {fileID: 157707820713345411, guid: 42c1c3dc4de519c479d4b32f25cafdcc, type: 3}
+  abilityToCast: {fileID: 11400000, guid: aa3a63e24afc05f4fa43a287c0ae44e7, type: 2}

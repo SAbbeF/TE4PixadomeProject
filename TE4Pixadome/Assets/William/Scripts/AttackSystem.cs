@@ -7,12 +7,18 @@ using UnityEngine.UI;
 public class AttackSystem : MonoBehaviour
 {
     public GameObject autoAttack;
+    
     public GameObject firstAbility;
     public GameObject secondAbility;
     public GameObject thirdAbility;
     public Image firstAbilityImage;
     public Image secondAbilityImage;
     public Image thirdAbilityImage;
+    Ability firstAbilityStats;
+    Ability secondAbilityStats;
+    Ability thirdAbilityStats;
+    Ability autoAttackStats;
+
 
     public Transform castPoint;
 
@@ -20,23 +26,24 @@ public class AttackSystem : MonoBehaviour
     GetTarget getTarget;
     NavMeshAgent agent;
     Stats stats;
+    ManaScript manaScript;
 
-    public float autoAttackCooldown;
+    float autoAttackCooldown;
     float autoAttackCounter;
     float autoAttackScaledValue;
     bool isAutoAttackOnCooldown;
 
-    public float firstAbilityCooldown;
+    float firstAbilityCooldown;
     float firstAbilityCounter;
     float firstAbilityScaledValue;
     bool isFirstAbilityOnCooldown;
 
-    public float secondAbilityCooldown;
+    float secondAbilityCooldown;
     float secondAbilityCounter;
     float secondAbilityScaledValue;
     bool isSecondAbilityOnCooldown;
 
-    public float thirdAbilityCooldown;
+    float thirdAbilityCooldown;
     float thirdAbilityCounter;
     float thirdAbilityScaledValue;
     bool isThirdAbilityOnCooldown;
@@ -47,8 +54,21 @@ public class AttackSystem : MonoBehaviour
         myInputManager = new MyInputManager();
         //getTarget = GameObject.FindGameObjectWithTag("PlayerCamera").GetComponent<GetTarget>();
         //getTarget.targetedObject = null;
+
         agent = gameObject.GetComponent<NavMeshAgent>();
         stats = gameObject.GetComponent<Stats>();
+        manaScript = gameObject.GetComponent<ManaScript>();
+
+
+        autoAttackStats = autoAttack.GetComponent<Ability>();
+        firstAbilityStats = firstAbility.GetComponent<Ability>();
+        secondAbilityStats = secondAbility.GetComponent<Ability>();
+        thirdAbilityStats = thirdAbility.GetComponent<Ability>();
+
+        autoAttackCooldown = autoAttackStats.abilityToCast.cooldown;
+        firstAbilityCooldown = firstAbilityStats.abilityToCast.cooldown;
+        secondAbilityCooldown = secondAbilityStats.abilityToCast.cooldown;
+        thirdAbilityCooldown = thirdAbilityStats.abilityToCast.cooldown;
 
         autoAttackCounter = autoAttackCooldown;
         firstAbilityCounter = firstAbilityCooldown;
@@ -62,7 +82,7 @@ public class AttackSystem : MonoBehaviour
     private void Update()
     {
         //COPY & PASTE HELL
-        //MOST FIX, TRIED WITH METHOD BUT DIDNT WORK
+        //MOST FIX, TRIED WITH METHOD BUT DIDNT GET IT TO WORK
         #region Cooldown management
 
         if (isAutoAttackOnCooldown)
@@ -142,10 +162,16 @@ public class AttackSystem : MonoBehaviour
         {
             InstantiateThirdAbility();
         }
+
+        stats.currentMana = manaScript.ManaRegeneration(stats.currentMana, stats.maxMana, stats.manaRegenerationTickRate);
+
+        manaScript.SetManaValue(stats.currentMana);
     }
 
     void InstantiateAutoAttack()
     {
+
+        
         Instantiate(autoAttack, castPoint.transform.position, castPoint.rotation);
         autoAttackCounter = 0;
         isAutoAttackOnCooldown = true;
@@ -160,9 +186,15 @@ public class AttackSystem : MonoBehaviour
 
     void InstantiateSecondAbility()
     {
-        Instantiate(secondAbility, castPoint.transform.position, castPoint.rotation);
-        secondAbilityCounter = 0;
-        isSecondAbilityOnCooldown = true;
+        if (stats.currentMana > secondAbilityStats.abilityToCast.manaCost)
+        {
+
+            Instantiate(secondAbility, castPoint.transform.position, castPoint.rotation);
+            secondAbilityCounter = 0;
+            isSecondAbilityOnCooldown = true;
+            stats.currentMana = manaScript.ManaSubtraction(stats.currentMana, secondAbilityStats.abilityToCast.manaCost);
+
+        }
     }
     void InstantiateThirdAbility()
     {
