@@ -11,6 +11,9 @@ public class DificultyScaling : MonoBehaviour
     public float difficultyScaling;
     bool increaseDifficulty;
 
+    public bool increaseDifficultyByTime;
+    public bool increaseDifficultyByLevel;
+
     //static int globalIncreases;
     //int ownIncreases;
 
@@ -39,19 +42,36 @@ public class DificultyScaling : MonoBehaviour
         //    ownIncreases++;
         //}
 
-        if (increaseDifficulty)
+        if (increaseDifficultyByLevel)
         {
 
-            stats.maxHealth = stats.maxHealth * 1.1f;
-            stats.currentHealth = stats.currentHealth * 1.1f;
-            stats.damage = stats.damage * 1.1f;
-            stats.armor = stats.armor * 1.1f;
-            stats.magicDefense = stats.magicDefense * 1.1f;
-
-            increaseDifficulty = false;
-            //ownIncreases++;
-            StartCoroutine(DifficultyScalingCooldown());
         }
+        else if (increaseDifficultyByTime)
+        {
+
+            if (increaseDifficulty)
+            {
+
+                IncreaseDifficulty(1.1f);
+
+                increaseDifficulty = false;
+                //ownIncreases++;
+                StartCoroutine(DifficultyScalingCooldown());
+            }
+
+        }
+    }
+
+
+    public void IncreaseDifficulty(float statIncreaseMultiplier)
+    {
+
+        stats.maxHealth = stats.maxHealth * statIncreaseMultiplier;
+        stats.currentHealth = stats.currentHealth * statIncreaseMultiplier;
+        stats.damage = stats.damage * statIncreaseMultiplier;
+        stats.armor = stats.armor * statIncreaseMultiplier;
+        stats.magicDefense = stats.magicDefense * statIncreaseMultiplier;
+
     }
 
     IEnumerator DifficultyScalingCooldown()
