@@ -22,7 +22,7 @@ public class PlayerMovementScript : NetworkBehaviour
         }
     }
 
-    //Vet ej hur jag ska reffera scriptet utan att använda mig av inspektorn
+    //Vet ej hur jag ska reffera scriptet utan att anvï¿½nda mig av inspektorn
     NavMeshAgent navMeshAgent;
     Stats stats;
     float rotateSpeed;
@@ -96,8 +96,8 @@ public class PlayerMovementScript : NetworkBehaviour
     void CharacterRotation()
     {
         //cursorPosition = myInputManager.PlayerController.Rotation.ReadValue<Vector2>();
-
-        ray = playerCamera.ScreenPointToRay(Input.mousePosition);
+        ray = playerCamera.ScreenPointToRay(myInputManager.PlayerController.MousePosition.ReadValue<Vector2>());
+        //ray = playerCamera.ScreenPointToRay(Input.mousePosition);
         plane = new Plane(Vector3.up, Vector3.zero);
         
         if (plane.Raycast(ray, out rayDistance))
