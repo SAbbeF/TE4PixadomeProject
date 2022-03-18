@@ -10,16 +10,14 @@ public class PlayerDisplayName : NetworkBehaviour
     [SerializeField]
     private TMP_Text playerActiveName;
 
+    [SerializeField]
+    private TextMesh displayedName;
+
     private Camera playerCamera;
 
     private void Start()
     {
-        if (IsLocalPlayer)
-        {
-            playerActiveName.text = PlayerInputNameTextMashPro.PlayerDisplayedName;
-        }
-        //playerName.text = PlayerInputNameTextMashPro.PlayerDisplayedName;
-
+        displayedName.text = PlayerInputNameTextMashPro.PlayerDisplayedName;
 
         playerCamera = GetComponentInChildren<Camera>();
 
@@ -29,7 +27,13 @@ public class PlayerDisplayName : NetworkBehaviour
         }
 
         if (!IsLocalPlayer) return;
-        
+
+        displayedName.gameObject.SetActive(false);
+
+        playerActiveName.text = PlayerInputNameTextMashPro.PlayerDisplayedName;
+
+        //playerName.text = PlayerInputNameTextMashPro.PlayerDisplayedName;
+
         playerActiveName.color = Color.green;
         //playerName.color = Color.green;
     }

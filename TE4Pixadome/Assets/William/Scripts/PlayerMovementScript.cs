@@ -96,8 +96,8 @@ public class PlayerMovementScript : NetworkBehaviour
     void CharacterRotation()
     {
         //cursorPosition = myInputManager.PlayerController.Rotation.ReadValue<Vector2>();
-        ray = playerCamera.ScreenPointToRay(myInputManager.PlayerController.MousePosition.ReadValue<Vector2>());
-        //ray = playerCamera.ScreenPointToRay(Input.mousePosition);
+        //ray = playerCamera.ScreenPointToRay(MyInputManager.PlayerController.MousePosition.ReadValue<Vector2>());
+        ray = playerCamera.ScreenPointToRay(Input.mousePosition);
         plane = new Plane(Vector3.up, Vector3.zero);
         
         if (plane.Raycast(ray, out rayDistance))
@@ -145,11 +145,13 @@ public class PlayerMovementScript : NetworkBehaviour
     {
         MyInputManager.PlayerController.Enable();
         //myInputManager.PlayerMouse.Enable();
+        //myInputManager.PlayerMouse.Enable();
     }
 
     private void OnDisable()
     {
         MyInputManager.PlayerController.Disable();
+        //MyInputManager.PlayerMouse.Disable();
         //myInputManager.PlayerMouse.Disable();
     }
 }

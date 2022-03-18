@@ -8,14 +8,19 @@ public class CustomizedCharacterSpawner : CharacterSpawner
     private int minimumPlayerCount;
 
     [Scene]
-    [SerializeField]
+    //[SerializeField]
     private string startMenu;
 
     [Header("Room")]
-    [SerializeField]
+    //[SerializeField]
     private NetworkRoomPlayerLobby roomPlayerPrefab;
 
     public List<NetworkRoomPlayerLobby> RoomPlayers { get; }
+
+    [SerializeField]
+    private List<Transform> spawnableLocations;
+
+    private int spawnableLocationIndex;
 
     CustomizedCharacterSpawner()
     {
@@ -38,10 +43,31 @@ public class CustomizedCharacterSpawner : CharacterSpawner
 
     public override void OnServerAddPlayer(INetworkPlayer player)
     {
+        spawnableLocations.Clear();
+
+        GameObject[] spawnPlatforms = GameObject.FindGameObjectsWithTag("SpawnLocation");
+
+        foreach (GameObject spawnPlatform in spawnPlatforms)
+        {
+            Transform spawnLocation = spawnPlatform.GetComponent<Transform>();
+            spawnableLocations.Add(spawnLocation);
+        }
+
         //base.OnServerAddPlayer(player);
-        NetworkIdentity character = Instantiate(PlayerPrefab, new Vector3(450, 0, 480), Quaternion.Euler(Vector3.zero));
+        //NetworkIdentity character = Instantiate(PlayerPrefab, new Vector3(450, 0, 480), Quaternion.Euler(Vector3.zero));
+        Transform spawnPosition = GetSpawnLoaction();
+        NetworkIdentity character = Instantiate(PlayerPrefab, spawnPosition.position, spawnPosition.rotation);
+        
         ServerObjectManager.AddCharacter(player, character.gameObject);
         //DontDestroyOnLoad(character); 
+    }
+
+    public Transform GetSpawnLoaction()
+    {
+        Transform spawnLocation = spawnableLocations[spawnableLocationIndex];
+        spawnableLocationIndex = (spawnableLocationIndex + 1) % spawnableLocations.Count;
+
+        return spawnLocation;
     }
 
     public void SpawnPlayer(INetworkPlayer player)
