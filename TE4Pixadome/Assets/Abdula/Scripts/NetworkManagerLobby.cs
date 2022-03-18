@@ -16,6 +16,8 @@ public class NetworkManagerLobby : NetworkManager
     public static event Action OnClientConnected;
     public static event Action OnClientDisconnect;
 
+    private Dictionary<ulong, PlayerData> clientData;
+
     NetworkManagerLobby()
     {
         startMenu = string.Empty;
@@ -47,6 +49,10 @@ public class NetworkManagerLobby : NetworkManager
     private void OnStartServer()
     {
         ClientObjectManager.spawnPrefabs = Resources.LoadAll<NetworkIdentity>("SpawnablePrefabs").ToList();
+
+        clientData = new Dictionary<ulong, PlayerData>();
+
+        
     }
 
     private void OnClientStarted()
