@@ -105,7 +105,7 @@ public class Ability : MonoBehaviour
             stats = collider.GetComponent<Stats>();
             health = collider.GetComponent<HealthScript>();
 
-            stats.currentHealth = health.TakeHealthDamage(stats.currentHealth, /*stats.damage * */abilityToCast.damageScale, collider.gameObject);
+            stats.currentHealth = health.TakeHealthDamage(stats.currentHealth, /*stats.damage * */abilityToCast.damageScale, collider.gameObject, collider.gameObject);
 
             if (collider.GetComponent<Healtbar>() != null)
             {
