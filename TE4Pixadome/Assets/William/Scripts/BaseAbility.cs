@@ -46,7 +46,7 @@ public class BaseAbility : MonoBehaviour
 
     }
 
-    protected void DealDamageOnCollision(Collider collider)
+    protected void DealDamageOnCollision(Collider collider, GameObject damageOwner)
     {
 
         if (collider.GetComponent<HealthScript>() != null)
@@ -55,7 +55,7 @@ public class BaseAbility : MonoBehaviour
             stats = collider.GetComponent<Stats>();
             health = collider.GetComponent<HealthScript>();
 
-            stats.currentHealth = health.TakeHealthDamage(stats.currentHealth, /*stats.damage * */damageScale, collider.gameObject);
+            stats.currentHealth = health.TakeHealthDamage(stats.currentHealth, /*stats.damage * */damageScale, collider.gameObject, damageOwner);
 
             if (collider.GetComponent<Healtbar>() != null)
             {

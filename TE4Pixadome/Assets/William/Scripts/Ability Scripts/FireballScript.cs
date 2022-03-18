@@ -5,7 +5,7 @@ using UnityEngine;
 public class FireballScript : BaseAbility
 {
 
-    
+    public GameObject owner;
 
     private void Update()
     {
@@ -17,7 +17,7 @@ public class FireballScript : BaseAbility
     {
         if (other.GetComponent<HealthScript>() != null)
         {
-            DealDamageOnCollision(other);
+            DealDamageOnCollision(other, owner);
             DestroySelf(other);
         }
 
