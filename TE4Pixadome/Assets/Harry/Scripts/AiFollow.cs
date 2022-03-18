@@ -73,7 +73,12 @@ public class AiFollow : MonoBehaviour
                 {
                     
                     rangeAttack = Instantiate(autoAttack, castPoint.transform.position, castPoint.rotation);
-                    rangeAttack.GetComponent<FireballScript>().owner = agent.gameObject;
+                    if (rangeAttack.GetComponent<FireballScript>() != null)
+                    {
+
+                        rangeAttack.GetComponent<FireballScript>().owner = agent.gameObject;
+                    
+                    }
 
                     
                     timer = 0;
