@@ -24,7 +24,7 @@ public class ManaScript : MonoBehaviour
     public float ManaSubtraction(float currentMana, float manaCost)
     {
 
-        currentMana =- manaCost;
+        currentMana = currentMana - manaCost;
 
         return currentMana;
 

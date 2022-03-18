@@ -31,6 +31,14 @@ public class PlayerMovementScript : MonoBehaviour
     float rotationAngle;
 
 
+    void Awake()
+    {
+        myInputManager = new MyInputManager();
+        //myInputManager.PlayerController.MousePosition.performed += ctx => RotateCharacter(ctx.ReadValue<Vector2>());
+        //myInputManager.PlayerMouse.Move.performed += _ => MoveCharacterWithMouse();
+
+    }
+
     void Start()
     {
 
@@ -43,13 +51,7 @@ public class PlayerMovementScript : MonoBehaviour
     }
 
     
-    void Awake()
-    {
-        myInputManager = new MyInputManager();
-        
-        //myInputManager.PlayerMouse.Move.performed += _ => MoveCharacterWithMouse();
-
-    }
+  
 
     private void Update()
     {
@@ -69,9 +71,9 @@ public class PlayerMovementScript : MonoBehaviour
 
     void CaracterRotation()
     {
-        //cursorPosition = myInputManager.PlayerController.Rotation.ReadValue<Vector2>();
-        ray = playerCamera.ScreenPointToRay(myInputManager.PlayerController.MousePosition.ReadValue<Vector2>());
-        //ray = playerCamera.ScreenPointToRay(Input.mousePosition);
+       
+        //ray = playerCamera.ScreenPointToRay(myInputManager.PlayerController.MousePosition.ReadValue<Vector2>());
+        ray = playerCamera.ScreenPointToRay(Input.mousePosition);
         plane = new Plane(Vector3.up, Vector3.zero);
         
         if (plane.Raycast(ray, out rayDistance))
@@ -82,6 +84,23 @@ public class PlayerMovementScript : MonoBehaviour
             transform.rotation = Quaternion.Euler(0, rotationAngle, 0);
 
         }
+    }
+
+    void RotateCharacter(Vector2 mousePosition)
+    {
+        ray = playerCamera.ScreenPointToRay(mousePosition);
+
+        plane = new Plane(Vector3.up, Vector3.zero);
+
+        if (plane.Raycast(ray, out rayDistance))
+        {
+            cursorPosition = ray.GetPoint(rayDistance);
+            direction = cursorPosition - transform.position;
+            rotationAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Euler(0, rotationAngle, 0);
+
+        }
+
     }
 
     void MoveCharacterWithMouse()

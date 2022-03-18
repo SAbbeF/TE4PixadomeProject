@@ -12,17 +12,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e993ce982654c9e48b00ce63f17939be, type: 3}
   m_Name: FireWall
   m_EditorClassIdentifier: 
-  abilityImage: {fileID: 0}
+  abilityIcon: {fileID: 793639963870264412, guid: 7ed87f420320bf54cb398d353f8ec9c2, type: 3}
   damageScale: 20
   speed: 0
-  manaCost: 0
+  manaCost: 90
   lifeTime: 4
   cooldown: 70
   destroyOnCollision: 0
   dealDamage: 0
   isExplosion: 0
+  explodeOnCollision: 0
   durationUntilExplosion: 0
   xRadius: 0
   yRadius: 0
   zRadius: 0
   isSkillshot: 0
+  healTarget: 0
+  selfHeal: 0
+  destroyProjectiles: 0
