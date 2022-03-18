@@ -167,6 +167,15 @@ public partial class @MyInputManager : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""MousePosition"",
+                    ""type"": ""Value"",
+                    ""id"": ""45ccd723-29a4-4b11-89f0-42f1509b2a55"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -268,6 +277,17 @@ public partial class @MyInputManager : IInputActionCollection2, IDisposable
                     ""action"": ""AutoAttack"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d43cc272-c728-41db-9797-9b90c4331565"",
+                    ""path"": ""<Mouse>/delta"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MousePosition"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -306,6 +326,7 @@ public partial class @MyInputManager : IInputActionCollection2, IDisposable
         m_PlayerController_FirstAbility = m_PlayerController.FindAction("FirstAbility", throwIfNotFound: true);
         m_PlayerController_SecondAbility = m_PlayerController.FindAction("SecondAbility", throwIfNotFound: true);
         m_PlayerController_ThirdAbility = m_PlayerController.FindAction("ThirdAbility", throwIfNotFound: true);
+        m_PlayerController_MousePosition = m_PlayerController.FindAction("MousePosition", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -452,6 +473,7 @@ public partial class @MyInputManager : IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerController_FirstAbility;
     private readonly InputAction m_PlayerController_SecondAbility;
     private readonly InputAction m_PlayerController_ThirdAbility;
+    private readonly InputAction m_PlayerController_MousePosition;
     public struct PlayerControllerActions
     {
         private @MyInputManager m_Wrapper;
@@ -461,6 +483,7 @@ public partial class @MyInputManager : IInputActionCollection2, IDisposable
         public InputAction @FirstAbility => m_Wrapper.m_PlayerController_FirstAbility;
         public InputAction @SecondAbility => m_Wrapper.m_PlayerController_SecondAbility;
         public InputAction @ThirdAbility => m_Wrapper.m_PlayerController_ThirdAbility;
+        public InputAction @MousePosition => m_Wrapper.m_PlayerController_MousePosition;
         public InputActionMap Get() { return m_Wrapper.m_PlayerController; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -485,6 +508,9 @@ public partial class @MyInputManager : IInputActionCollection2, IDisposable
                 @ThirdAbility.started -= m_Wrapper.m_PlayerControllerActionsCallbackInterface.OnThirdAbility;
                 @ThirdAbility.performed -= m_Wrapper.m_PlayerControllerActionsCallbackInterface.OnThirdAbility;
                 @ThirdAbility.canceled -= m_Wrapper.m_PlayerControllerActionsCallbackInterface.OnThirdAbility;
+                @MousePosition.started -= m_Wrapper.m_PlayerControllerActionsCallbackInterface.OnMousePosition;
+                @MousePosition.performed -= m_Wrapper.m_PlayerControllerActionsCallbackInterface.OnMousePosition;
+                @MousePosition.canceled -= m_Wrapper.m_PlayerControllerActionsCallbackInterface.OnMousePosition;
             }
             m_Wrapper.m_PlayerControllerActionsCallbackInterface = instance;
             if (instance != null)
@@ -504,6 +530,9 @@ public partial class @MyInputManager : IInputActionCollection2, IDisposable
                 @ThirdAbility.started += instance.OnThirdAbility;
                 @ThirdAbility.performed += instance.OnThirdAbility;
                 @ThirdAbility.canceled += instance.OnThirdAbility;
+                @MousePosition.started += instance.OnMousePosition;
+                @MousePosition.performed += instance.OnMousePosition;
+                @MousePosition.canceled += instance.OnMousePosition;
             }
         }
     }
@@ -534,5 +563,6 @@ public partial class @MyInputManager : IInputActionCollection2, IDisposable
         void OnFirstAbility(InputAction.CallbackContext context);
         void OnSecondAbility(InputAction.CallbackContext context);
         void OnThirdAbility(InputAction.CallbackContext context);
+        void OnMousePosition(InputAction.CallbackContext context);
     }
 }

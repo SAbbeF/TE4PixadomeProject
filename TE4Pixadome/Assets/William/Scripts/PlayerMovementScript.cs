@@ -70,7 +70,8 @@ public class PlayerMovementScript : MonoBehaviour
     void CaracterRotation()
     {
         //cursorPosition = myInputManager.PlayerController.Rotation.ReadValue<Vector2>();
-        ray = playerCamera.ScreenPointToRay(Input.mousePosition);
+        ray = playerCamera.ScreenPointToRay(myInputManager.PlayerController.MousePosition.ReadValue<Vector2>());
+        //ray = playerCamera.ScreenPointToRay(Input.mousePosition);
         plane = new Plane(Vector3.up, Vector3.zero);
         
         if (plane.Raycast(ray, out rayDistance))

@@ -11,6 +11,8 @@ public class FireExplosionScript : BaseAbility
     float explosionTimer = 0;
     Vector3 explosionSize = new Vector3(20, 20, 20);
 
+
+
     private void Update()
     {
 

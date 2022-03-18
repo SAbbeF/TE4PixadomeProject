@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3343113919068752165}
   - component: {fileID: -3848865961550642490}
   - component: {fileID: -3992987323718077058}
-  - component: {fileID: 1702531372001880933}
+  - component: {fileID: -6104197776880910587}
   m_Layer: 0
   m_Name: FireWall
   m_TagString: Untagged
@@ -63,7 +63,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &1702531372001880933
+--- !u!114 &-6104197776880910587
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -72,14 +72,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 4807025373962967116}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29ebd57762a353741904a58f012fa264, type: 3}
+  m_Script: {fileID: 11500000, guid: a5ae6a1252b81ff41a445ac1ad519dee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageScale: 20
-  speed: 0
-  manaCost: 0
-  lifeTime: 3
-  abilityImage: {fileID: 0}
+  abilityToCast: {fileID: 11400000, guid: 5b50acb958408fa468921b8c5329cd2d, type: 2}
 --- !u!1 &8717186169891214729
 GameObject:
   m_ObjectHideFlags: 0
