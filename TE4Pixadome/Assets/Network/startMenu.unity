@@ -2029,6 +2029,7 @@ GameObject:
   - component: {fileID: 780754266}
   - component: {fileID: 780754265}
   - component: {fileID: 780754264}
+  - component: {fileID: 780754267}
   m_Layer: 0
   m_Name: NextLevel
   m_TagString: Untagged
@@ -2058,7 +2059,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 780754262}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 10, y: 3, z: 10}
@@ -2112,6 +2113,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 780754262}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &780754267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 780754262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31240fefe6ed9a449823cb0adcc975bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  networkManager: {fileID: 0}
 --- !u!1 &785341492
 GameObject:
   m_ObjectHideFlags: 0
