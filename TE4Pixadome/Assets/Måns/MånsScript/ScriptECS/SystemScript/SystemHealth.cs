@@ -4,11 +4,13 @@ public class SystemHealth : SystemBase
 
     protected override void OnUpdate()
     {
-        Entities.WithAll<HealthTag>().ForEach((Entity entity) =>
+        Entities.WithAll<HealthTag.HealthTag>().ForEach((Entity entity) =>
          {
 
+             
 
 
-         }).Run();
+
+        }).Run();
     }
 }

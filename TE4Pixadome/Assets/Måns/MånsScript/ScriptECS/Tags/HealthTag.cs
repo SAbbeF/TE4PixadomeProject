@@ -1,6 +1,6 @@
 using Unity.Entities;
 
-namespace Tags 
+namespace HealthTag 
 { 
 
     [GenerateAuthoringComponent]
