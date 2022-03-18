@@ -28,7 +28,7 @@ public class HarryTestPlayer : MonoBehaviour
     {
         if (check)
         {
-            health = healthScript.TakeHealthDamage(health, damage, deth);
+            health = healthScript.TakeHealthDamage(health, damage, deth, deth);
             healtbar.SetHealthValue(health);
 
         }

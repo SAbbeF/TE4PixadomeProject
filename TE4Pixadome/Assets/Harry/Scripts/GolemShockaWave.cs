@@ -5,6 +5,7 @@ using UnityEngine;
 public class GolemShockaWave : EnemyMelee
 {
     public AiFollow aiFollow;
+    GameObject golem;
 
     private void OnTriggerStay(Collider collider)
     {
@@ -17,7 +18,7 @@ public class GolemShockaWave : EnemyMelee
                     stats = collider.GetComponent<Stats>();
                     health = collider.GetComponent<HealthScript>();
 
-                    stats.currentHealth = health.TakeHealthDamage(stats.currentHealth, damageAmount, collider.gameObject);
+                    stats.currentHealth = health.TakeHealthDamage(stats.currentHealth, damageAmount, collider.gameObject, golem);
                 }
 
                 isUsingSpecial = false;

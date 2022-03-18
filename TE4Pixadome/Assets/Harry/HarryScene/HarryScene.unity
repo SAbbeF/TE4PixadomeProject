@@ -130,6 +130,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 102408334, guid: 2846f7abd28af1a418de11d262136114, type: 3}
+      propertyPath: weapon
+      value: 
+      objectReference: {fileID: 1382150657}
     - target: {fileID: 870432217, guid: 2846f7abd28af1a418de11d262136114, type: 3}
       propertyPath: target
       value: 
@@ -523,6 +527,30 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 831fcc17d88a1d24ebe12c516885e951, type: 3}
+--- !u!1 &214647725 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3840921342732592128, guid: 3ef1f7ea38b26404998cc7dce80608c1, type: 3}
+  m_PrefabInstance: {fileID: 1466154391}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &214647735
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 214647725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7dd41e3a695902f45a68cd4babf295d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentXp: 0
+  xpNeededToLevel: 20
+  maxHealthIncrease: 2
+  maxManaIncrease: 2
+  damageIncrease: 2
+  armourIncrease: 2
+  magicDefenseIncrease: 2
 --- !u!1 &435486886
 GameObject:
   m_ObjectHideFlags: 0
@@ -606,6 +634,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!1 &1382150657 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2739905735192183578, guid: 2846f7abd28af1a418de11d262136114, type: 3}
+  m_PrefabInstance: {fileID: 44251268}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1452903431
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -735,7 +768,19 @@ PrefabInstance:
       value: 145801047
       objectReference: {fileID: 0}
     - target: {fileID: 5562292935960265056, guid: 3ef1f7ea38b26404998cc7dce80608c1, type: 3}
+      propertyPath: armor
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5562292935960265056, guid: 3ef1f7ea38b26404998cc7dce80608c1, type: 3}
       propertyPath: damage
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5562292935960265056, guid: 3ef1f7ea38b26404998cc7dce80608c1, type: 3}
+      propertyPath: maxMana
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5562292935960265056, guid: 3ef1f7ea38b26404998cc7dce80608c1, type: 3}
+      propertyPath: magicDefense
       value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -1074,6 +1119,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47477198570f296498c03704efbdac61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  xpGetWhenKilled: 0
 --- !u!114 &1759380531
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1635,6 +1681,10 @@ PrefabInstance:
     - target: {fileID: 8446487842113246855, guid: a8499dafa5c1e0344acf3e661cc09c14, type: 3}
       propertyPath: _sceneId
       value: 1725886954
+      objectReference: {fileID: 0}
+    - target: {fileID: 8642982054517425421, guid: a8499dafa5c1e0344acf3e661cc09c14, type: 3}
+      propertyPath: xpGetWhenKilled
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a8499dafa5c1e0344acf3e661cc09c14, type: 3}

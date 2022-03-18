@@ -15,6 +15,8 @@ public class AiFollow : MonoBehaviour
     public Transform castPoint;
     public EnemyMelee enemyMelee;
 
+    GameObject rangeAttack;
+
     public float lookAtEnmenySpeed;
     float distanceToGoal;
     public int goalRange;
@@ -70,7 +72,10 @@ public class AiFollow : MonoBehaviour
                 if (timer > timeBetweenAttacks)
                 {
                     
-                    Instantiate(autoAttack, castPoint.transform.position, castPoint.rotation);
+                    rangeAttack = Instantiate(autoAttack, castPoint.transform.position, castPoint.rotation);
+                    rangeAttack.GetComponent<FireballScript>().owner = agent.gameObject;
+
+                    
                     timer = 0;
 
                 }

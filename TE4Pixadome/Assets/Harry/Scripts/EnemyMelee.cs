@@ -79,7 +79,7 @@ public class EnemyMelee : MonoBehaviour
                 stats = collider.GetComponent<Stats>();
                 health = collider.GetComponent<HealthScript>();
 
-                stats.currentHealth = health.TakeHealthDamage(stats.currentHealth, damageAmount * 3, collider.gameObject);
+                stats.currentHealth = health.TakeHealthDamage(stats.currentHealth, damageAmount * 3, collider.gameObject, weapon);
             }
 
         }
