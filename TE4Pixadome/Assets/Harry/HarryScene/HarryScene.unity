@@ -545,7 +545,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentXp: 0
-  xpNeededToLevel: 20
+  xpNeededToLevel: 24
   maxHealthIncrease: 2
   maxManaIncrease: 2
   damageIncrease: 2
@@ -769,19 +769,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5562292935960265056, guid: 3ef1f7ea38b26404998cc7dce80608c1, type: 3}
       propertyPath: armor
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5562292935960265056, guid: 3ef1f7ea38b26404998cc7dce80608c1, type: 3}
       propertyPath: damage
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5562292935960265056, guid: 3ef1f7ea38b26404998cc7dce80608c1, type: 3}
       propertyPath: maxMana
-      value: 2
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5562292935960265056, guid: 3ef1f7ea38b26404998cc7dce80608c1, type: 3}
+      propertyPath: maxHealth
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 5562292935960265056, guid: 3ef1f7ea38b26404998cc7dce80608c1, type: 3}
       propertyPath: magicDefense
-      value: 2
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5562292935960265056, guid: 3ef1f7ea38b26404998cc7dce80608c1, type: 3}
+      propertyPath: currentHealth
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3ef1f7ea38b26404998cc7dce80608c1, type: 3}
@@ -1139,6 +1147,7 @@ MonoBehaviour:
   magicDefense: 0
   maxMana: 0
   currentMana: 0
+  manaRegenerationTickRate: 0
   attackRange: 0
   attackSpeed: 0
   cooldownReduction: 0
@@ -1390,6 +1399,7 @@ MonoBehaviour:
   magicDefense: 0
   maxMana: 0
   currentMana: 0
+  manaRegenerationTickRate: 0
   attackRange: 0
   attackSpeed: 0
   cooldownReduction: 0
