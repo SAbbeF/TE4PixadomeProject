@@ -417,22 +417,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 124973648441296687, guid: 17393d2e36b7ae349878b883f1121406, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.00036236632
-      objectReference: {fileID: 0}
-    - target: {fileID: 124973648441296687, guid: 17393d2e36b7ae349878b883f1121406, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -23.000244
-      objectReference: {fileID: 0}
-    - target: {fileID: 267029017382513219, guid: 17393d2e36b7ae349878b883f1121406, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.0001393758
-      objectReference: {fileID: 0}
-    - target: {fileID: 267029017382513219, guid: 17393d2e36b7ae349878b883f1121406, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -22.99997
-      objectReference: {fileID: 0}
     - target: {fileID: 885452364972639577, guid: 17393d2e36b7ae349878b883f1121406, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -497,6 +481,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 1276001430993804821, guid: 17393d2e36b7ae349878b883f1121406, type: 3}
+      propertyPath: m_FillAmount
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1682759000899786515, guid: 17393d2e36b7ae349878b883f1121406, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
@@ -516,6 +504,10 @@ PrefabInstance:
     - target: {fileID: 2162463296749418755, guid: 17393d2e36b7ae349878b883f1121406, type: 3}
       propertyPath: m_LocalPosition.y
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 2420023124316955840, guid: 17393d2e36b7ae349878b883f1121406, type: 3}
+      propertyPath: m_Value
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2420023125224982096, guid: 17393d2e36b7ae349878b883f1121406, type: 3}
       propertyPath: m_AnchorMax.x
@@ -589,14 +581,6 @@ PrefabInstance:
       propertyPath: cooldownReductio
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 4833941227149951932, guid: 17393d2e36b7ae349878b883f1121406, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.0001393758
-      objectReference: {fileID: 0}
-    - target: {fileID: 4833941227149951932, guid: 17393d2e36b7ae349878b883f1121406, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -22.99997
-      objectReference: {fileID: 0}
     - target: {fileID: 5304410404472804703, guid: 17393d2e36b7ae349878b883f1121406, type: 3}
       propertyPath: m_Name
       value: VirtualCamera
@@ -608,6 +592,10 @@ PrefabInstance:
     - target: {fileID: 5594244109746129691, guid: 17393d2e36b7ae349878b883f1121406, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6023403531408793583, guid: 17393d2e36b7ae349878b883f1121406, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6096392120646563925, guid: 17393d2e36b7ae349878b883f1121406, type: 3}
       propertyPath: m_LocalPosition.z
@@ -652,6 +640,10 @@ PrefabInstance:
     - target: {fileID: 6883953584907578650, guid: 17393d2e36b7ae349878b883f1121406, type: 3}
       propertyPath: autoAttackImage
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6887748342821080050, guid: 17393d2e36b7ae349878b883f1121406, type: 3}
+      propertyPath: m_FillAmount
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7446375765545556585, guid: 17393d2e36b7ae349878b883f1121406, type: 3}
       propertyPath: m_LocalPosition.z
@@ -725,6 +717,10 @@ PrefabInstance:
       propertyPath: m_Value
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8185943284928815195, guid: 17393d2e36b7ae349878b883f1121406, type: 3}
+      propertyPath: m_WholeNumbers
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8185943284928815197, guid: 17393d2e36b7ae349878b883f1121406, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0.00036236632
@@ -748,6 +744,10 @@ PrefabInstance:
     - target: {fileID: 8837168521481960845, guid: 17393d2e36b7ae349878b883f1121406, type: 3}
       propertyPath: m_PlaneDistance
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 9026405960196833332, guid: 17393d2e36b7ae349878b883f1121406, type: 3}
+      propertyPath: m_FillAmount
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9149489977289091341, guid: 17393d2e36b7ae349878b883f1121406, type: 3}
       propertyPath: _sceneId
@@ -1008,6 +1008,7 @@ MonoBehaviour:
   magicDefense: 20
   maxMana: 100
   currentMana: 0
+  manaRegenerationTickRate: 0
   attackRange: 2
   attackSpeed: 0
   cooldownReduction: 0

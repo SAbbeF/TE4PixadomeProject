@@ -12,17 +12,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e993ce982654c9e48b00ce63f17939be, type: 3}
   m_Name: FireBall
   m_EditorClassIdentifier: 
-  abilityImage: {fileID: 0}
+  abilityIcon: {fileID: 9004325449962690524, guid: 4a9ed6b6aaba9f440a3ef33d5b88ac99, type: 3}
   damageScale: 10
-  speed: 2
-  manaCost: 0
+  speed: 3
+  manaCost: 20
   lifeTime: 2
   cooldown: 10
   destroyOnCollision: 1
   dealDamage: 1
   isExplosion: 0
+  explodeOnCollision: 0
   durationUntilExplosion: 0
   xRadius: 0
   yRadius: 0
   zRadius: 0
   isSkillshot: 1
+  healTarget: 0
+  selfHeal: 0
+  destroyProjectiles: 0

@@ -72,7 +72,7 @@ public class Ability : MonoBehaviour
             DealDamageOnCollision(other);
         }
 
-        if (abilityToCast.healDamage)
+        if (abilityToCast.healTarget)
         {
             HealOnCollision(other);
         }
@@ -82,7 +82,7 @@ public class Ability : MonoBehaviour
             transform.localScale = explosionSize;
         }
 
-        if (abilityToCast.destroyOnCollision)
+        if (abilityToCast.destroyOnCollision && other.GetComponent<HealthScript>() != null)
         {
             Destroy(gameObject);
         }
