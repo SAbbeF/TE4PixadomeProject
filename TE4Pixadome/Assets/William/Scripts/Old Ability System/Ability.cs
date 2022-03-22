@@ -19,6 +19,8 @@ public class Ability : MonoBehaviour
 
     Vector3 explosionSize;
 
+    public GameObject spellCaster;
+
     private void Awake()
     {
 
@@ -45,7 +47,7 @@ public class Ability : MonoBehaviour
         }
 
         //EXPLOSION
-        if (abilityToCast.isExplosion)
+        if (abilityToCast.explodeAfterSetAmountOfTime)
         {
             explosionTimer += Time.fixedDeltaTime;
 
@@ -105,7 +107,7 @@ public class Ability : MonoBehaviour
             stats = collider.GetComponent<Stats>();
             health = collider.GetComponent<HealthScript>();
 
-            stats.currentHealth = health.TakeHealthDamage(stats.currentHealth, /*stats.damage * */abilityToCast.damageScale, collider.gameObject);
+            stats.currentHealth = health.TakeHealthDamage(stats.currentHealth, /*stats.damage * */abilityToCast.damageScale, collider.gameObject, spellCaster);
 
             if (collider.GetComponent<Healtbar>() != null)
             {

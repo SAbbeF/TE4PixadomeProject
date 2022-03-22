@@ -136,7 +136,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad6ac7eab15443347a660d0bbe757721, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 5839058141734303725, guid: 831fcc17d88a1d24ebe12c516885e951, type: 3}
+  target: {fileID: 0}
   agent: {fileID: 3840921342732592134}
   playerTarget: {fileID: 0}
   attackRange: {fileID: 3840921340967077519}
@@ -176,6 +176,7 @@ GameObject:
   - component: {fileID: 5362859390996062071}
   - component: {fileID: 7611893183342943458}
   - component: {fileID: 5562292935960265056}
+  - component: {fileID: 214647735}
   m_Layer: 0
   m_Name: RangeEnemy
   m_TagString: Enemy
@@ -357,6 +358,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47477198570f296498c03704efbdac61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  xpGetWhenKilled: 0
 --- !u!114 &5562292935960265056
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -369,15 +371,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06c8cc99f9791734c8a559cd2443ffc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 0
+  damage: 2
   maxHealth: 50
   currentHealth: 0
-  armor: 0
-  magicDefense: 0
-  maxMana: 0
+  armor: 2
+  magicDefense: 2
+  maxMana: 2
   currentMana: 0
   manaRegenerationTickRate: 0
   attackRange: 0
   attackSpeed: 0
   cooldownReduction: 0
   movementSpeed: 0
+--- !u!114 &214647735
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3840921342732592128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7dd41e3a695902f45a68cd4babf295d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentXp: 0
+  xpNeededToLevel: 20
+  maxHealthIncrease: 2
+  maxManaIncrease: 2
+  damageIncrease: 2
+  armourIncrease: 2
+  magicDefenseIncrease: 2

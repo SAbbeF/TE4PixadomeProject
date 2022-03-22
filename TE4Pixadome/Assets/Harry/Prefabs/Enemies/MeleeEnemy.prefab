@@ -136,7 +136,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad6ac7eab15443347a660d0bbe757721, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 5839058141734303725, guid: 831fcc17d88a1d24ebe12c516885e951, type: 3}
+  target: {fileID: 0}
   agent: {fileID: 3499678866060128907}
   playerTarget: {fileID: 0}
   attackRange: {fileID: 3499678864294088706}
@@ -358,6 +358,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47477198570f296498c03704efbdac61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  xpGetWhenKilled: 20
 --- !u!114 &3809720924406693754
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -504,3 +505,5 @@ MonoBehaviour:
   canAttack: 1
   attackCooldown: 2
   damageAmount: 5
+  attacksBeforeSpecial: 0
+  attackCounter: 0
