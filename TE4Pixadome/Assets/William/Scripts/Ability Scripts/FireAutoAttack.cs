@@ -5,6 +5,8 @@ using UnityEngine;
 public class FireAutoAttack : BaseAbility
 {
 
+    public GameObject owner;
+
     void Update()
     {
 
@@ -17,7 +19,7 @@ public class FireAutoAttack : BaseAbility
 
         if (other.GetComponent<HealthScript>() != null)
         {
-            DealDamageOnCollision(other);
+            DealDamageOnCollision(other, owner);
             DestroySelf(other);
         }
     }

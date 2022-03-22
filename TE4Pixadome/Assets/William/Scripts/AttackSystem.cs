@@ -6,19 +6,29 @@ using UnityEngine.UI;
 
 public class AttackSystem : MonoBehaviour
 {
+
+    #region Variables
+
     public GameObject autoAttack;
     
     public GameObject firstAbility;
     public GameObject secondAbility;
     public GameObject thirdAbility;
-    public Image firstAbilityImage;
-    public Image secondAbilityImage;
-    public Image thirdAbilityImage;
+    Image firstAbilityTempImage;
+    Image secondAbilityTempImage;
+    Image thirdAbilityTempImage;
+    Image firstAbilityIcon;
+    Image secondAbilityIcon;
+    Image thirdAbilityIcon;
     Ability firstAbilityStats;
     Ability secondAbilityStats;
     Ability thirdAbilityStats;
     Ability autoAttackStats;
 
+    //[SerializeField] public Canvas playerHud;
+    public Transform firstSlot;
+    public Transform secondSlot;
+    public Transform thirdSlot;
 
     public Transform castPoint;
 
@@ -48,6 +58,7 @@ public class AttackSystem : MonoBehaviour
     float thirdAbilityScaledValue;
     bool isThirdAbilityOnCooldown;
 
+    #endregion
 
     private void Awake()
     {
@@ -58,12 +69,19 @@ public class AttackSystem : MonoBehaviour
         agent = gameObject.GetComponent<NavMeshAgent>();
         stats = gameObject.GetComponent<Stats>();
         manaScript = gameObject.GetComponent<ManaScript>();
-
+        
 
         autoAttackStats = autoAttack.GetComponent<Ability>();
         firstAbilityStats = firstAbility.GetComponent<Ability>();
         secondAbilityStats = secondAbility.GetComponent<Ability>();
         thirdAbilityStats = thirdAbility.GetComponent<Ability>();
+
+
+        firstAbilityTempImage = firstAbilityStats.abilityToCast.abilityIcon;
+        secondAbilityTempImage = secondAbilityStats.abilityToCast.abilityIcon;
+        thirdAbilityTempImage = thirdAbilityStats.abilityToCast.abilityIcon;
+
+        InstantiateAbilityIcons(firstAbilityTempImage, secondAbilityTempImage, thirdAbilityTempImage);
 
         autoAttackCooldown = autoAttackStats.abilityToCast.cooldown;
         firstAbilityCooldown = firstAbilityStats.abilityToCast.cooldown;
@@ -81,6 +99,7 @@ public class AttackSystem : MonoBehaviour
 
     private void Update()
     {
+
         //COPY & PASTE HELL
         //MOST FIX, TRIED WITH METHOD BUT DIDNT GET IT TO WORK
         #region Cooldown management
@@ -95,6 +114,7 @@ public class AttackSystem : MonoBehaviour
             }
         }
 
+        
 
         //----------------------------------------------------------------------
 
@@ -109,7 +129,7 @@ public class AttackSystem : MonoBehaviour
         }
 
         firstAbilityScaledValue = firstAbilityCounter / firstAbilityCooldown;
-        firstAbilityImage.fillAmount = firstAbilityScaledValue;
+        firstAbilityIcon.fillAmount = firstAbilityScaledValue;
 
         //----------------------------------------------------------------------
 
@@ -124,7 +144,7 @@ public class AttackSystem : MonoBehaviour
         }
 
         secondAbilityScaledValue = secondAbilityCounter / secondAbilityCooldown;
-        secondAbilityImage.fillAmount = secondAbilityScaledValue;
+        secondAbilityIcon.fillAmount = secondAbilityScaledValue;
 
         //----------------------------------------------------------------------
 
@@ -139,7 +159,7 @@ public class AttackSystem : MonoBehaviour
         }
 
         thirdAbilityScaledValue = thirdAbilityCounter / thirdAbilityCooldown;
-        thirdAbilityImage.fillAmount = thirdAbilityScaledValue;
+        thirdAbilityIcon.fillAmount = thirdAbilityScaledValue;
         #endregion
 
         if (!isAutoAttackOnCooldown && myInputManager.PlayerController.AutoAttack.triggered)
@@ -179,9 +199,15 @@ public class AttackSystem : MonoBehaviour
 
     void InstantiateFirstAbility()
     {
-        Instantiate(firstAbility, castPoint.transform.position, castPoint.rotation);
-        firstAbilityCounter = 0;
-        isFirstAbilityOnCooldown = true;
+        if (stats.currentMana > firstAbilityStats.abilityToCast.manaCost)
+        {
+
+            Instantiate(firstAbility, castPoint.transform.position, castPoint.rotation);
+            firstAbilityCounter = 0;
+            isFirstAbilityOnCooldown = true;
+            stats.currentMana = manaScript.ManaSubtraction(stats.currentMana, firstAbilityStats.abilityToCast.manaCost);
+
+        }
     }
 
     void InstantiateSecondAbility()
@@ -198,9 +224,15 @@ public class AttackSystem : MonoBehaviour
     }
     void InstantiateThirdAbility()
     {
-        Instantiate(thirdAbility, castPoint.transform.position, castPoint.rotation);
-        thirdAbilityCounter = 0;
-        isThirdAbilityOnCooldown = true;
+        if (stats.currentMana > thirdAbilityStats.abilityToCast.manaCost)
+        {
+
+            Instantiate(thirdAbility, castPoint.transform.position, castPoint.rotation);
+            thirdAbilityCounter = 0;
+            isThirdAbilityOnCooldown = true;
+            stats.currentMana = manaScript.ManaSubtraction(stats.currentMana, thirdAbilityStats.abilityToCast.manaCost);
+
+        }
     }
 
     bool CooldownHandler(float cooldownCounter, float cooldownDuration, float scaledValue, Image icon)
@@ -219,6 +251,15 @@ public class AttackSystem : MonoBehaviour
             return true;
         }
 
+
+    }
+
+    void InstantiateAbilityIcons(Image firstIcon, Image secondIcon, Image thirdIcon)
+    {
+
+        firstAbilityIcon = Instantiate(firstIcon, firstSlot);
+        secondAbilityIcon = Instantiate(secondIcon, secondSlot);
+        thirdAbilityIcon = Instantiate(thirdIcon, thirdSlot);
 
     }
 

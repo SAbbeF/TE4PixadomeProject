@@ -7,6 +7,7 @@ TagManager:
   - NetworkManager
   - Enemy
   - PlayerCamera
+  - Ground
   layers:
   - Default
   - TransparentFX

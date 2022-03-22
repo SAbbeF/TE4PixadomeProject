@@ -15,6 +15,8 @@ public class AiFollow : MonoBehaviour
     public Transform castPoint;
     public EnemyMelee enemyMelee;
 
+    GameObject rangeAttack;
+
     public float lookAtEnmenySpeed;
     float distanceToGoal;
     public int goalRange;
@@ -61,6 +63,7 @@ public class AiFollow : MonoBehaviour
             rotation = Quaternion.LookRotation(attackRange.target.transform.position - agent.transform.position);
             agent.transform.rotation = Quaternion.Slerp(agent.transform.rotation, rotation, Time.deltaTime  * lookAtEnmenySpeed);
 
+            //
 
             if (enemyMelee == null)
             {
@@ -69,7 +72,15 @@ public class AiFollow : MonoBehaviour
                 if (timer > timeBetweenAttacks)
                 {
                     
-                    Instantiate(autoAttack, castPoint.transform.position, castPoint.rotation);
+                    rangeAttack = Instantiate(autoAttack, castPoint.transform.position, castPoint.rotation);
+                    if (rangeAttack.GetComponent<FireballScript>() != null)
+                    {
+
+                        rangeAttack.GetComponent<FireballScript>().owner = agent.gameObject;
+                    
+                    }
+
+                    
                     timer = 0;
 
                 }

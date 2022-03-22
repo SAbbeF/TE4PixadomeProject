@@ -5,6 +5,8 @@ using UnityEngine;
 public class FireExplosionScript : BaseAbility
 {
 
+    public GameObject owner;
+
     float durationUntilExplosion = 10;
     float explosionTimer = 0;
     Vector3 explosionSize = new Vector3(20, 20, 20);
@@ -35,7 +37,7 @@ public class FireExplosionScript : BaseAbility
     {
         if (other.GetComponent<HealthScript>() != null)
         {
-            DealDamageOnCollision(other);
+            DealDamageOnCollision(other, owner);
         }
     }
 

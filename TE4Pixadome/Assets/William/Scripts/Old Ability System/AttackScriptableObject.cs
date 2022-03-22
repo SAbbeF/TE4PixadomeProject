@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class AttackScriptableObject : ScriptableObject
 {
     [Header("General Settings")]
-    public Image abilityImage;
+    public Image abilityIcon;
     public float damageScale;
     public float speed;
     public float manaCost; //doesnt have to be mana could be other resources aswell :)
@@ -15,7 +15,6 @@ public class AttackScriptableObject : ScriptableObject
     public float cooldown;
     public bool destroyOnCollision;
     public bool dealDamage;
-    public bool healDamage;
     //protected float cooldownCounter;
     //protected bool isCooldown = false;
 
@@ -30,6 +29,14 @@ public class AttackScriptableObject : ScriptableObject
 
     [Header("Skillshot")]
     public bool isSkillshot;
+
+
+    [Header("Heal")]
+    public bool healTarget;
+    public bool selfHeal;
+
+    [Header("Wall")]
+    public bool destroyProjectiles;
 
 
 }
