@@ -46,8 +46,11 @@ public class HealthScript : MonoBehaviour
                 leveling = damageOwner.GetComponent<Leveling>();
                 leveling.currentXp = leveling.currentXp + xpGetWhenKilled;
             }
+            else
+            {
 
-            Destroy(healthOwner);
+                Destroy(healthOwner);
+            }
         }
 
     }

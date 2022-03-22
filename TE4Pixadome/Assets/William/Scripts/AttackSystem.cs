@@ -167,20 +167,26 @@ public class AttackSystem : MonoBehaviour
             InstantiateAutoAttack();
         }
 
-        if (!isFirstAbilityOnCooldown && myInputManager.PlayerController.FirstAbility.triggered)
+        if (!isFirstAbilityOnCooldown && stats.currentMana > firstAbilityStats.abilityToCast.manaCost && myInputManager.PlayerController.FirstAbility.triggered)
         {
-            InstantiateFirstAbility();
+            InstantiateAbility(firstAbility, firstAbilityStats);
+            firstAbilityCounter = 0;
+            isFirstAbilityOnCooldown = true;
         }
 
-        if (!isSecondAbilityOnCooldown && myInputManager.PlayerController.SecondAbility.triggered)
+        if (!isSecondAbilityOnCooldown && stats.currentMana > secondAbilityStats.abilityToCast.manaCost &&  myInputManager.PlayerController.SecondAbility.triggered)
         {
 
-            InstantiateSecondAbility();
+            InstantiateAbility(secondAbility, secondAbilityStats);
+            secondAbilityCounter = 0;
+            isSecondAbilityOnCooldown = true;
         }
 
-        if (!isThirdAbilityOnCooldown && myInputManager.PlayerController.ThirdAbility.triggered)
+        if (!isThirdAbilityOnCooldown && stats.currentMana > thirdAbilityStats.abilityToCast.manaCost && myInputManager.PlayerController.ThirdAbility.triggered)
         {
-            InstantiateThirdAbility();
+            InstantiateAbility(thirdAbility, thirdAbilityStats);
+            thirdAbilityCounter = 0;
+            isThirdAbilityOnCooldown = true;
         }
 
         stats.currentMana = manaScript.ManaRegeneration(stats.currentMana, stats.maxMana, stats.manaRegenerationTickRate);
@@ -197,42 +203,16 @@ public class AttackSystem : MonoBehaviour
         isAutoAttackOnCooldown = true;
     }
 
-    void InstantiateFirstAbility()
+    void InstantiateAbility(GameObject spellToCast, Ability spellStats)
     {
-        if (stats.currentMana > firstAbilityStats.abilityToCast.manaCost)
-        {
 
-            Instantiate(firstAbility, castPoint.transform.position, castPoint.rotation);
-            firstAbilityCounter = 0;
-            isFirstAbilityOnCooldown = true;
-            stats.currentMana = manaScript.ManaSubtraction(stats.currentMana, firstAbilityStats.abilityToCast.manaCost);
 
-        }
-    }
 
-    void InstantiateSecondAbility()
-    {
-        if (stats.currentMana > secondAbilityStats.abilityToCast.manaCost)
-        {
+        Instantiate(spellToCast, castPoint.transform.position, castPoint.rotation);
 
-            Instantiate(secondAbility, castPoint.transform.position, castPoint.rotation);
-            secondAbilityCounter = 0;
-            isSecondAbilityOnCooldown = true;
-            stats.currentMana = manaScript.ManaSubtraction(stats.currentMana, secondAbilityStats.abilityToCast.manaCost);
+        stats.currentMana = manaScript.ManaSubtraction(stats.currentMana, spellStats.abilityToCast.manaCost);
 
-        }
-    }
-    void InstantiateThirdAbility()
-    {
-        if (stats.currentMana > thirdAbilityStats.abilityToCast.manaCost)
-        {
 
-            Instantiate(thirdAbility, castPoint.transform.position, castPoint.rotation);
-            thirdAbilityCounter = 0;
-            isThirdAbilityOnCooldown = true;
-            stats.currentMana = manaScript.ManaSubtraction(stats.currentMana, thirdAbilityStats.abilityToCast.manaCost);
-
-        }
     }
 
     bool CooldownHandler(float cooldownCounter, float cooldownDuration, float scaledValue, Image icon)

@@ -18,9 +18,9 @@ public class AttackScriptableObject : ScriptableObject
     //protected float cooldownCounter;
     //protected bool isCooldown = false;
 
-    [Header("Explosion After Set Mount Of Time")]
-    public bool isExplosion;
+    [Header("Explosion")]
     public bool explodeOnCollision;
+    public bool explodeAfterSetAmountOfTime;
     public float durationUntilExplosion;
     public float xRadius;
     public float yRadius;
