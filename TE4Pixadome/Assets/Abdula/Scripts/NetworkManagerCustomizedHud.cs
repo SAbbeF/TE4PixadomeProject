@@ -87,7 +87,7 @@ public class NetworkManagerCustomizedHud : NetworkBehaviour, ISaveable
         //sceneManager.ScenesPlayerIsIn
         //sceneManager.
 
-        sceneManager.ServerLoadSceneNormal("Assets/Scenes/Level01.unity");
+        //sceneManager.ServerLoadSceneNormal("Assets/Scenes/Level01.unity");
 
 
     }
