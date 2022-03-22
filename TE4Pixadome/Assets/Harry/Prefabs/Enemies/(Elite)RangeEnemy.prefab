@@ -327,6 +327,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47477198570f296498c03704efbdac61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  xpGetWhenKilled: 0
 --- !u!114 &2923308318698018881
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -346,6 +347,7 @@ MonoBehaviour:
   magicDefense: 0
   maxMana: 0
   currentMana: 0
+  manaRegenerationTickRate: 0
   attackRange: 0
   attackSpeed: 0
   cooldownReduction: 0
